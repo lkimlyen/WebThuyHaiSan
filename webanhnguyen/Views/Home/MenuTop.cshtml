@@ -1,0 +1,37 @@
+﻿@model IEnumerable<webanhnguyen.Models.tbl_menu>
+
+
+    <div class="main-menu">
+        <ul class="ty-menu__items cm-responsive-menu">
+
+            <li class="ty-menu__item ty-menu__menu-btn visible-phone">
+                <a class="ty-menu__item-link">
+                    <i class="ty-icon-short-list"></i>
+                    <span>Menu</span>
+                </a>
+            </li>
+@foreach (var item in Model)
+{
+    if (@item.ThuTu == 1)
+    {
+            <li class="ty-menu__item-http-hasasavn ty-menu__item  ty-menu__item-nodrop  ty-menu__item-active">
+                <a href="@item.url" class="ty-menu__item-link">
+                    @item.TenMenu
+                </a>
+            </li>
+    }
+    else
+    {
+        <li class="ty-menu__item-http-hasasavn-hai-san-tuoi-songhtml ty-menu__item  ty-menu__item-nodrop ">
+            <a href="@item.url" class="ty-menu__item-link">
+               @item.TenMenu
+            </a>
+        </li>
+
+    }
+}
+        
+        </ul>
+
+    </div>
+

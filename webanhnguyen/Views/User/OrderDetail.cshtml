@@ -1,0 +1,321 @@
+﻿    @{
+    ViewBag.Title = "OrderDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="tygh-content clearfix">
+    <div class="container-fluid  content-grid">
+        <div class="row-fluid ">
+            <div class="span16 breadcrumbs-grid">
+                <div id="breadcrumbs_73">
+
+                    <div class="ty-breadcrumbs clearfix">
+                        <a href="http://thuyhaisancamau.com/" class="ty-breadcrumbs__a">Trang chủ</a><span class="ty-breadcrumbs__slash">/</span><a href="http://hasasa.vn/index.php?dispatch=orders.search" class="ty-breadcrumbs__a">Đơn hàng</a><span class="ty-breadcrumbs__slash">/</span><span class="ty-breadcrumbs__current">Thông tin đơn hàng</span>
+                    </div>
+
+                    <!--breadcrumbs_73-->
+                </div>
+            </div>
+        </div>
+        
+            <div class="row-fluid ">
+            <div class="span16 main-content-grid">
+                <div class="ty-mainbox-container clearfix">
+                    <h1 class="ty-mainbox-title">
+
+                        Đơn hàng&nbsp;@Model.iddh
+                        <em class="ty-date">@Model.Order.thoidiemdathang</em>
+
+                        @if (Model.status == false)
+                        {
+                            <em class="ty-status">
+                                Trang thái: Chưa giao
+                            </em>
+                        }
+                        else
+                        {
+                            <em class="ty-status">
+                                Trang thái: Đã giao
+                            </em>
+                        }
+
+
+
+
+
+                    </h1>
+                    <div class="ty-mainbox-body">
+                        <div class="ty-orders-detail">
+
+
+
+
+
+                            <div class="ty-tabs cm-j-tabs clearfix">
+                                <ul class="ty-tabs__list">
+                                    <li id="general" class="ty-tabs__item cm-js active"><a class="ty-tabs__a" href="http://hasasa.vn/index.php?dispatch=orders.details&amp;order_id=10427&amp;selected_section=general">Thông tin chung</a></li>
+                                    <li id="shipment_info" class="ty-tabs__item cm-js"><a class="ty-tabs__a" href="http://hasasa.vn/index.php?dispatch=orders.details&amp;order_id=10427&amp;selected_section=shipment_info">Thông tin vận chuyển</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="cm-tabs-content ty-tabs__content clearfix" id="tabs_content">
+
+                                <div id="content_general" class="">
+
+
+                                    <div class="orders-customer">
+                                        <h3 class="ty-subheader">
+
+                                            Thông tin khách hàng
+
+                                        </h3>
+
+
+                                        <div class="ty-profiles-info">
+                                            <div id="tygh_order_billing_adress" class="ty-profiles-info__item ty-profiles-info__billing">
+                                                <h5 class="ty-profiles-info__title">Billing address</h5>
+                                                <div class="ty-profiles-info__field">
+                                                    <div class="ty-info-field b-firstname">@Model.Order.tennguoinhan</div>
+
+                                                    <div class="ty-info-field b-phone">@Model.Order.phonenumber</div>
+
+                                                    <div class="ty-info-field b-address">@Model.Order.diachi</div>
+
+                                                    <div class="ty-info-field b-state"> @Model.Order.state</div>
+                                                </div>
+                                            </div>
+                                            <div id="tygh_order_shipping_adress" class="ty-profiles-info__item ty-profiles-info__shipping">
+                                                <h5 class="ty-profiles-info__title">Địa chỉ vận chuyển</h5>
+                                                <div class="ty-profiles-info__field">
+                                                    <div class="ty-info-field s-firstname"></div>
+
+                                                    <div class="ty-info-field email">lkimlyen2912@gmail.com</div>
+
+                                                    <div class="ty-info-field s-phone">01699724109</div>
+
+                                                    <div class="ty-info-field s-address">97/9 ung văn khiêm, quận bình thạnh</div>
+
+                                                    <div class="ty-info-field s-state"> </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+
+                                    <div class="ty-orders-detail__products orders-product">
+                                        <div>
+                                            <div class="ty-subheaders-group">
+                                                <h3 class="ty-subheader">
+
+                                                    Thông tin sản phẩm
+
+                                                </h3>
+
+                                                <table class="ty-orders-detail__table ty-table">
+
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="ty-orders-detail__table-product">Sản phẩm</th>
+                                                            <th class="ty-orders-detail__table-price">Giá</th>
+                                                            <th class="ty-orders-detail__table-quantity">Số lượng</th>
+                                                            <th class="ty-orders-detail__table-subtotal">Thành tiền</th>
+                                                        </tr>
+                                                    </thead>
+
+
+
+                                                    <tr class="ty-valign-top">
+                                                        <td>
+                                                            <a href="http://hasasa.vn/tom-mu-ni.html">
+                                                                Tôm Mũ Ni Sống (size 5 - 6 con)
+                                                            </a>
+                                                            <div class="ty-orders-detail__table-code">Mã SP:&nbsp;TOMMUNI</div>
+
+
+                                                            <div class="ty-control-group product-list-field">
+                                                                <label class="ty-control-group__label">Price in points:</label>
+                                                                <span class="ty-control-group__item">650000</span>
+                                                            </div>
+
+                                                        </td>
+                                                        <td class="ty-right">
+                                                            <span>650,000</span>&nbsp;đ
+                                                        </td>
+                                                        <td class="ty-center">&nbsp;1.00</td>
+                                                        <td class="ty-right">
+                                                            &nbsp;<span>650,000</span>&nbsp;đ
+                                                        </td>
+                                                    </tr>
+
+
+
+
+
+
+
+                                                </table>
+
+
+
+
+                                                <div class="ty-orders-summary clearfix">
+                                                    <h3 class="ty-subheader">
+
+                                                        Tổng kết
+
+                                                    </h3>
+
+                                                    <div class="ty-orders-summary__right">
+
+                                                        <div class="ty-barcode ty-center"><img src="http://hasasa.vn/index.php?dispatch=image.barcode.draw&amp;id=10427&amp;type=C128B&amp;width=250&amp;height=60&amp;xres=1&amp;font=3" alt="BarCode" width="250" height="60" /></div>
+                                                    </div>
+
+                                                    <div class="ty-orders-summary__wrapper">
+                                                        <table class="ty-orders-summary__table">
+
+
+
+                                                            <tr class="ty-orders-summary__row">
+                                                                <td>Thành tiền:&nbsp;</td>
+                                                                <td data-ct-orders-summary="summary-subtotal"><span>650,000</span>&nbsp;đ</td>
+                                                            </tr>
+
+
+
+
+
+                                                            <tr class="ty-orders-summary__row">
+                                                                <td class="ty-orders-summary__total">Tổng cộng:&nbsp;</td>
+                                                                <td class="ty-orders-summary__total" data-ct-orders-summary="summary-total"><span>650,000</span>&nbsp;đ</td>
+                                                            </tr>
+
+
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="ty-orders-repay">
+
+
+
+                                                    <h3 class="ty-subheader" id="repay_order">Pay order</h3>
+                                                    <div class="ty-repay" id="elm_payments_list">
+                                                        <script type="text/javascript" src="~/Scripts/tabs.js"></script>
+
+
+
+
+
+                                                        <script type="text/javascript">
+(function(_, $) {
+    $(_.doc).on('click', '.cm-select-payment', function() {
+        var self = $(this);
+
+        $.ceAjax('request', fn_url('orders.details?order_id=10427&payment_id=' + self.val()), {
+            result_ids: 'elm_payments_list',
+            full_render: true
+        });
+    });
+
+    $(_.doc).ready(function() {
+        $('.payments-form').each(function(index, form) {
+            $.ceEvent('on', 'ce.formpost_' + $(form).attr('name'), function() {
+                $('#ajax_overlay').show();
+                $('#ajax_loading_box').html('<span class="ty-ajax-loading-box-with__text-wrapper">Placing the order</span>').addClass('ty-ajax-loading-box_text_block');
+                $.toggleStatusBox('show');
+            });
+        });
+    });
+}(Tygh, Tygh.$));
+                                                        </script>
+
+
+
+                                                        <div class="cm-tabs-content tabs-content clearfix">
+                                                            <div class="" id="content_payments_tab3">
+                                                                <form name="payments_form_tab3" action="http://thuyhaisancamau.com/" method="post" class="payments-form">
+                                                                    <input type="hidden" name="payment_id" value="6" />
+                                                                    <input type="hidden" name="result_ids" value="elm_payments_list" />
+
+                                                                    <input type="hidden" name="order_id" value="10427" />
+
+
+
+                                                                    <div class="clearfix">
+                                                                        <div class="ty-payments-list__instruction other-text"></div>
+
+                                                                        <div class="ty-payments-list__description">
+                                                                            Thu Tiền Tận Nơi
+                                                                        </div>
+
+
+
+                                                                    </div>
+
+
+
+                                                                    <div class="ty-customer-notes">
+                                                                        <p class="ty-customer-notes__title">Ghi chú cho Đơn hàng</p>
+                                                                        <textarea class="ty-customer-notes__text" name="customer_notes" cols="60" rows="3"></textarea>
+                                                                    </div>
+
+
+
+                                                                    <div class="ty-checkout-buttons">
+                                                                        <div class="ty-repay-button">
+
+
+                                                                            <a class="ty-btn__big ty-btn__primary ty-btn" href="@Url.Action("Order","User")" type="button" name="back">Back</a>
+
+
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="processor-buttons hidden"></div>
+                                                                </form>
+
+
+                                                                <!--content_payments_tab3-->
+                                                            </div>
+                                                        </div>
+
+                                                        <!--elm_payments_list-->
+                                                    </div>
+
+
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- main order info -->
+
+                                <div id="content_shipment_info" class="ty-orders-shipment hidden">
+                                    <p class="ty-no-items">Chưa có thông tin vận chuyển</p>
+                                </div>
+
+
+
+
+
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
