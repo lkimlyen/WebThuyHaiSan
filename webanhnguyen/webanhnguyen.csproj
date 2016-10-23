@@ -168,7 +168,6 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Admin\AdminController.cs" />
     <Compile Include="Controllers\Admin\BaseAdminController.cs" />
     <Compile Include="Controllers\Admin\ItemCategoryController.cs" />
@@ -183,7 +182,6 @@
     <Compile Include="Controllers\DataHelper.cs" />
     <Compile Include="Controllers\EmailHelper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\URLHelper.cs" />
     <Compile Include="Controllers\UserController.cs" />

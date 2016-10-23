@@ -19,27 +19,34 @@ namespace webanhnguyen.Controllers.Admin
             //ViewData["ITEM_AMOUNT"] = DataHelper.ProductHelper.getInstance().getProductsAmount(data);
             //ViewData["ITEM_CATEGORY_AMOUNT"] = DataHelper.ProductHelper.getInstance().getProductCategoryAmount(data);
 
+            ViewData["MEMBER_AMOUNT"] = 10;
+            ViewData["ORDER_COMPLETED_AMOUNT"] = 20;
+            ViewData["ORDER_AMOUNT"] = 30;
+            ViewData["NEWS_CATEGORY_AMOUNT"] = 40;
+            ViewData["NEWS_AMOUNT"] = 50;
+            ViewData["ITEM_AMOUNT"] = 60;
+            ViewData["ITEM_CATEGORY_AMOUNT"] = 70;
             return View();
         }
 
-        //    [HttpPost]
-        //    public ActionResult Login(FormCollection form)
-        //    {
-        //        var username = form["username"];
-        //        var password = form["password"];
-        //        if (!String.IsNullOrEmpty(username) && !String.IsNullOrEmpty(password) &&
-        //            DataHelper.AccountHelper.getInstance().loginAdmin(data, username, password))
-        //        {
-        //            //TODO, save session here
-        //            Session[Constants.KEY_SESSION_ADMIN_USERNAME] = username;
-        //            return RedirectToAction("Index");
-        //        }
-        //        else
-        //        {
-        //            ViewBag.ErrorMessage = "Vui lòng kiểm tra tên truy cập hoặc mật khẩu.";
-        //            return View();
-        //        }
-        //    }
+        [HttpPost]
+        public ActionResult Login(FormCollection form)
+        {
+            var username = form["username"];
+            var password = form["password"];
+            if (!String.IsNullOrEmpty(username) && !String.IsNullOrEmpty(password) &&
+                DataHelper.AccountHelper.getInstance().loginAdmin(data, username, password))
+            {
+                //TODO, save session here
+                Session[Constants.KEY_SESSION_ADMIN_USERNAME] = username;
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.ErrorMessage = "Vui lòng kiểm tra tên truy cập hoặc mật khẩu.";
+                return View();
+            }
+        }
 
         [HttpGet]
         public ActionResult Login()
@@ -47,10 +54,10 @@ namespace webanhnguyen.Controllers.Admin
             return View();
         }
 
-        //    public ActionResult Logout()
-        //    {
-        //        DataHelper.AccountHelper.getInstance().logoutAdmin(this);
-        //        return RedirectToAction("Index");
-        //    }
+        public ActionResult Logout()
+        {
+            DataHelper.AccountHelper.getInstance().logoutAdmin(this);
+            return RedirectToAction("Index");
+        }
     }
 }

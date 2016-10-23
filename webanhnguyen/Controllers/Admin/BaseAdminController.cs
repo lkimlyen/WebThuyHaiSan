@@ -4,13 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using webanhnguyen.Models;
 
 namespace webanhnguyen.Controllers
 {
     [ActionExcuted]
     public abstract class BaseAdminController : Controller
     {
-        //public DataClassesDataContext data = new DataClassesDataContext();
+        public databaseDataContext data = new databaseDataContext();
     }
 
     public class ActionExcutedAttribute : ActionFilterAttribute
@@ -18,7 +19,7 @@ namespace webanhnguyen.Controllers
         bool hasAdminLoginSession = false;
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            //hasAdminLoginSession = DataHelper.AccountHelper.getInstance().checkIsAdminLoggingIn(context.HttpContext);
+            hasAdminLoginSession = DataHelper.AccountHelper.getInstance().checkIsAdminLoggingIn(context.HttpContext);
             base.OnActionExecuting(context);
         }
         public override void OnActionExecuted(ActionExecutedContext filterContext)
