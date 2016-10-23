@@ -20,6 +20,36 @@ namespace webanhnguyen.Controllers
                 return instance;
             }
         }
+        
+        public class NewsHelper
+        {
+            static NewsHelper instance;
+            public static NewsHelper getInstance()
+            {
+                if (instance == null)
+                {
+                    instance = new NewsHelper();
+                }
+                return instance;
+            }
+
+            public void deleteAllNews(Models.databaseDataContext data)
+            {
+                data.tbl_news.DeleteAllOnSubmit(data.tbl_news);
+                data.SubmitChanges();
+
+            }
+            public int getNewsAmount(Models.databaseDataContext data)
+            {
+                return data.tbl_news.Count();
+            }
+
+            public Models.tbl_new getNewsById(Models.databaseDataContext data, int id)
+            {
+                Models.tbl_new result = data.tbl_news.Where(n => n.id == id).Single();
+                return result;
+            }
+        }
 
         public class ProductHelper
         {

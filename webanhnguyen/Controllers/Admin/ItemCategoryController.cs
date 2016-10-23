@@ -47,7 +47,16 @@ namespace webanhnguyen.Controllers.Admin
             }
             return itemCategory.Single();
         }
-     
+        
+        public ActionResult ItemSetStatusEnable(int id)
+        {
+            tbl_product_type tic = getOneItemCategory(id);
+            tic.Status = !tic.Status;
+            UpdateModel(tic);
+            data.SubmitChanges();
+            return RedirectToAction("itemCategoryView");
+        }
+
         /*
          * 
          * 

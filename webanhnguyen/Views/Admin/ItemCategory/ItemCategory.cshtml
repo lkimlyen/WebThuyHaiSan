@@ -62,7 +62,8 @@
                                 </td>
                                 <td style="width: 50px;" class="text-center">ID</td>
                                 <td class="text-left">Tên danh mục</td>
-                             
+
+                                <td style="width: 100px;" class="text-center">Ẩn/Hiện</td>
                                 <td style="width: 100px;" class="text-right">Tùy chọn</td>
                             </tr>
                         </thead>
@@ -79,7 +80,11 @@
                                     <td class="text-left name-to-confirm">
                                         @itemCategory.TenLoaiSP
                                     </td>
-                                  
+                                    <td class="text-center">
+                                        <a href='@Url.Action("ItemCategorySetStatusEnable", "ItemCategory", new { id = @itemCategory.ID})' title="Reverse">
+                                            <div class="check tool @(itemCategory.Status?"active":"")" data-action="toggleStatus" data-field="status" data-table="tbl_item" title="Ẩn hiện" value="@itemCategory.ID"></div>
+                                        </a>
+                                    </td>
                                     <td class="text-right">
                                         <a href='@Url.Action("itemCategoryEdit", "ItemCategory", new { id = @itemCategory.ID})' class="btn btn-xs btn-pencil btn-primary" title="Sửa">
                                             <i class="fa fa-pencil"></i>

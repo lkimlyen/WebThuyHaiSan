@@ -89,7 +89,8 @@ namespace webanhnguyen.Controllers
             return PartialView();
         }
         //Cap nhat Giỏ hàng
-        public ActionResult CapnhatGiohang(int iMaSP, FormCollection f)
+        [HttpPost]
+        public ActionResult CapnhatGiohang(FormCollection f, int iMaSP)
         {
 
             //Lay gio hang tu Session
@@ -101,7 +102,7 @@ namespace webanhnguyen.Controllers
             {
                 sanpham.iSoluong = int.Parse(f["txtSoluong"].ToString());
             }
-            return RedirectToAction("ShoppingCart");
+            return RedirectToAction("GioHang");
         }
         //Xoa Giohang
         public ActionResult XoaGiohang(int iMaSP)
@@ -114,14 +115,10 @@ namespace webanhnguyen.Controllers
             if (sanpham != null)
             {
                 lstGiohang.RemoveAll(n => n.iMasp == iMaSP);
-                return RedirectToAction("ShoppingCart");
+                return RedirectToAction("GioHang");
 
             }
-            if (lstGiohang.Count == 0)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            return RedirectToAction("ShoppingCart");
+            return RedirectToAction("Index", "Home");
         }
         //Xoa tat ca thong tin trong Gio hang
         public ActionResult XoaTatcaGiohang()
@@ -153,7 +150,7 @@ namespace webanhnguyen.Controllers
 
             return View(lstGiohang);
         }
-        
+
         //Xay dung chuc nang Dathang
         [HttpPost]
         public ActionResult DatHang(FormCollection collection)
@@ -164,7 +161,7 @@ namespace webanhnguyen.Controllers
             List<ShoppingCart> gh = Laygiohang();
             ddh.idkh = kh.id;
             ddh.thoidiemdathang = DateTime.Now;
-            
+
             ddh.status = false;
 
             ddh.tennguoinhan = kh.name;
@@ -173,7 +170,7 @@ namespace webanhnguyen.Controllers
             ddh.state = kh.state;
             db.Orders.InsertOnSubmit(ddh);
             db.SubmitChanges();
-           
+
             decimal tong = 0;
             //Them chi tiet don hang            
             foreach (var item in gh)
@@ -198,7 +195,7 @@ namespace webanhnguyen.Controllers
         {
             return View();
         }
-       
+
 
     }
 }

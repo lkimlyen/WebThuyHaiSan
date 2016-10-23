@@ -1,6 +1,6 @@
 ﻿<ul class="ty-dropdown-box" id="cart_status_140">
     <li id="sw_dropdown_140" class="ty-dropdown-box__title">
-        @if (Session["ShoppingCart"] == null)
+        @if (Session["ShoppingCart"] == null || @ViewBag.Tongsoluong == 0)
             {
             <a href="">
                 <i class="ty-minicart__icon ty-icon-basket empty"></i>

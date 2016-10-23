@@ -14,18 +14,13 @@ namespace webanhnguyen.Controllers.Admin
             //ViewData["MEMBER_AMOUNT"] = DataHelper.AccountHelper.getInstance().getMemberAccountAmount(data);
             //ViewData["ORDER_COMPLETED_AMOUNT"] = DataHelper.ShoppingCardHelper.getInstance().getPaidOrderAmount(data);
             //ViewData["ORDER_AMOUNT"] = DataHelper.ShoppingCardHelper.getInstance().getOrderAmount(data);
-            //ViewData["NEWS_CATEGORY_AMOUNT"] = DataHelper.NewsHelper.getInstance().getNewsCategoryAmount(data);
-            //ViewData["NEWS_AMOUNT"] = DataHelper.NewsHelper.getInstance().getNewsAmount(data);
-            //ViewData["ITEM_AMOUNT"] = DataHelper.ProductHelper.getInstance().getProductsAmount(data);
-            //ViewData["ITEM_CATEGORY_AMOUNT"] = DataHelper.ProductHelper.getInstance().getProductCategoryAmount(data);
+            ViewData["NEWS_AMOUNT"] = DataHelper.NewsHelper.getInstance().getNewsAmount(data);
+            ViewData["ITEM_AMOUNT"] = DataHelper.ProductHelper.getInstance().getProductsAmount(data);
+            ViewData["ITEM_CATEGORY_AMOUNT"] = DataHelper.ProductHelper.getInstance().getProductCategoryAmount(data);
 
             ViewData["MEMBER_AMOUNT"] = 10;
             ViewData["ORDER_COMPLETED_AMOUNT"] = 20;
             ViewData["ORDER_AMOUNT"] = 30;
-            ViewData["NEWS_CATEGORY_AMOUNT"] = 40;
-            ViewData["NEWS_AMOUNT"] = 50;
-            ViewData["ITEM_AMOUNT"] = 60;
-            ViewData["ITEM_CATEGORY_AMOUNT"] = 70;
             return View();
         }
 

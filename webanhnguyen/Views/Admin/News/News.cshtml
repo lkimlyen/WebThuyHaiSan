@@ -1,4 +1,4 @@
-﻿@*@model IEnumerable<webanhnguyen.Models.tbl_new>*@
+﻿@model IEnumerable<webanhnguyen.Models.tbl_new>
 @{
     ViewBag.Title = "News";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -63,13 +63,12 @@
                                 <td style="width: 50px;" class="text-center">ID</td>
                                 <td style="width: 150px;" class="text-center">Hình đại diện</td>
                                 <td class="text-left">Tên tin tức</td>
-                                <td style="width: 100px;" class="text-center">Nổi bật</td>
                                 <td style="width: 100px;" class="text-center">Ẩn/Hiện</td>
                                 <td style="width: 100px;" class="text-right">Tùy chọn</td>
                             </tr>
                         </thead>
                         <tbody>
-                            @*@foreach (var news in Model)
+                            @foreach (var news in Model)
                             {
                                 <tr>
                                     <td class="text-center">
@@ -79,26 +78,21 @@
                                         @news.id
                                     </td>
                                     <td class="text-center">
-                                        @if (String.IsNullOrEmpty(news.image))
+                                        @if (String.IsNullOrEmpty(news.UrlHinh))
                                         {
                                             <img src="~/assets/images/noimage.png" border="0" class="img-thumbnail" style="max-width: 50px;">
                                         }
                                         else
                                         {
-                                            <img src="~/assets/images/news/@news.image" border="0" class="img-thumbnail" style="max-width: 50px;">
+                                            <img src="~/@news.UrlHinh" border="0" class="img-thumbnail" style="max-width: 50px;">
                                         }
                                     </td>
                                     <td class="text-left name-to-confirm">
-                                        @news.name
+                                        @news.TieuDe
                                     </td>
                                     <td class="text-center">
-                                        <a href='@Url.Action("NewsSetHotEnable", "Item", new { id = @news.id})' title="Reverse">
-                                            <div class="star tool @(news.hot==1?"active":"")" data-action="toggleStatus" data-field="hot" data-table="tbl_item" title="Nổi bật" value="@news.id"></div>
-                                        </a>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href='@Url.Action("NewsSetStatusEnable", "Item", new { id = @news.id})' title="Reverse">
-                                            <div class="check tool @(news.status==1?"active":"")" data-action="toggleStatus" data-field="status" data-table="tbl_item" title="Ẩn hiện" value="@news.id"></div>
+                                        <a href='@Url.Action("NewsSetStatusEnable", "News", new { id = @news.id})' title="Reverse">
+                                            <div class="check tool @(news.status?"active":"")" data-action="toggleStatus" data-field="status" data-table="tbl_item" title="Ẩn hiện" value="@news.id"></div>
                                         </a>
                                     </td>
                                      <td class="text-right">
@@ -110,7 +104,7 @@
                                         </a>
                                     </td>
                                 </tr>
-                            }*@
+                            }
                         </tbody>
                         <tfoot>
                             <tr>

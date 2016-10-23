@@ -174,7 +174,6 @@
     <Compile Include="Controllers\Admin\ItemController.cs" />
     <Compile Include="Controllers\Admin\MemberController.cs" />
     <Compile Include="Controllers\Admin\ModuleController.cs" />
-    <Compile Include="Controllers\Admin\NewsCategoryController.cs" />
     <Compile Include="Controllers\Admin\NewsController.cs" />
     <Compile Include="Controllers\Admin\OrderController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -1024,7 +1023,6 @@
     <Content Include="Views\Home\monanmoingay.cshtml" />
     <Content Include="Views\Home\khuyemai.cshtml" />
     <Content Include="Views\Home\hienthi2.cshtml" />
-    <Content Include="Views\Shared\Layoutuser.cshtml" />
     <Content Include="Views\Home\hienthi3.cshtml" />
     <Content Include="Views\Home\khuyenmai.cshtml" />
     <Content Include="Views\Home\hienthica2.cshtml" />
@@ -1039,12 +1037,11 @@
     <Content Include="Views\Admin\Member\Member.cshtml" />
     <Content Include="Views\Admin\Module\Module.cshtml" />
     <Content Include="Views\Admin\Module\Module_m.cshtml" />
-    <Content Include="Views\Admin\NewsCategory\NewsCategory.cshtml" />
-    <Content Include="Views\Admin\NewsCategory\NewsCategory_m.cshtml" />
     <Content Include="Views\Admin\News\News.cshtml" />
     <Content Include="Views\Admin\News\News_m.cshtml" />
     <Content Include="Views\Admin\Order\Order.cshtml" />
     <Content Include="Views\Admin\Order\OrderDetail.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

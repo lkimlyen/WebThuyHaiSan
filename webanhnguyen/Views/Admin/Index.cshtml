@@ -38,12 +38,12 @@
         </div>
 
         <!--**** module website ****-->
-        <div class="col-xs-4 col-sm-2 placeholder text-center">
+        @*<div class="col-xs-4 col-sm-2 placeholder text-center">
             <a class="h2 font-w300 text-primary animated flipInX font-s48" href="@Url.Action("moduleView","Module")">
                 <i class="fa fa-columns"></i>
             </a>
             <div class="font-w700 text-gray-darker animated fadeIn">Module Web</div>
-        </div>
+        </div>*@
 
     </div>
 </div>
@@ -88,12 +88,9 @@
                 <div class="dash-tile-icon"><i class="fa fa-newspaper-o"></i></div>
                 <div class="dash-tile-text">
                     <div class="w-meta-info">
-                        <span class="w-meta-title">Tổng số danh mục</span>
-                        <span class="w-meta-value number-animate">
-                            @ViewData["NEWS_CATEGORY_AMOUNT"]
-                        </span>
+                        <span class="w-meta-title"><br/></span>
                     </div>
-                    <div class="w-meta-info">
+                    <div class="w-meta-info" style="margin-top:5px">
                         <span class="w-meta-title">Tổng số tin tức</span>
                         <span class="w-meta-value number-animate">
                             @ViewData["NEWS_AMOUNT"]
@@ -140,9 +137,12 @@
                     Tài khoản
                 </div>
                 <div class="user">
-                    <div class="dash-tile-icon"><i class="fa fa-users"></i></div>
+                    <div class="dash-tile-icon"><i class="fa fa-users"  style="margin-top:40px"></i></div>
                     <div class="dash-tile-text">
                         <div class="w-meta-info">
+                            <span class="w-meta-title"><br /></span>
+                        </div>
+                        <div class="w-meta-info" style="margin-top:10px">
                             <span class="w-meta-title">Thành viên</span>
                             <span class="w-meta-value number-animate">
                                 @ViewData["MEMBER_AMOUNT"]

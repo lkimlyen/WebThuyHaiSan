@@ -40,45 +40,45 @@
 
 
                             @using (Html.BeginForm("CapnhatGiohang", "ShoppingCart", new { @iMasp = item.iMasp }))
-                {
+                            {
                                 <td class="ty-center">
                                     <input type="number" min="1" name="txtSoluong" style="width: 30px" value="@item.iSoluong" class="form-control quantity input-sm" />
-                                    <br />
-                                    <input type="submit" value="Cập Nhật" class="btn btn-danger" />
+                                    <br /><br />
+                                    <input class="ty-btn ty-btn__secondary" type="submit" value="Cập Nhật" />
                                 </td>
 
                                 <td class="ty-right"><span style="font-weight: 700; ">@string.Format("{0:#,##0}", item.dDongia)<sup> VNĐ</sup></span> </td>
 
-                                    <td class="ty-center">
-                                        <span style="color: #666; font-size: 12px; font-weight: bold">Đã - @item.iKhuyenmai % Khuyến mãi</span><br />
-                                        <br />
-                                        <br />
-                                        <label id="txt-ThanhTien" style="font-weight: 700; ">@string.Format("{0:#,##0}", item.dThanhtien)</label><sup style="font-weight: 700; color: #F60"> VNĐ</sup>
-                                    </td>
+                                <td class="ty-center">
+                                    <span style="color: #666; font-size: 12px; font-weight: bold">Đã - @item.iKhuyenmai % Khuyến mãi</span><br />
+                                    <br />
+                                    <br />
+                                    <label id="txt-ThanhTien" style="font-weight: 700; ">@string.Format("{0:#,##0}", item.dThanhtien)</label><sup style="font-weight: 700"> VNĐ</sup>
+                                </td>
 
-                                    <td class="ty-center">
-                                        <a href="@Url.Action("XoaGiohang", new { @iMaSp = item.iMasp })" class="XoaSP" data-id="">
-                                            <img src="~/images/icon_delete.png" />
-                                        </a>
+                                <td class="ty-center">
+                                    <a href="@Url.Action("XoaGiohang", new { @iMaSp = item.iMasp })" class="XoaSP" data-id="">
+                                        <img src="~/images/icon_delete.png" />
+                                    </a>
 
-                                    </td>
+                                </td>
 
                             }
                         </tr>
                     }
                 </table>
-                <div class="ty-orders-summary__wrapper ">
+                <div class="ty-orders-summary__wrapper" style="float:right">
                     <table class="ty-orders-summary__table">
 
 
                         <tr class="ty-orders-summary__row ">
                             <td class="ty-orders-summary__total">Tổng số lượng:&nbsp;</td>
-                            <td class="ty-orders-summary__total" data-ct-orders-summary="summary-total"><span>@ViewBag.Tongsoluong</span></td>
+                            <td class="ty-orders-summary__total" data-ct-orders-summary="summary-total" style=" text-align:right"><span>@ViewBag.Tongsoluong</span></td>
 
                         </tr>
                         <tr class="ty-orders-summary__row">
-                            <td class="ty-orders-summary__total ">Tổng cộng:&nbsp;</td>
-                            <td class="ty-orders-summary__total" data-ct-orders-summary="summary-total"><span>@String.Format("{0:0,0}", ViewBag.Tongtien) VNĐ</span> đ</td>
+                            <td class="ty-orders-summary__total">Tổng cộng:&nbsp;</td>
+                            <td class="ty-orders-summary__total" data-ct-orders-summary="summary-total" style="text-align:right"><span>@String.Format("{0:0,0}", ViewBag.Tongtien) VNĐ</span> đ</td>
 
                         </tr>
                     </table>

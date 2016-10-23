@@ -62,81 +62,75 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        @Html.ActionLink("Danh mục", "newsCategoryView", "NewsCategory")
-                                    </li>
-                                    <li>
                                         @Html.ActionLink("Danh sách tin tức", "newsView", "News")
                                     </li>
                                 </ul>
                             </li>
                             <!-- members -->
-                            <li>
-                                <a href="" class="nav-submenu" data-toggle="nav-submenu">
-                                    <i class="si si-list"></i>
-                                    <span class="sidebar-mini-hide">Thành viên</span>
-                                </a>
-                                <ul>
-                                    <li>
-                                        @Html.ActionLink("Danh sách thành viên", "MemberView", "Member")
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- orders -->
-                            <li>
-                                <a href="" class="nav-submenu" data-toggle="nav-submenu">
-                                    <i class="si si-list"></i>
-                                    <span class="sidebar-mini-hide">Đơn hàng</span>
-                                </a>
-                                <ul>
-                                    <li>
-                                        @Html.ActionLink("Danh sách đơn hàng", "OrderView", "Order")
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- module -->
-                            <li>
-                                <a href="" class="nav-submenu" data-toggle="nav-submenu">
-                                    <i class="si si-magic-wand"></i>
-                                    <span class="sidebar-mini-hide">Module</span>
-                                </a>
-                                <ul>
-                                    <li>
-                                        @Html.ActionLink("Danh sách module", "moduleView", "Module")
-                                    </li>
-                                    <!--<li>
-                                        @*Html.ActionLink("Cấu hình module", "newsView", "News")*@
-                                    </li>-->
-                                </ul>
-                            </li>
+                            @*<li>
+                                    <a href="" class="nav-submenu" data-toggle="nav-submenu">
+                                        <i class="si si-list"></i>
+                                        <span class="sidebar-mini-hide">Thành viên</span>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            @Html.ActionLink("Danh sách thành viên", "MemberView", "Member")
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- orders -->
+                                <li>
+                                    <a href="" class="nav-submenu" data-toggle="nav-submenu">
+                                        <i class="si si-list"></i>
+                                        <span class="sidebar-mini-hide">Đơn hàng</span>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            @Html.ActionLink("Danh sách đơn hàng", "OrderView", "Order")
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- module -->
+                                <li>
+                                    <a href="" class="nav-submenu" data-toggle="nav-submenu">
+                                        <i class="si si-magic-wand"></i>
+                                        <span class="sidebar-mini-hide">Module</span>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            @Html.ActionLink("Danh sách module", "moduleView", "Module")
+                                        </li>
+                                       </ul>
+                                </li>
 
-                            <!-- support online -->
-                            
-                            <li>
-                                <a href="" class="nav-submenu" data-toggle="nav-submenu">
-                                    <i class="si si-magic-wand"></i>
-                                    <span class="sidebar-mini-hide">Hỗ trợ</span>
-                                </a>
-                                <ul>
-                                    <li>
-                                        @Html.ActionLink("Hỗ trợ viên", "supportView", "Support")
-                                    </li>
-                                </ul>
+                                <!-- support online -->
 
-                            </li>
-                            <!-- slide images -->
+                                <li>
+                                    <a href="" class="nav-submenu" data-toggle="nav-submenu">
+                                        <i class="si si-magic-wand"></i>
+                                        <span class="sidebar-mini-hide">Hỗ trợ</span>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            @Html.ActionLink("Hỗ trợ viên", "supportView", "Support")
+                                        </li>
+                                    </ul>
 
-                            <li>
-                                <a href="" class="nav-submenu" data-toggle="nav-submenu">
-                                    <i class="si si-magic-wand"></i>
-                                    <span class="sidebar-mini-hide">Slide</span>
-                                </a>
-                                <ul>
-                                    <li>
-                                        @Html.ActionLink("Slide hình", "imageView", "Slide")
-                                    </li>
-                                </ul>
+                                </li>
+                                <!-- slide images -->
 
-                            </li>
+                                <li>
+                                    <a href="" class="nav-submenu" data-toggle="nav-submenu">
+                                        <i class="si si-magic-wand"></i>
+                                        <span class="sidebar-mini-hide">Slide</span>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            @Html.ActionLink("Slide hình", "imageView", "Slide")
+                                        </li>
+                                    </ul>
+
+                                </li>*@
 
                         </ul><!-- end .nav-main -->
                     </div><!-- end .side-content -->
@@ -154,8 +148,8 @@
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li class="dropdown-header">Tùy chọn</li>
                             <li>
-                                    @Html.ActionLink("Thoát", "Logout", "Admin")
-                                
+                                @Html.ActionLink("Thoát", "Logout", "Admin")
+
                             </li>
                         </ul>
                     </div>
@@ -188,7 +182,7 @@
 
             </div>
             <div class="pull-left">
-                Copyright &copy; 2016. Created by <a href="">Thủy hải sản Cà Mau</a>
+                Copyright &copy; 2016. <a href="">Thủy hải sản Cà Mau</a>
             </div>
         </footer><!-- end #page-footer -->
     </div>
@@ -200,9 +194,10 @@
     <script type="text/javascript" src="~/assets/Admin/javascript/custom.js"></script>
     <script type="text/javascript" src="~/assets/Admin/javascript/admin.js"></script>
     <script src="~/assets/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
-    <script>tinymce.init({
-        theme : "simple",
-        mode: "textareas"
-    });</script>
+    <script>
+        tinymce.init({
+            theme : "simple",
+            mode: "textareas"
+        });</script>
 </body>
 </html>
