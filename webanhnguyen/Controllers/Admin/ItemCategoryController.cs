@@ -11,39 +11,39 @@ namespace webanhnguyen.Controllers.Admin
     public class ItemCategoryController : BaseAdminController
     {
            // GET: ItemCategory
-        private List<tbl_item_category> getItemCategory(int count)
+        private List<tbl_product_type> getItemCategory(int count)
         {
             return getItemCategory(count, "");
         }
-        private List<tbl_item_category> getAllItemCategory()
+        private List<tbl_product_type> getAllItemCategory()
         {
             return getItemCategory(-1, "");
         }
-        private List<tbl_item_category> getItemCategory(int count, String keyword)
+        private List<tbl_product_type> getItemCategory(int count, String keyword)
         {
             if (!String.IsNullOrEmpty(keyword))
             {
-                var result = data.tbl_item_categories.Where(a => a.name.Contains(keyword)).OrderByDescending(a => a.date_added);
+                var result = data.tbl_product_types.Where(a => a.TenLoaiSP.Contains(keyword));
                 if (count != -1)
                     result.Take(count);
                 return result.ToList();
             }
             else
             {
-                var result = data.tbl_item_categories.OrderByDescending(a => a.date_added);
+                var result = data.tbl_product_types;
                 if (count != -1)
                     result.Take(count);
                 return result.ToList();
             }
         }
-        private tbl_item_category getOneItemCategory(int id)
+        private tbl_product_type getOneItemCategory(int id)
         {
-            var itemCategory = from ic in data.tbl_item_categories
-                               where ic.id == id
+            var itemCategory = from ic in data.tbl_product_types
+                               where ic.ID == id
                                select ic;
             if (itemCategory == null)
             {
-                return new tbl_item_category();
+                return new tbl_product_type();
             }
             return itemCategory.Single();
         }
@@ -89,17 +89,13 @@ namespace webanhnguyen.Controllers.Admin
         [HttpGet]
         public ActionResult itemCategoryCreate()
         {
-            return View(URLHelper.URL_ADMIN_ITEM_CATEGORY_M, new Tuple<tbl_item_category, List<tbl_item_category>>(new tbl_item_category(), getAllItemCategory()));
+            return View(URLHelper.URL_ADMIN_ITEM_CATEGORY_M, new tbl_product_type());
         }
         [HttpPost]
         public ActionResult itemCategoryCreate(FormCollection form, HttpPostedFileBase fileUpload)
         {
-            tbl_item_category tic = new tbl_item_category();
+            tbl_product_type tic = new tbl_product_type();
             var name = form["name"];
-            var sort = form["sort"];
-            var title = form["title"];
-            var description = form["description"];
-            var keyword = form["keyword"];
             bool err = false;
             if (String.IsNullOrEmpty(name))
             {
@@ -111,44 +107,16 @@ namespace webanhnguyen.Controllers.Admin
                 err = true;
                 ViewData["Error"] += "Vui lòng chọn danh mục!\n";
             }
-            else
-            {
-                tic.parent = Int32.Parse(form["parent"]);
-            }
-            tic.name = name;
-            if (!String.IsNullOrEmpty(sort))
-                tic.sort = Int32.Parse(sort);
-            else
-                tic.sort = 0;
-            tic.title = title;
-            tic.description = description;
-            tic.keyword = keyword;
-            tic.status = 1;
-            tic.date_added = DateTime.Now;
-            tic.last_modified = DateTime.Now;
-            if (form["chkClearImg"] != null)
-            {
-                tic.image = "";
-            }
-            else if (fileUpload != null)
-            {
-                var fileName = Path.GetFileName(DateTime.Now.Millisecond + fileUpload.FileName);
-                var path = Path.Combine(Server.MapPath(URLHelper.URL_IMAGE_PATH + "item_category/"), fileName);
-                if (!System.IO.File.Exists(path))
-                {
-                    fileUpload.SaveAs(path);
-                }
-                tic.image = fileName;
-            }
+            tic.TenLoaiSP = name;
             if (err == false)
             {
-                data.tbl_item_categories.InsertOnSubmit(tic);
+                data.tbl_product_types.InsertOnSubmit(tic);
                 data.SubmitChanges();
                 return RedirectToAction("itemCategoryView");
             }
             else
             {
-                return View(URLHelper.URL_ADMIN_ITEM_CATEGORY_M, new Tuple<tbl_item_category, List<tbl_item_category>>(tic, getAllItemCategory()));
+                return View(URLHelper.URL_ADMIN_ITEM_CATEGORY_M, tic);
             }
         }
         /*
@@ -159,7 +127,7 @@ namespace webanhnguyen.Controllers.Admin
         [HttpGet]
         public ActionResult itemCategoryEdit(String id)
         {
-            return View(URLHelper.URL_ADMIN_ITEM_CATEGORY_M, new Tuple<tbl_item_category, List<tbl_item_category>>(getOneItemCategory(Int32.Parse(id)), getAllItemCategory()));
+            return View(URLHelper.URL_ADMIN_ITEM_CATEGORY_M, getOneItemCategory(Int32.Parse(id)));
         }
         [HttpPost]
         public ActionResult itemCategoryEdit(FormCollection form, HttpPostedFileBase fileUpload)
@@ -171,57 +139,15 @@ namespace webanhnguyen.Controllers.Admin
             }
             else
             {
-                tbl_item_category tic = getOneItemCategory(Int32.Parse(id));
+                tbl_product_type tic = getOneItemCategory(Int32.Parse(id));
                 var name = form["name"];
-                var sort = form["sort"];
-                var title = form["title"];
-                var description = form["description"];
-                var keyword = form["keyword"];
                 bool err = false;
                 if (String.IsNullOrEmpty(name))
                 {
                     err = true;
                     ViewData["Error"] += "Vui lòng nhập tên danh mục!\n";
                 }
-                if (String.IsNullOrEmpty(form["parent"]))
-                {
-                    err = true;
-                    ViewData["Error"] += "Vui lòng chọn danh mục!\n";
-                }
-                else
-                {
-                    tic.parent = Int32.Parse(form["parent"]);
-                }
-                tic.name = name;
-                if (!String.IsNullOrEmpty(sort))
-                    tic.sort = Int32.Parse(sort);
-                else
-                    tic.sort = 0;
-                tic.title = title;
-                tic.description = description;
-                tic.keyword = keyword;
-                tic.status = 1;
-                tic.date_added = DateTime.Now;
-                tic.last_modified = DateTime.Now;
-                if (form["chkClearImg"] != null)
-                {
-                    tic.image = "";
-                }
-                else if (fileUpload != null)
-                {
-                    var fileName = Path.GetFileName(DateTime.Now.Millisecond + fileUpload.FileName);
-                    var path = Path.Combine(Server.MapPath(URLHelper.URL_IMAGE_PATH + "item_category/"), fileName);
-                    if (!System.IO.File.Exists(path))
-                    {
-                        fileUpload.SaveAs(path);
-                    }
-                    String imageOlder = URLHelper.URL_IMAGE_PATH + tic.image;
-                    if (System.IO.File.Exists(imageOlder))
-                    {
-                        System.IO.File.Delete(imageOlder);
-                    }
-                    tic.image = fileName;
-                }
+                tic.TenLoaiSP = name;
                 if (err == false)
                 {
                     UpdateModel(tic);
@@ -230,7 +156,7 @@ namespace webanhnguyen.Controllers.Admin
                 }
                 else
                 {
-                    return View(URLHelper.URL_ADMIN_ITEM_CATEGORY_M, new Tuple<tbl_item_category, List<tbl_item_category>>(tic, getAllItemCategory()));
+                    return View(URLHelper.URL_ADMIN_ITEM_CATEGORY_M, tic);
                 }
             }
         }
@@ -249,7 +175,7 @@ namespace webanhnguyen.Controllers.Admin
             {
                 try
                 {
-                    data.tbl_item_categories.DeleteOnSubmit(getOneItemCategory(Int32.Parse(id)));
+                    data.tbl_product_types.DeleteOnSubmit(getOneItemCategory(Int32.Parse(id)));
                     data.SubmitChanges();
                     ViewBag.AlertSuccess = "Xoá thành công!";
                 }
