@@ -1,4 +1,4 @@
-﻿@*@model Tuple<webanhnguyen.Models.tbl_item, List<webanhnguyen.Models.tbl_item_category>>*@
+﻿@model Tuple<webanhnguyen.Models.tbl_Product, List<webanhnguyen.Models.tbl_product_type>>
 @{
     ViewBag.Title = "Item_m";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -18,14 +18,14 @@
     <div class="block">
         <div class="block-content">
             <form method="post" name="frmForm" enctype="multipart/form-data" class="form-horizontal">
-                <input type="hidden" name="id" value="@Model.Item1.id" />
+                <input type="hidden" name="id" value="@Model.Item1.ID" />
 
                 <div class="form-group">
                     <label class="col-sm-3 control-label">
                         Tên sản phẩm<font color="red">*</font>
                     </label>
                     <div class="col-sm-6">
-                        <input type="text" name="name" class="form-control" value="@Model.Item1.name" />
+                        <input type="text" name="name" class="form-control" value="@Model.Item1.TenSP" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -36,7 +36,7 @@
                         Danh mục<font color="red">*</font>
                     </label>
                     <div class="col-sm-6">
-                        @*<script language="javascript">
+                        <script language="javascript">
                             @functions{
                                 public class ComboboxModel
                                 {
@@ -51,19 +51,19 @@
                                             this.parent = parent;
                                         }
 
-                                    public static List<ComboboxModel> getListComboboxModelsFromListItemCategories(List<webanhnguyen.Models.tbl_item_category> listCategories)
+                                    public static List<ComboboxModel> getListComboboxModelsFromListItemCategories(List<webanhnguyen.Models.tbl_product_type> listCategories)
                                         {
                                             List<ComboboxModel> result = new List<ComboboxModel>();
-                                            foreach (webanhnguyen.Models.tbl_item_category category in listCategories)
+                                            foreach (webanhnguyen.Models.tbl_product_type category in listCategories)
                                         {
-                                                result.Add(new ComboboxModel(category.id, category.name, category.parent.Value));
+                                                result.Add(new ComboboxModel(category.ID, category.TenLoaiSP, 0));
                                         }
                                         return result;
                                     }
 
-                                    public static ComboboxModel getComboboxModelFromItem(webanhnguyen.Models.tbl_item item)
+                                    public static ComboboxModel getComboboxModelFromItem(webanhnguyen.Models.tbl_Product item)
                                         {
-                                            return new ComboboxModel(item.id, item.name, item.parent == null ? 0 : item.parent.Value);
+                                            return new ComboboxModel(item.ID, item.TenSP, item.IDLoaiSP == null ? 0 : item.IDLoaiSP.Value);
                                         }
                                     }
                                 }
@@ -82,7 +82,7 @@
                                 });
                             });
                         </script>
-                        <select name="parent" class="form-control" id="menu_parent_id_@Model.Item1.id">
+                        <select name="parent" class="form-control" id="menu_parent_id_@Model.Item1.ID">
                             <option value="0">Chọn danh mục</option>
                         </select>
                         <script language="javascript">
@@ -114,23 +114,15 @@
                                 get_parent(menus, 0, id, id_parent, '===');
                                 $('#menu_parent_id_' + id).append(html);
                             });
-                        </script>*@
+                        </script>
                     </div>
                 </div>
-                @*<div class="form-group">
-                        <label class="col-sm-3 control-label">
-                            Link khác
-                        </label>
-                        <div class="col-sm-6">
-                            <input type="text" name="link" class="form-control" value="" />
-                        </div>
-                    </div>*@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">
                         Giá
                     </label>
                     <div class="col-sm-6">
-                        <input type="number" min="0" name="price" class="form-control" value="@Model.Item1.price" />
+                        <input type="number" min="0" name="price" class="form-control" value="@Model.Item1.GiaCu" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -138,15 +130,23 @@
                         Giá khuyến mãi
                     </label>
                     <div class="col-sm-6">
-                        <input type="number" min="0" name="price2" class="form-control" value="@Model.Item1.promotion_price" />
+                        <input type="number" min="0" name="price2" class="form-control" value="@Model.Item1.GiaHienTai" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">
-                        Bảo kim url
+                        Số lượng tồn
                     </label>
                     <div class="col-sm-6">
-                        <input type="text" name="online_payment" class="form-control" value="@Model.Item1.online_payment" />
+                        <input type="number" min="0" name="currentamount" class="form-control" value="@Model.Item1.SoLuongTon" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">
+                        Số lượng đã bán
+                    </label>
+                    <div class="col-sm-6">
+                        <input type="number" min="0" name="soldamount" class="form-control" value="@Model.Item1.SLDaBan" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -154,7 +154,7 @@
                         Tóm tắt
                     </label>
                     <div class="col-sm-6">
-                        <textarea name="detail_short" class="form-control" id="detail_short" style="height:350px;">@Model.Item1.detail_short</textarea>
+                        <textarea name="detail_short" class="form-control" id="detail_short" style="height:350px;">@Model.Item1.MoTa</textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -162,7 +162,7 @@
                         Nội dung
                     </label>
                     <div class="col-sm-6">
-                        <textarea name="detail" class="form-control" id="detail" style="height:350px;">@Model.Item1.detail</textarea>
+                        <textarea name="detail" class="form-control" id="detail" style="height:350px;">@Model.Item1.MoTaCT</textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -180,47 +180,15 @@
                             <input type="checkbox" name="chkClearImg" value="on" /> Xóa bỏ hình ảnh
                         </div>
                         <!--<div class="img-demo" style="line-height: 0; font-size: 0; margin-top: 10px;">
-                            @if (!String.IsNullOrEmpty(Model.Item1.image))
+                            @if (!String.IsNullOrEmpty(Model.Item1.UrlHinh))
                             {
-                                <img class="img-responsive" id="blah" src="../../../assets/images/@Model.Item1.image" />
+                                <img class="img-responsive" id="blah" src="../../../@Model.Item1.UrlHinh" />
                             }
                             else
                             {
                                 <img class="img-responsive" id="blah" src="" />
                             }
                         </div>-->
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">
-                        Thứ tự
-                    </label>
-                    <div class="col-sm-6">
-                        <input type="number" name="sort" class="form-control" value="@Model.Item1.sort" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">
-                        Title trang
-                    </label>
-                    <div class="col-sm-6">
-                        <input type="text" name="title" class="form-control" value="@Model.Item1.title" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">
-                        Description
-                    </label>
-                    <div class="col-sm-6">
-                        <input type="text" name="description" class="form-control" value="@Model.Item1.description" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">
-                        Keyword
-                    </label>
-                    <div class="col-sm-6">
-                        <input type="text" name="keyword" class="form-control" value="@Model.Item1.keyword" />
                     </div>
                 </div>
                 <div class="form-group">

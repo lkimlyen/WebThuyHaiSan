@@ -1,4 +1,4 @@
-﻿@*@model IEnumerable<webanhnguyen.Models.tbl_item>*@
+﻿@model IEnumerable<webanhnguyen.Models.tbl_Product>
 @{
     ViewBag.Title = "Item";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -62,54 +62,48 @@
                                 <td style="width: 50px;" class="text-center">ID</td>
                                 <td style="width: 150px;" class="text-center">Hình đại diện</td>
                                 <td class="text-left">Tên danh mục</td>
-                                <td style="width: 100px;" class="text-center">Nổi bật</td>
                                 <td style="width: 100px;" class="text-center">Ẩn/Hiện</td>
                                 <td style="width: 100px;" class="text-right">Tùy chọn</td>
                             </tr>
                         </thead>
                         <tbody>
-                            @*@foreach (var item in Model)
+                            @foreach (var item in Model)
                             {
                                 <tr>
                                     <td class="text-center">
-                                        <input type="checkbox" name="chk[]" class="tai_c" value="@item.id">
+                                        <input type="checkbox" name="chk[]" class="tai_c" value="@item.ID">
                                     </td>
                                     <td class="text-center">
-                                        @item.id
+                                        @item.ID
                                     </td>
                                     <td class="text-center">
-                                        @if (String.IsNullOrEmpty(item.image))
+                                        @if (String.IsNullOrEmpty(item.UrlHinh))
                                         {
                                             <img src="~/assets/images/noimage.png" border="0" class="img-thumbnail" style="max-width: 50px;">
                                         }
                                         else
                                         {
-                                            <img src="~/assets/images/item/@item.image" border="0" class="img-thumbnail" style="max-width: 50px;">
+                                            <img src="~/@item.UrlHinh" border="0" class="img-thumbnail" style="max-width: 50px;">
                                         }
                                     </td>
                                     <td class="text-left name-to-confirm">
-                                        @item.name
+                                        @item.TenSP
                                     </td>
                                     <td class="text-center">
-                                        <a href='@Url.Action("ItemSetHotEnable", "Item", new { id = @item.id})' title="Reverse">
-                                            <div class="star tool @(item.hot==1?"active":"")" data-action="toggleStatus" data-field="hot" data-table="tbl_item" title="Nổi bật" value="@item.id"></div>
-                                        </a>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href='@Url.Action("ItemSetStatusEnable", "Item", new { id = @item.id})' title="Reverse">
-                                            <div class="check tool @(item.status==1?"active":"")" data-action="toggleStatus" data-field="status" data-table="tbl_item" title="Ẩn hiện" value="@item.id"></div>
+                                        <a href='@Url.Action("ItemSetStatusEnable", "Item", new { id = @item.ID})' title="Reverse">
+                                            <div class="check tool @(item.Status?"active":"")" data-action="toggleStatus" data-field="status" data-table="tbl_item" title="Ẩn hiện" value="@item.ID"></div>
                                         </a>
                                     </td>
                                     <td class="text-right">
-                                        <a href='@Url.Action("itemEdit", "Item", new { id = @item.id})' class="btn btn-xs btn-pencil btn-primary" title="Sửa">
+                                        <a href='@Url.Action("itemEdit", "Item", new { id = @item.ID})' class="btn btn-xs btn-pencil btn-primary" title="Sửa">
                                             <i class="fa fa-pencil"></i>
                                         </a>
-                                        <a href='@Url.Action("itemDelete", "Item", new { id=@item.id})' class="btn btn-xs btn-remove btn-danger" title="Xóa">
+                                        <a href='@Url.Action("itemDelete", "Item", new { id=@item.ID})' class="btn btn-xs btn-remove btn-danger" title="Xóa">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </td>
                                 </tr>
-                            }*@
+                            }
                         </tbody>
                         <tfoot>
                             <tr>

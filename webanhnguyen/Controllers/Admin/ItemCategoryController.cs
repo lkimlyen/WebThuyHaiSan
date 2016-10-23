@@ -102,11 +102,6 @@ namespace webanhnguyen.Controllers.Admin
                 err = true;
                 ViewData["Error"] += "Vui lòng nhập tên danh mục!\n";
             }
-            if (String.IsNullOrEmpty(form["parent"]))
-            {
-                err = true;
-                ViewData["Error"] += "Vui lòng chọn danh mục!\n";
-            }
             tic.TenLoaiSP = name;
             if (err == false)
             {
