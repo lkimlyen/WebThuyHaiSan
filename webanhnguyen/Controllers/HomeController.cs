@@ -12,6 +12,9 @@ namespace webanhnguyen.Controllers
         databaseDataContext db = new databaseDataContext();
         public ActionResult Index()
         {
+            tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
+            Session["title"] = hea.tittle;
+            Session["icon"] = hea.shortcuticon;
             return View();
         }
         #region sản phẩm hot
@@ -73,15 +76,16 @@ namespace webanhnguyen.Controllers
         public ActionResult Details(int id)
         {
             var CT_SP = (db.tbl_Products.First(sp => sp.ID == id));
-            ViewBag.SP_cungloai = (from s in db.tbl_Products
-                                   where s.ID != id && s.Status == true 
-                                   select s).Skip(0).Take(4).ToList();
+            int loai = int.Parse(CT_SP.IDLoaiSP.ToString());
             ViewBag.TenLoai = (from s in db.tbl_Products
-                from l in db.tbl_product_types
-                where s.ID == id && s.IDLoaiSP == l.ID && s.Status == true
-                select l);
+                               from l in db.tbl_product_types
+                               where s.ID == id && s.IDLoaiSP == l.ID && s.Status == true
+                               select l);
+            ViewBag.SP_cungloai = (from s in db.tbl_Products
+                                   where s.ID != id && s.IDLoaiSP == loai && s.Status == true 
+                                   select s).Skip(0).Take(4).ToList();
             ViewBag.SP_khac = (from s in db.tbl_Products
-                                   where s.ID != id && s.Status == true
+                                   where s.ID != id && s.IDLoaiSP != loai && s.Status == true
                                    select s).Skip(0).Take(4).ToList();
             CT_SP.LuotXem += 1;
             UpdateModel(CT_SP);
@@ -95,20 +99,18 @@ namespace webanhnguyen.Controllers
 
             var laysp = from g in db.tbl_Products
                          from h in db.tbl_product_types 
-                        where g.ID == id && g.Status == true && h.Status == true
+                        where h.ID == id && g.IDLoaiSP == id &&g.Status == true && h.Status == true
                          select g;
             
             Session["loai"] = id;
-            ViewBag.NameSortAsc = String.IsNullOrEmpty(sortOrder) ? "name_asc" : "";
+          
             ViewBag.NameSortDesc = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             switch (sortOrder)
             {
                 case "name_desc":
                     laysp = laysp.OrderByDescending(s => s.TenSP);
                     break;
-                case "name_asc":
-                    laysp = laysp.OrderBy(s => s.TenSP);
-                    break;
+               
                
             }
             ViewBag.TenLoai = (from l in db.tbl_product_types
@@ -117,7 +119,7 @@ namespace webanhnguyen.Controllers
                         return View(laysp.ToList());
         }
 
-        #endregion
+        
         public ActionResult hienthi2(int id, string sortOrder)
         {
           
@@ -143,6 +145,7 @@ namespace webanhnguyen.Controllers
             Session["loai"] = id;
             return View(laysp.ToList());
         }
+        #endregion
 
         #region sản phẩm theo loại
         public ActionResult Laycatuoi()
@@ -204,8 +207,9 @@ namespace webanhnguyen.Controllers
         public ActionResult header()
         {
             //Lấy ra danh sách Menu
-            var header = (from mn in db.tbl_headers
+            var header = (from mn in db.tbl_headers where mn.id == 1
                            select mn).ToList();
+           
             return PartialView(header);
         }
         #endregion
@@ -242,8 +246,6 @@ namespace webanhnguyen.Controllers
             var km = (from k in db.tbl_Products
                           where k.Status == true && k.KhuyenMai > 0
                         
-                          orderby k.NgayCapNhat descending
-                         
                           select k).ToList();
             return View(km);
         }
@@ -251,9 +253,7 @@ namespace webanhnguyen.Controllers
         {
             var km = (from k in db.tbl_Products
                       where k.Status == true && k.KhuyenMai > 0
-
-                      orderby k.NgayCapNhat descending
-
+                     
                       select k).ToList();
             return View(km);
         }
@@ -261,9 +261,6 @@ namespace webanhnguyen.Controllers
         {
             var km = (from k in db.tbl_Products
                       where k.Status == true && k.KhuyenMai > 0
-
-                      orderby k.NgayCapNhat descending
-
                       select k).ToList();
             return View(km);
         }

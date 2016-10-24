@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<webanhnguyen.Models.tbl_Product>
 
 @{
-    ViewBag.Title = "khuyenmai";
+    ViewBag.Title = "Khuyến mãi";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="tygh-content clearfix">
@@ -52,13 +52,13 @@
 
                                 <div class="ty-sort-container">
                                     <div class="ty-sort-container__views-icons">
-                                        <a class="ty-sort-container__views-a cm-ajax active" data-ca-target-id="pagination_contents" href="/Home/hienthi1" rel="nofollow">
+                                        <a class="ty-sort-container__views-a active" data-ca-target-id="pagination_contents" href="@Url.Action("khuyenmai","Home")" rel="nofollow">
                                             <i class="ty-icon-products-multicolumns"></i>
                                         </a>
-                                        <a class="ty-sort-container__views-a cm-ajax " data-ca-target-id="pagination_contents" href="/Home/hienthi2" rel="nofollow">
+                                        <a class="ty-sort-container__views-a " data-ca-target-id="pagination_contents" href="@Url.Action("khuyenmai1","Home")" rel="nofollow">
                                             <i class="ty-icon-products-without-options"></i>
                                         </a>
-                                        <a class="ty-sort-container__views-a cm-ajax " data-ca-target-id="pagination_contents" href="" rel="nofollow">
+                                        <a class="ty-sort-container__views-a " data-ca-target-id="pagination_contents" href="@Url.Action("khuyenmai2","Home")" rel="nofollow">
                                             <i class="ty-icon-short-list"></i>
                                         </a>
                                     </div>

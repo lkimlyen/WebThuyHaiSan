@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<webanhnguyen.Models.tbl_Product>
 @{
-    ViewBag.Title = "sản phẩm theo loại";
+    ViewBag.Title = Session["TenMenu"];
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="tygh-content clearfix">
@@ -11,8 +11,7 @@
 
                     <div class="ty-breadcrumbs clearfix">
                         <a href="Home/Index" class="ty-breadcrumbs__a">Trang chủ</a><span class="ty-breadcrumbs__slash">/</span><span class="ty-breadcrumbs__current">
-                            @foreach (var item in ViewBag.TenLoai)
-                            { @item.TenLoaiSP}
+                            @Session["TenMenu"]
                         </span>
                     </div>
 
@@ -25,9 +24,8 @@
                     <h1 class="ty-mainbox-title">
 
                         <span>
-                            @foreach (var item in ViewBag.TenLoai)
-                            { @item.TenLoaiSP}
-                        </span>
+                            @Session["TenMenu"]                 
+                         </span>
 
 
                     </h1>
