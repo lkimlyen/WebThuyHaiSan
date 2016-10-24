@@ -1,4 +1,4 @@
-﻿@*@model IEnumerable<WebApplication1.Models.tbl_member>*@
+﻿@model IEnumerable<webanhnguyen.Models.Customer>
 @{
     ViewBag.Title = "Member";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -70,37 +70,41 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @*foreach (var itemCategory in Model)
+                            @foreach (var member in Model)
                             {
                                 <tr>
                                     <td class="text-center">
-                                        <input type="checkbox" name="chk[]" class="tai_c" value="@itemCategory.id">
+                                        <input type="checkbox" name="chk[]" class="tai_c" value="@member.id">
                                     </td>
                                     <td class="text-center">
-                                        @itemCategory.id
+                                        @member.id
                                     </td>
                                     <td class="text-left name-to-confirm">
-                                        @itemCategory.name
+                                        @member.name
                                     </td>
                                     <td class="text-left name-to-confirm">
-                                        @itemCategory.phone
+                                        @member.moblie
                                     </td>
                                     <td class="text-left name-to-confirm">
-                                        @itemCategory.address
+                                        @member.address
                                     </td>
                                     <td class="text-left name-to-confirm">
-                                        @itemCategory.email
+                                        @member.email
                                     </td>
                                     <td class="text-center">
-                                        <div class="check tool @((itemCategory.status==1)?"active":"")" data-action="toggleStatus" data-field="status" data-table="tbl_news" title="Ẩn hiện" value="@itemCategory.id"></div>
-                                     </td>
+                                        <div class="check tool @(member.status.HasValue && member.status.Value)?" active" data-action="toggleStatus" data-field="status" data-table="tbl_news" title="Ẩn hiện" value="@member.id"></div>
+                                    </td>
                                     <td class="text-right">
-                                        <a href='@Url.Action("MemberDelete", "Member", new { id=@itemCategory.id})' class="btn btn-xs btn-remove btn-danger" title="Xóa">
+                                        <a href='@Url.Action("MemberDetailView", "Member", new { id = @member.id})' class="btn btn-xs btn-pencil btn-primary" title="Xem">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a href='@Url.Action("MemberDelete", "Member", new { id=@member.id})' class="btn btn-xs btn-remove btn-danger" title="Xóa">
                                             <i class="fa fa-trash"></i>
                                         </a>
+
                                     </td>
                                 </tr>
-                            }*@
+                            }
                         </tbody>
                         <tfoot>
                             <tr>

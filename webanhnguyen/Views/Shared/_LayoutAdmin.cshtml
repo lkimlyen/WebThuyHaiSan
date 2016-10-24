@@ -14,7 +14,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-    <script>tinymce.init({ selector:'textarea' });</script>
+    <script>tinymce.init({ selector: 'textarea' });</script>
 </head>
 <body>
     <div id="page-loader"></div>
@@ -66,71 +66,71 @@
                                     </li>
                                 </ul>
                             </li>
-                            <!-- members -->
-                            @*<li>
-                                    <a href="" class="nav-submenu" data-toggle="nav-submenu">
-                                        <i class="si si-list"></i>
-                                        <span class="sidebar-mini-hide">Thành viên</span>
-                                    </a>
-                                    <ul>
-                                        <li>
-                                            @Html.ActionLink("Danh sách thành viên", "MemberView", "Member")
-                                        </li>
-                                    </ul>
-                                </li>
-                                <!-- orders -->
-                                <li>
-                                    <a href="" class="nav-submenu" data-toggle="nav-submenu">
-                                        <i class="si si-list"></i>
-                                        <span class="sidebar-mini-hide">Đơn hàng</span>
-                                    </a>
-                                    <ul>
-                                        <li>
-                                            @Html.ActionLink("Danh sách đơn hàng", "OrderView", "Order")
-                                        </li>
-                                    </ul>
-                                </li>
-                                <!-- module -->
-                                <li>
-                                    <a href="" class="nav-submenu" data-toggle="nav-submenu">
-                                        <i class="si si-magic-wand"></i>
-                                        <span class="sidebar-mini-hide">Module</span>
-                                    </a>
-                                    <ul>
-                                        <li>
-                                            @Html.ActionLink("Danh sách module", "moduleView", "Module")
-                                        </li>
-                                       </ul>
-                                </li>
+                            <!-- member -->
+                            <li>
+                                <a href="" class="nav-submenu" data-toggle="nav-submenu">
+                                    <i class="si si-list"></i>
+                                    <span class="sidebar-mini-hide">Khách hàng</span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        @Html.ActionLink("Danh sách khách hàng", "MemberView", "Member")
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- orders -->
+                            <li>
+                                <a href="" class="nav-submenu" data-toggle="nav-submenu">
+                                    <i class="si si-list"></i>
+                                    <span class="sidebar-mini-hide">Đơn hàng</span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        @Html.ActionLink("Danh sách đơn hàng", "OrderView", "Order")
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- module -->
+                            <li>
+                                <a href="" class="nav-submenu" data-toggle="nav-submenu">
+                                    <i class="si si-magic-wand"></i>
+                                    <span class="sidebar-mini-hide">Module</span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        @Html.ActionLink("Danh sách module", "moduleView", "Module")
+                                    </li>
+                                </ul>
+                            </li>
 
-                                <!-- support online -->
+                            <!-- support online -->
 
-                                <li>
-                                    <a href="" class="nav-submenu" data-toggle="nav-submenu">
-                                        <i class="si si-magic-wand"></i>
-                                        <span class="sidebar-mini-hide">Hỗ trợ</span>
-                                    </a>
-                                    <ul>
-                                        <li>
-                                            @Html.ActionLink("Hỗ trợ viên", "supportView", "Support")
-                                        </li>
-                                    </ul>
+                            <li>
+                                <a href="" class="nav-submenu" data-toggle="nav-submenu">
+                                    <i class="si si-magic-wand"></i>
+                                    <span class="sidebar-mini-hide">Hỗ trợ</span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        @Html.ActionLink("Hỗ trợ viên", "supportView", "Support")
+                                    </li>
+                                </ul>
 
-                                </li>
-                                <!-- slide images -->
+                            </li>
+                            <!-- slide images -->
 
-                                <li>
-                                    <a href="" class="nav-submenu" data-toggle="nav-submenu">
-                                        <i class="si si-magic-wand"></i>
-                                        <span class="sidebar-mini-hide">Slide</span>
-                                    </a>
-                                    <ul>
-                                        <li>
-                                            @Html.ActionLink("Slide hình", "imageView", "Slide")
-                                        </li>
-                                    </ul>
+                            <li>
+                                <a href="" class="nav-submenu" data-toggle="nav-submenu">
+                                    <i class="si si-magic-wand"></i>
+                                    <span class="sidebar-mini-hide">Slide</span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        @Html.ActionLink("Slide hình", "imageView", "Slide")
+                                    </li>
+                                </ul>
 
-                                </li>*@
+                            </li>
 
                         </ul><!-- end .nav-main -->
                     </div><!-- end .side-content -->
@@ -196,7 +196,7 @@
     <script src="~/assets/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
     <script>
         tinymce.init({
-            theme : "simple",
+            theme: "simple",
             mode: "textareas"
         });</script>
 </body>

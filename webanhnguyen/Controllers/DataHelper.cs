@@ -135,6 +135,11 @@ namespace webanhnguyen.Controllers
                 return checkThisAdminAccountExist(data, username, password);
             }
 
+            public int getMemberAccountAmount(Models.databaseDataContext data)
+            {
+                return data.Customers.Count();
+            }
+
             public bool checkThisAdminAccountExist(Models.databaseDataContext data, string username, string password)
             {
                 var result = data.tbl_admins.Where(a => a.Username.Equals(username) && a.Password == password);
@@ -160,6 +165,11 @@ namespace webanhnguyen.Controllers
                 context.Session[Constants.KEY_SESSION_ADMIN_USERNAME] = null;
             }
 
+            public void deleteAllMembers(Models.databaseDataContext data)
+            {
+                data.Customers.DeleteAllOnSubmit(data.Customers);
+                data.SubmitChanges();
+            }
         }
     }
 }

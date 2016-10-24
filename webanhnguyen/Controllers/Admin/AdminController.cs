@@ -11,14 +11,13 @@ namespace webanhnguyen.Controllers.Admin
         // GET: Admin
         public ActionResult Index()
         {
-            //ViewData["MEMBER_AMOUNT"] = DataHelper.AccountHelper.getInstance().getMemberAccountAmount(data);
             //ViewData["ORDER_COMPLETED_AMOUNT"] = DataHelper.ShoppingCardHelper.getInstance().getPaidOrderAmount(data);
             //ViewData["ORDER_AMOUNT"] = DataHelper.ShoppingCardHelper.getInstance().getOrderAmount(data);
+            ViewData["MEMBER_AMOUNT"] = DataHelper.AccountHelper.getInstance().getMemberAccountAmount(data);
             ViewData["NEWS_AMOUNT"] = DataHelper.NewsHelper.getInstance().getNewsAmount(data);
             ViewData["ITEM_AMOUNT"] = DataHelper.ProductHelper.getInstance().getProductsAmount(data);
             ViewData["ITEM_CATEGORY_AMOUNT"] = DataHelper.ProductHelper.getInstance().getProductCategoryAmount(data);
-
-            ViewData["MEMBER_AMOUNT"] = 10;
+            
             ViewData["ORDER_COMPLETED_AMOUNT"] = 20;
             ViewData["ORDER_AMOUNT"] = 30;
             return View();
