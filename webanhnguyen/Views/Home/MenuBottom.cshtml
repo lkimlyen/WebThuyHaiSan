@@ -1,0 +1,52 @@
+﻿@model IEnumerable<webanhnguyen.Models.tbl_menubottom>
+<div class="span3 ">
+    <div class="footer-no-wysiwyg">
+        <div class="ty-wysiwyg-content">
+            <p class="ty-footer-menu__header cm-combination" id="sw_about_links"><span>Giới thiệu</span><i class="ty-footer-menu__icon-open ty-icon-down-open"></i><i class="ty-footer-menu__icon-hide ty-icon-up-open"></i></p>
+            <ul id="about_links" class="ty-footer-menu__items">
+                @foreach (var item in Model)
+                {
+                    if (item.thutu >= 1 && item.thutu <= 5)
+                    {
+                        <li class="ty-footer-menu__item"><a href="@item.url">@item.tenmenu</a></li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+</div><div class="span3 ">
+    <div class="footer-no-wysiwyg">
+        <div class="ty-wysiwyg-content">
+            <p class="ty-footer-menu__header cm-combination" id="sw_useful_links"><span>Thông tin hữu ích</span><i class="ty-footer-menu__icon-open ty-icon-down-open"></i><i class="ty-footer-menu__icon-hide ty-icon-up-open"></i></p>
+            <ul id="useful_links" class="ty-footer-menu__items">
+                @foreach (var item in Model)
+                {
+                    if (item.thutu > 5 && item.thutu <= 9)
+                    {
+                        <li class="ty-footer-menu__item"><a href="@item.url">@item.tenmenu</a></li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+</div><div class="span3 ">
+    <div class="footer-no-wysiwyg">
+        <div class="ty-wysiwyg-content">
+            <p class="ty-footer-menu__header cm-combination" id="sw_customer_service_links"><span>Khách hàng</span><i class="ty-footer-menu__icon-open ty-icon-down-open"></i><i class="ty-footer-menu__icon-hide ty-icon-up-open"></i></p>
+            <ul id="customer_service_links" class="ty-footer-menu__items">
+                @if (Session["Email"] == null)
+                {
+                <li class="ty-footer-menu__item"><a href="~/Home/#">Đơn hàng của tôi</a></li>
+                }
+                else
+                {
+                    <li class="ty-footer-menu__item"><a href="@Url.Action("Order", "User")">Đơn hàng của tôi</a></li>
+                }
+                                   <li class="ty-footer-menu__item"><a href="~/Home/#">Danh sách ưa thích</a></li>
+                <li class="ty-footer-menu__item"><a href="~/Home/#">Danh sách so sánh</a></li>
+                
+               
+            </ul>
+        </div>
+    </div>
+</div>

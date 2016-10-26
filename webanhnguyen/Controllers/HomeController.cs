@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using webanhnguyen.Models;
 
+
 namespace webanhnguyen.Controllers
 {
     public class HomeController : Controller
@@ -94,7 +95,7 @@ namespace webanhnguyen.Controllers
         }
         #endregion
         #region sản phẩm theo loại
-        public ActionResult ProductType(int id, string sortOrder)
+        public ActionResult ProductType(int id)
         {
 
             var laysp = from g in db.tbl_Products
@@ -103,42 +104,35 @@ namespace webanhnguyen.Controllers
                          select g;
             
             Session["loai"] = id;
-          
-            ViewBag.NameSortDesc = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            switch (sortOrder)
-            {
-                case "name_desc":
-                    laysp = laysp.OrderByDescending(s => s.TenSP);
-                    break;
-               
-               
-            }
             ViewBag.TenLoai = (from l in db.tbl_product_types
                                where l.ID == id
                                select l);
                         return View(laysp.ToList());
         }
 
+       
+
+
         
-        public ActionResult hienthi2(int id, string sortOrder)
+        public ActionResult hienthi2(int id)
         {
-          
+
             var laysp = from g in db.tbl_Products
-                         from h in db.tbl_product_types
-                         where g.ID == id && g.Status == true && h.Status == true
-                                                  select g;
+                        from h in db.tbl_product_types
+                        where h.ID == id && g.IDLoaiSP == id && g.Status == true && h.Status == true
+                        select g;
             ViewBag.TenLoai = (from l in db.tbl_product_types
                                where l.ID == id
                                select l);
             Session["loai"] = id;
             return View(laysp.ToList());       
     }
-        public ActionResult hienthi3(int id, string sortOrder)
+        public ActionResult hienthi3(int id)
         {
             var laysp = from g in db.tbl_Products
-                         from h in db.tbl_product_types
-                         where g.ID == id && g.Status == true && h.Status == true
-                         select g;
+                        from h in db.tbl_product_types
+                        where h.ID == id && g.IDLoaiSP == id && g.Status == true && h.Status == true
+                        select g;
             ViewBag.TenLoai = (from l in db.tbl_product_types
                                where l.ID == id
                                select l);
@@ -153,7 +147,7 @@ namespace webanhnguyen.Controllers
             var laysp = (from g in db.tbl_Products
                          orderby g.NgayCapNhat descending
                          select g).ToList();
-            ViewBag.tenmenu = (from s in db.tbl_menus where s.id == 5  select s.TenMenu);
+           
             tbl_menu tenmenu = db.tbl_menus.SingleOrDefault(n => n.id == 5);
             Session["TenMenu"] = tenmenu.TenMenu;
             return View(laysp);
@@ -197,6 +191,7 @@ namespace webanhnguyen.Controllers
         {
             //Lấy ra danh sách Menu
             var MenuTop = (from mn in db.tbl_menus
+                           where mn.Status == true
                               orderby mn.ThuTu
                               select mn).ToList();
             return PartialView(MenuTop);
@@ -263,6 +258,59 @@ namespace webanhnguyen.Controllers
                       where k.Status == true && k.KhuyenMai > 0
                       select k).ToList();
             return View(km);
+        }
+        #endregion
+        #region footer
+        [ChildActionOnly]
+        public ActionResult footer()
+        {
+            var footer = from mn in db.tbl_shops
+                          where mn.id == 1
+                          select mn;
+            return PartialView(footer.Single());
+        }
+
+        #endregion
+        #region menutop
+        [ChildActionOnly]//Gọi từ View sang Controll
+        public ActionResult MenuBottom()
+        {
+            //Lấy ra danh sách Menu
+            var MenuBottom = (from mn in db.tbl_menubottoms
+                              where mn.status == true
+                              orderby mn.thutu
+                              select mn).ToList();
+            return PartialView(MenuBottom);
+        }
+        #endregion
+        #region sodoweb
+        public ActionResult Sodoweb()
+        {
+
+            ViewBag.Tenmenutop = (from m in db.tbl_menus
+                                  select m).ToList();
+            ViewBag.Teninfo = (from m in db.tbl_informations
+                               select m).ToList();
+            
+            return View();
+        }
+        #endregion
+        #region information
+        public ActionResult infomation(int id)
+        {
+            var info = from i in db.tbl_informations
+                        where i.Status == true && i.id == id
+                        select i;
+            tbl_information inf = db.tbl_informations.SingleOrDefault(n => n.id == id);
+            Session["tenmuinfo"] = inf.TenTT;
+            return View(info.Single());
+        }
+        public ActionResult menuinfo()
+        {
+            var info = from i in db.tbl_informations
+                        where i.Status == true
+                        select i;
+            return PartialView(info);
         }
         #endregion
     }
