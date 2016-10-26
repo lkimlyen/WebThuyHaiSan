@@ -7,6 +7,14 @@ namespace webanhnguyen.Controllers
 {
     public class DataHelper
     {
+        //Model class
+        public class ShoppingCardItemModel
+        {
+            public String name, image;
+            public int id, quantity, orderid, modelid;
+            public decimal price, total;
+        }
+
         //Helper classes
         public class GeneralHelper
         {
@@ -130,6 +138,22 @@ namespace webanhnguyen.Controllers
                 return instance;
             }
 
+            public Models.Customer getMemberAccountByEmail(Models.databaseDataContext data, string email)
+            {
+                Models.Customer result = data.Customers.Where(n => n.email.Equals(email)).Single();
+                return result;
+            }
+
+            public string getLoggingInMemberEmail(HttpContextBase context)
+            {
+                Object session = context.Session[Constants.KEY_SESSION_MEMBER_USERNAME];
+                if (session != null && !String.IsNullOrEmpty(session.ToString()))
+                {
+                    return session.ToString();
+                }
+                return "";
+            }
+
             public bool loginAdmin(Models.databaseDataContext data, string username, string password)
             {
                 return checkThisAdminAccountExist(data, username, password);
@@ -169,6 +193,189 @@ namespace webanhnguyen.Controllers
             {
                 data.Customers.DeleteAllOnSubmit(data.Customers);
                 data.SubmitChanges();
+            }
+        }
+
+        public class ShoppingCardHelper
+        {
+            static ShoppingCardHelper instance;
+            public static ShoppingCardHelper getInstance()
+            {
+                if (instance == null)
+                {
+                    instance = new ShoppingCardHelper();
+                }
+                return instance;
+            }
+
+            public void clearShoppingCard(BaseController context)
+            {
+                context.Session[Constants.KEY_SESSION_SHOPPING_CARD] = new List<Models.OrderDetail>();
+            }
+
+            public void DeleteItemsFromShoppingCard(BaseController context, int itemId)
+            {
+                List<Models.OrderDetail> shoppingCard = getShoppingCardInSession(context);
+                foreach (Models.OrderDetail record in shoppingCard.ToList())
+                {
+                    if (record.iddh == itemId)
+                    {
+                        shoppingCard.Remove(record);
+                    }
+                }
+            }
+
+            public void deleteAllOrderDetails(Models.databaseDataContext data)
+            {
+                data.OrderDetails.DeleteAllOnSubmit(data.OrderDetails);
+                data.SubmitChanges();
+            }
+
+            public void deleteAllOrders(Models.databaseDataContext data)
+            {
+                deleteAllOrderDetails(data);
+
+                data.Orders.DeleteAllOnSubmit(data.Orders);
+                data.SubmitChanges();
+
+            }
+            public int getOrderAmount(Models.databaseDataContext data)
+            {
+                return data.Orders.Count();
+            }
+
+            public int getPaidOrderAmount(Models.databaseDataContext data)
+            {
+                return data.Orders.Where(n => (n.status.HasValue && n.status.Value)).Count();
+            }
+
+            public void saveOrder(BaseController context,
+                string emailReceiver, string nameReceiver, string phoneReceiver, string addressReceiver,
+                string note, string curency)
+            {
+                //Get member account by session email
+                string emailSender = AccountHelper.getInstance().getLoggingInMemberEmail(context.HttpContext);
+                Models.Customer member = AccountHelper.getInstance().getMemberAccountByEmail(context.db, emailSender);
+
+                //Get shoppingCard in Sesion
+                List<Models.OrderDetail> listShoppingCard = getShoppingCardInSession(context);
+                long totalPrice = 0;
+                foreach (Models.OrderDetail record in listShoppingCard.ToList())
+                {
+                    totalPrice += record.soluong.Value;
+                }
+
+                //Save order
+                Models.Order order = new Models.Order();
+                order.idkh = member.id;
+                order.thoidiemdathang = DateTime.Now;
+                order.tennguoinhan = emailReceiver;
+                order.phonenumber = phoneReceiver;
+                order.diachi = addressReceiver;
+                order.gmail = emailReceiver;
+                order.price = totalPrice;
+                order.status = false;
+                context.db.Orders.InsertOnSubmit(order);
+                context.db.SubmitChanges(); //Submit change here to get the id of inserted record.
+
+                //Save order_details
+                foreach (Models.OrderDetail record in listShoppingCard.ToList())
+                {
+                    record.iddh = order.id;
+                    context.db.OrderDetails.InsertOnSubmit(record);
+                }
+                context.db.SubmitChanges();
+            }
+
+            public void updateShoppingCard(BaseController context, List<Models.OrderDetail> shoppingCard)
+            {
+                context.Session[Constants.KEY_SESSION_SHOPPING_CARD] = shoppingCard;
+            }
+
+            public void addItemsToShoppingCard(BaseController context, int itemId, long price, int amount)
+            {
+                List<Models.OrderDetail> shoppingCard = getShoppingCardInSession(context);
+                bool doesItemToAddExistInShoppingCard = false;
+                foreach (Models.OrderDetail record in shoppingCard)
+                {
+                    if (record.idsp == itemId)
+                    {
+                        record.soluong = record.soluong + amount;
+                        doesItemToAddExistInShoppingCard = true;
+                    }
+                }
+                if (!doesItemToAddExistInShoppingCard)
+                {
+                    Models.OrderDetail recordInShoppingCard = new Models.OrderDetail();
+                    recordInShoppingCard.idsp = itemId;
+                    recordInShoppingCard.dongia = price;
+                    recordInShoppingCard.soluong = amount;
+                    shoppingCard.Add(recordInShoppingCard);
+                }
+            }
+
+            public List<Models.OrderDetail> getShoppingCardInSession(BaseController context)
+            {
+                return getShoppingCardInSessionByHttpContext(context.HttpContext);
+            }
+
+            public List<ShoppingCardItemModel> getListShoppingCardItemModelFromListOrderDetails(Models.databaseDataContext data, List<Models.OrderDetail> listOrderDetails)
+            {
+                List<ShoppingCardItemModel> result = new List<ShoppingCardItemModel>();
+                foreach (var orderDetail in listOrderDetails)
+                {
+                    Models.tbl_Product item = ProductHelper.getInstance().getProductById(data, orderDetail.idsp.Value);
+                    ShoppingCardItemModel model = new ShoppingCardItemModel();
+                    model.id = orderDetail.idsp.Value;
+                    model.name = item.TenSP;
+                    model.image = item.UrlHinh;
+                    model.quantity = orderDetail.soluong.Value;
+                    model.price = item.GiaHienTai;
+                    model.total = model.price * model.quantity;
+                    model.orderid = orderDetail.iddh.HasValue ? orderDetail.iddh.Value : 0;
+                    model.modelid = orderDetail.id;
+                    result.Add(model);
+                }
+
+                return result;
+            }
+
+            public List<ShoppingCardItemModel> getShoppingCardItemModelsInSession(BaseController context)
+            {
+                List<Models.OrderDetail> listOrderDetails = getShoppingCardInSessionByHttpContext(context.HttpContext);
+                return getListShoppingCardItemModelFromListOrderDetails(context.db, listOrderDetails);
+            }
+
+            public List<Models.OrderDetail> getShoppingCardInSessionByHttpContext(HttpContextBase context)
+            {
+                List<Models.OrderDetail> shoppingCard;
+                Object objShoppingCard = context.Session[Constants.KEY_SESSION_SHOPPING_CARD];
+                if (objShoppingCard != null)
+                {
+                    shoppingCard = (List<Models.OrderDetail>)objShoppingCard;
+                }
+                else
+                {
+                    shoppingCard = new List<Models.OrderDetail>();
+                    context.Session[Constants.KEY_SESSION_SHOPPING_CARD] = shoppingCard;
+                }
+
+                return shoppingCard;
+            }
+
+            public int getItemsAmountInShoppingCard(HttpContextBase context)
+            {
+                int result = 0;
+                List<Models.OrderDetail> shoppingCard = getShoppingCardInSessionByHttpContext(context);
+                foreach (Models.OrderDetail record in shoppingCard)
+                {
+                    if (record.soluong.HasValue)
+                    {
+                        result += record.soluong.Value;
+                    }
+                }
+
+                return result;
             }
         }
     }

@@ -8,9 +8,8 @@ using webanhnguyen.Models;
 
 namespace webanhnguyen.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        databaseDataContext db = new databaseDataContext();
         public ActionResult Index()
         {
             tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);

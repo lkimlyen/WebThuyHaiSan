@@ -9,5 +9,6 @@ namespace webanhnguyen.Controllers
 {
     public abstract class BaseController : Controller
     {
+        public databaseDataContext db = new databaseDataContext();
     }
 }
