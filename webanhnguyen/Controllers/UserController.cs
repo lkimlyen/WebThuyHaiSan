@@ -44,7 +44,7 @@ namespace webanhnguyen.Controllers
                         Session["ID"] = kh.id;
                         //Lưu các thông tin vào Session
                         Session["Email"] = kh;
-                        Session["email"] = kh.email;
+                        Session["emailstring"] = kh.email;
                         if (Session["Giohang"] == null)
                         {//Chuyển đến trang thông báo Login thành công (Ở đây không dùng được RedirectToAction vì [ChildActionOnly])
                             return Content("<script>alert('Đăng nhập thành công!');window.location='/Home/Index';</script>");
@@ -94,7 +94,7 @@ namespace webanhnguyen.Controllers
                         Session["ID"] = kh.id;
                         //Lưu các thông tin vào Session
                         Session["Email"] = kh;
-                        Session["email"] = kh.email;
+                        Session["emailstring"] = kh.email;
                         if (Session["Giohang"] == null)
                             {//Chuyển đến trang thông báo Login thành công (Ở đây không dùng được RedirectToAction vì [ChildActionOnly])
                             return Content("<script>window.location='/Home/Index';</script>");
