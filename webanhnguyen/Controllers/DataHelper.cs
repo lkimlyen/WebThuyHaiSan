@@ -28,7 +28,7 @@ namespace webanhnguyen.Controllers
                 return instance;
             }
         }
-        
+
         public class NewsHelper
         {
             static NewsHelper instance;
@@ -189,9 +189,15 @@ namespace webanhnguyen.Controllers
                 context.Session[Constants.KEY_SESSION_ADMIN_USERNAME] = null;
             }
 
-            public void deleteAllMembers(Models.databaseDataContext data)
+            public void deleteAllCustomers(Models.databaseDataContext data)
             {
                 data.Customers.DeleteAllOnSubmit(data.Customers);
+                data.SubmitChanges();
+            }
+
+            public void deleteAllAdmins(Models.databaseDataContext data)
+            {
+                data.tbl_admins.DeleteAllOnSubmit(data.tbl_admins);
                 data.SubmitChanges();
             }
         }
@@ -246,7 +252,16 @@ namespace webanhnguyen.Controllers
 
             public int getPaidOrderAmount(Models.databaseDataContext data)
             {
-                return data.Orders.Where(n => (n.status.HasValue && n.status.Value)).Count();
+                List<Models.Order> listOrder = data.Orders.ToList();
+                int amount = 0;
+                foreach (Models.Order order in listOrder)
+                {
+                    if (order.status.HasValue && order.status.Value)
+                    {
+                        amount++;
+                    }
+                }
+                return amount;
             }
 
             public void saveOrder(BaseController context,

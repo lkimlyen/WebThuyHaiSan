@@ -1,0 +1,90 @@
+﻿@model  webanhnguyen.Models.tbl_shop
+@{
+    ViewBag.Title = "Thông tin shop";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="content" style="min-height: 530px;">
+    <h3>Tùy chỉnh thông tin shop</h3>
+    <div class="bs-example bs-example-bg-classes">
+        @if (ViewData["Error"] != null)
+        {
+            <p class="bg-warning">@ViewData["Error"]</p>
+        }
+    </div>
+    <div class="block">
+        <div class="block-content">
+            <form method="post" name="frmForm" enctype="multipart/form-data" class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">
+                        Tên shop
+                    </label>
+                    <div class="col-sm-6">
+                        <input type="text" name="tenshop" class="form-control" value="@Model.tenshop" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">
+                        Email shop
+                    </label>
+                    <div class="col-sm-6">
+                        <input type="text" name="emailshop" class="form-control" value="@Model.emailshop" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">
+                        Địa chỉ shop
+                    </label>
+                    <div class="col-sm-6">
+                        <input type="text" name="addressshop" class="form-control" value="@Model.addressshop" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">
+                        Thông tin về thuế
+                    </label>
+                    <div class="col-sm-6">
+                        <input type="text" name="masodoanhnghiep" class="form-control" value="@Model.masodoanhnghiep" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">
+                        Phone shop 1
+                    </label>
+                    <div class="col-sm-6">
+                        <input type="text" name="phoneshop1" class="form-control" value="@Model.phoneshop1" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">
+                        Phone shop 2
+                    </label>
+                    <div class="col-sm-6">
+                        <input type="text" name="phoneshop2" class="form-control" value="@Model.phoneshop2" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">
+                        Thời gian làm việc 1
+                    </label>
+                    <div class="col-sm-6">
+                        <textarea name="thoigianlamviec1" class="form-control" id="detail" style="height:350px;">@Model.thoigianlamviec1</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">
+                        Thời gian làm việc 2
+                    </label>
+                    <div class="col-sm-6">
+                        <textarea name="thoigianlamviec2" class="form-control" id="detail" style="height:350px;">@Model.thoigianlamviec2</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-4 col-sm-4 btn-gr">
+                        <button type="submit" name="btnSave" class="btn btn-default">Chấp nhận</button>
+                        <button onclick="goBack()" type="button" name="goback" class="btn btn-default">Quay lại</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

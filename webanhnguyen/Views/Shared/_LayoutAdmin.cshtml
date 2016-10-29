@@ -39,6 +39,50 @@
                                     <span class="sidebar-mini-hide">Trang chủ</span>
                                 </a>
                             </li>
+                            <!-- admin management -->
+                            <li>
+                                <a href="@Url.Action("adminManagementView","Admin")">
+                                    <i class="fa fa-users"></i>
+                                    <span class="sidebar-mini-hide">Quản lý admin</span>
+                                </a>
+                            </li>
+                            <!-- shop information -->
+                            <li>
+                                <a href="@Url.Action("shopInformationEdit","Shop")">
+                                    <i class="fa fa-table"></i>
+                                    <span class="sidebar-mini-hide">Thông tin shop</span>
+                                </a>
+                            </li>
+                            <!-- information -->
+                            <li>
+                                <a href="@Url.Action("informationView","Information")">
+                                    <i class="fa fa-book"></i>
+                                    <span class="sidebar-mini-hide">Thông tin</span>
+                                </a>
+                            </li>
+                            <!-- menu -->
+                            <li>
+                                <a href="@Url.Action("menuView","Menu")">
+                                    <i class="fa fa-align-justify"></i>
+                                    <span class="sidebar-mini-hide">Menu</span>
+                                </a>
+                            </li>
+                            <!-- menu bottom -->
+                            <li>
+                                <a href="@Url.Action("menuView","MenuBottom")">
+                                    <i class="fa fa-align-justify"></i>
+                                    <span class="sidebar-mini-hide">Menu bên dưới</span>
+                                </a>
+                            </li>
+                         
+                            <!-- header -->
+                            <li>
+                                <a href="@Url.Action("headerEdit","Header")">
+                                    <i class="fa fa-television"></i>
+                                    <span class="sidebar-mini-hide">Header</span>
+                                </a>
+                            </li>
+
                             <!-- produtcs category -->
                             <li>
                                 <a href="#" class="nav-submenu" data-toggle="nav-submenu">
@@ -56,80 +100,24 @@
                             </li>
                             <!-- produtcs -->
                             <li>
-                                <a href="" class="nav-submenu" data-toggle="nav-submenu">
+                                <a href="@Url.Action("newsView","News")">
                                     <i class="si si-list"></i>
                                     <span class="sidebar-mini-hide">Tin tức</span>
                                 </a>
-                                <ul>
-                                    <li>
-                                        @Html.ActionLink("Danh sách tin tức", "newsView", "News")
-                                    </li>
-                                </ul>
                             </li>
                             <!-- member -->
                             <li>
-                                <a href="" class="nav-submenu" data-toggle="nav-submenu">
-                                    <i class="si si-list"></i>
+                                <a href="@Url.Action("MemberView","Member")">
+                                    <i class="fa fa-smile-o"></i>
                                     <span class="sidebar-mini-hide">Khách hàng</span>
                                 </a>
-                                <ul>
-                                    <li>
-                                        @Html.ActionLink("Danh sách khách hàng", "MemberView", "Member")
-                                    </li>
-                                </ul>
                             </li>
                             <!-- orders -->
                             <li>
-                                <a href="" class="nav-submenu" data-toggle="nav-submenu">
-                                    <i class="si si-list"></i>
+                                <a href="@Url.Action("OrderView","Order")">
+                                    <i class="fa fa-truck"></i>
                                     <span class="sidebar-mini-hide">Đơn hàng</span>
                                 </a>
-                                <ul>
-                                    <li>
-                                        @Html.ActionLink("Danh sách đơn hàng", "OrderView", "Order")
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- module -->
-                            <li>
-                                <a href="" class="nav-submenu" data-toggle="nav-submenu">
-                                    <i class="si si-magic-wand"></i>
-                                    <span class="sidebar-mini-hide">Module</span>
-                                </a>
-                                <ul>
-                                    <li>
-                                        @Html.ActionLink("Danh sách module", "moduleView", "Module")
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <!-- support online -->
-
-                            <li>
-                                <a href="" class="nav-submenu" data-toggle="nav-submenu">
-                                    <i class="si si-magic-wand"></i>
-                                    <span class="sidebar-mini-hide">Hỗ trợ</span>
-                                </a>
-                                <ul>
-                                    <li>
-                                        @Html.ActionLink("Hỗ trợ viên", "supportView", "Support")
-                                    </li>
-                                </ul>
-
-                            </li>
-                            <!-- slide images -->
-
-                            <li>
-                                <a href="" class="nav-submenu" data-toggle="nav-submenu">
-                                    <i class="si si-magic-wand"></i>
-                                    <span class="sidebar-mini-hide">Slide</span>
-                                </a>
-                                <ul>
-                                    <li>
-                                        @Html.ActionLink("Slide hình", "imageView", "Slide")
-                                    </li>
-                                </ul>
-
                             </li>
 
                         </ul><!-- end .nav-main -->

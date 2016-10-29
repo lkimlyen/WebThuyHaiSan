@@ -170,9 +170,14 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\Admin\AdminController.cs" />
     <Compile Include="Controllers\Admin\BaseAdminController.cs" />
+    <Compile Include="Controllers\Admin\MenuBottomController.cs" />
+    <Compile Include="Controllers\Admin\MenuController.cs" />
+    <Compile Include="Controllers\Admin\InformationController.cs" />
     <Compile Include="Controllers\Admin\ItemCategoryController.cs" />
     <Compile Include="Controllers\Admin\ItemController.cs" />
     <Compile Include="Controllers\Admin\MemberController.cs" />
+    <Compile Include="Controllers\Admin\HeaderController.cs" />
+    <Compile Include="Controllers\Admin\ShopController.cs" />
     <Compile Include="Controllers\Admin\NewsController.cs" />
     <Compile Include="Controllers\Admin\OrderController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -1044,6 +1049,16 @@
     <Content Include="Views\Admin\Member\MemberDetail.cshtml" />
     <Content Include="Views\Home\khuyenmai1.cshtml" />
     <Content Include="Views\Home\khuyenmai2.cshtml" />
+    <Content Include="Views\Admin\AdminManagement\AdminManagement_m.cshtml" />
+    <Content Include="Views\Admin\AdminManagement\AdminManagement.cshtml" />
+    <Content Include="Views\Admin\ShopInformation\ShopInformation_m.cshtml" />
+    <Content Include="Views\Admin\Header\Header_m.cshtml" />
+    <Content Include="Views\Admin\Information\Information.cshtml" />
+    <Content Include="Views\Admin\Information\Information_m.cshtml" />
+    <Content Include="Views\Admin\Menu\Menu.cshtml" />
+    <Content Include="Views\Admin\Menu\Menu_m.cshtml" />
+    <Content Include="Views\Admin\MenuBottom\MenuBottom.cshtml" />
+    <Content Include="Views\Admin\MenuBottom\MenuBottom_m.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

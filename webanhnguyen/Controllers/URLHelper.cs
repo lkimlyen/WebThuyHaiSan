@@ -33,8 +33,16 @@ namespace webanhnguyen.Controllers
 
         //Admin URL
         public const String URL_ADMIN_IMAGE = "~/Views/Admin/Image/Image.cshtml";
+        public const String URL_ADMIN_MANAGEMENT = "~/Views/Admin/AdminManagement/AdminManagement.cshtml";
+        public const String URL_ADMIN_MANAGEMENT_M = "~/Views/Admin/AdminManagement/AdminManagement_m.cshtml";
         public const String URL_ADMIN_ITEM_CATEGORY = "~/Views/Admin/ItemCategory/ItemCategory.cshtml";
         public const String URL_ADMIN_ITEM_CATEGORY_M = "~/Views/Admin/ItemCategory/ItemCategory_m.cshtml";
+        public const String URL_ADMIN_INFORMATION = "~/Views/Admin/Information/Information.cshtml";
+        public const String URL_ADMIN_INFORMATION_M = "~/Views/Admin/Information/Information_m.cshtml";
+        public const String URL_ADMIN_MENU = "~/Views/Admin/Menu/Menu.cshtml";
+        public const String URL_ADMIN_MENU_M = "~/Views/Admin/Menu/Menu_m.cshtml";
+        public const String URL_ADMIN_MENU_BOTTOM = "~/Views/Admin/MenuBottom/MenuBottom.cshtml";
+        public const String URL_ADMIN_MENU_BOTTOM_M = "~/Views/Admin/MenuBottom/MenuBottom_m.cshtml";
         public const String URL_ADMIN_ITEM = "~/Views/Admin/Item/Item.cshtml";
         public const String URL_ADMIN_ITEM_M = "~/Views/Admin/Item/Item_m.cshtml";
         public const String URL_ADMIN_NEWS_CATEGORY = "~/Views/Admin/NewsCategory/NewsCategory.cshtml";
@@ -50,6 +58,8 @@ namespace webanhnguyen.Controllers
         public const String URL_ADMIN_MEMBER_DETAIL = "~/Views/Admin/Member/MemberDetail.cshtml";
         public const String URL_ADMIN_ORDER = "~/Views/Admin/Order/Order.cshtml";
         public const String URL_ADMIN_ORDER_DETAIL = "~/Views/Admin/Order/OrderDetail.cshtml";
+        public const String URL_ADMIN_SHOP_INFORMATION = "~/Views/Admin/ShopInformation/ShopInformation_m.cshtml";
+        public const String URL_ADMIN_HEADER = "~/Views/Admin/Header/Header_m.cshtml";
 
         //Partial Views' URLs
         public const String URL_HOME_PARTIAL_MENU_MAIN = "~/Views/PartialViews/Module/PartialMenuMain.cshtml";
