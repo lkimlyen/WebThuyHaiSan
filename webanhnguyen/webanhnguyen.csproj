@@ -173,7 +173,6 @@
     <Compile Include="Controllers\Admin\ItemCategoryController.cs" />
     <Compile Include="Controllers\Admin\ItemController.cs" />
     <Compile Include="Controllers\Admin\MemberController.cs" />
-    <Compile Include="Controllers\Admin\ModuleController.cs" />
     <Compile Include="Controllers\Admin\NewsController.cs" />
     <Compile Include="Controllers\Admin\OrderController.cs" />
     <Compile Include="Controllers\BaseController.cs" />

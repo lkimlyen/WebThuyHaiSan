@@ -54,14 +54,14 @@ namespace webanhnguyen.Controllers
                     }
                     
                         else
-                            return Content("<script>alert('Tài khoản của bạn đã bị khóa. Vui lòng liên hệ ban quản trị!');window.location='/User';</script>");
+                            return Content("<script>alert('Tài khoản của bạn đã bị khóa. Vui lòng liên hệ ban quản trị!');window.location='/User/Login';</script>");
                     }
                     else
-                        return Content("<script>alert('Tên đăng nhập hoặc mật khẩu không đúng!');window.location='/User';</script>");
+                        return Content("<script>alert('Tên đăng nhập hoặc mật khẩu không đúng!');window.location='/User/Login';</script>");
                 }
                 catch
                 {
-                    return Content("<script>alert('Đăng nhập thất bại!');window.location='/User';</script>");
+                    return Content("<script>alert('Đăng nhập thất bại!');window.location='/User/Login';</script>");
                 }
         }
 
@@ -103,14 +103,14 @@ namespace webanhnguyen.Controllers
                             return Content("<script>window.location='/ShoppingCart/GioHang';</script>");
                     }
                         else
-                            return Content("<script>alert('Tài khoản của bạn đã bị khóa. Vui lòng liên hệ ban quản trị!');window.location='/User';</script>");
+                            return Content("<script>alert('Tài khoản của bạn đã bị khóa. Vui lòng liên hệ ban quản trị!');window.location='/User/Login';</script>");
                     }
                     else
-                        return Content("<script>alert('Tên đăng nhập hoặc mật khẩu không đúng!');window.location='/User';</script>");
+                        return Content("<script>alert('Tên đăng nhập hoặc mật khẩu không đúng!');window.location='/User/Login';</script>");
                 }
                 catch
                 {
-                    return Content("<script>alert('Đăng nhập thất bại!');window.location='/User';</script>");
+                    return Content("<script>alert('Đăng nhập thất bại!');window.location='/User/Login';</script>");
                 }
             
                 return PartialView();
@@ -190,6 +190,13 @@ namespace webanhnguyen.Controllers
                 var _Email = collection["email"];
                 var _Password = collection["password1"];
                 var _RePassword = collection["password2"];
+                string _Email = collection["email1"];
+                if(String.IsNullOrEmpty(_Email))
+                {
+                    return View();
+                }
+                string _Password = collection["password1"];
+                string _RePassword = collection["password2"];
                 //Kiểm tra xem tài khoản đã có người sử dụng chưa?
                 var _CheckUser = db.Customers.FirstOrDefault(k => k.email == _Email);
                 if (_CheckUser != null)
@@ -242,7 +249,7 @@ namespace webanhnguyen.Controllers
         public ActionResult Order()
         {
             if (Session["Email"] == null)
-                return RedirectToAction("Index");
+                return RedirectToAction("Login");
             int _MaKH = int.Parse(Session["ID"].ToString());
             var donhang = from d in db.Orders
                            where d.idkh == _MaKH

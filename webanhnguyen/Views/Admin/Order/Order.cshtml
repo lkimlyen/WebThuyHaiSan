@@ -1,6 +1,6 @@
-﻿@*@model IEnumerable<webanhnguyen.Models.tbl_order>*@
+﻿@model IEnumerable<webanhnguyen.Models.Order>
 @{
-    ViewBag.Title = "Order";
+    ViewBag.Title = "Đơn hàng";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -61,14 +61,14 @@
                                 </td>
                                 <td style="width: 50px;" class="text-center">ID</td>
                                 <td style="width: 150px;" class="text-center">Tên khách hàng</td>
-                                <td class="text-left">Tổng số lượng</td>
+                                <td class="text-left">Tổng trị giá</td>
                                 <td style="width: 100px;" class="text-center">Thời gian</td>
                                 <td style="width: 100px;" class="text-center">Đã thanh toán</td>
                                 <td style="width: 100px;" class="text-right">Tùy chọn</td>
                             </tr>
                         </thead>
                         <tbody>
-                            @*@foreach (var order in Model)
+                            @foreach (var order in Model)
                             {
                                 <tr>
                                     <td class="text-center">
@@ -78,17 +78,17 @@
                                         @order.id
                                     </td>
                                     <td class="text-left name-to-confirm">
-                                        @order.name_customer
+                                        @order.tennguoinhan
                                     </td>
                                     <td class="text-left name-to-confirm">
-                                        @order.total_amount
+                                        @order.price
                                     </td>
                                     <td class="text-left name-to-confirm">
-                                        @order.date_added
+                                        @order.thoidiemdathang
                                     </td>
                                     <td class="text-center">
                                         <a href='@Url.Action("OrderSetStatusEnable", "Order", new { id = @order.id})' title="Reverse">
-                                            <div class="check tool @(order.status==1?"active":"")" data-action="toggleStatus" data-field="status" data-table="tbl_item" title="Ẩn hiện" value="@order.id"></div>
+                                            <div class="check tool @(order.status.HasValue && order.status.Value?"active":"")" data-action="toggleStatus" data-field="status" data-table="tbl_item" title="Ẩn hiện" value="@order.id"></div>
                                         </a>
                                     </td>
                                     <td class="text-right">
@@ -100,7 +100,7 @@
                                         </a>
                                     </td>
                                 </tr>
-                            }*@
+                            }
                         </tbody>
                         <tfoot>
                             <tr>

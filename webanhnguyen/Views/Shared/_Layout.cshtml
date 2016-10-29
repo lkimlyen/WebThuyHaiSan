@@ -467,17 +467,10 @@
     @if (Session["Email"] == null)
     {
         <div id="account_info_139">
-            <ul class="ty-account-info">
-
-                <li class="ty-account-info__item ty-dropdown-box__item"><a class="ty-account-info__a underlined" href="~/Home/#" rel="nofollow">Đơn hàng</a></li>
-                <li class="ty-account-info__item ty-dropdown-box__item"><a class="ty-account-info__a underlined" href="" rel="nofollow">Danh sách so sánh</a></li>
-
-                <li class="ty-account-info__item ty-dropdown-box__item"><a class="ty-account-info__a" href="" rel="nofollow">Tags</a></li>
-                <li class="ty-account-info__item ty-dropdown-box__item">
-                    <a href="" rel="nofollow" class="ty-account-info__a">Đổi/Trả hàng</a>
-                </li>
-            </ul>
-            <div class="ty-account-info__orders updates-wrapper track-orders" id="track_orders_block_139">
+            @*<ul class="ty-account-info">
+                <li class="ty-account-info__item ty-dropdown-box__item"><a class="ty-account-info__a underlined" href="@Url.Action("Login","User")" rel="nofollow">Đơn hàng</a></li>
+            </ul>*@
+            @*<div class="ty-account-info__orders updates-wrapper track-orders" id="track_orders_block_139">
                 <form action="/Home/Index" method="get" class="cm-ajax cm-ajax-full-render cm-processed-form" name="track_order_quick">
                     <input type="hidden" name="result_ids" value="track_orders_block_*">
                     <input type="hidden" name="return_url" value="index.php">
@@ -490,11 +483,10 @@
 
                     </div>
                 </form>
-                <!--track_orders_block_139-->
-            </div>
+            </div>*@
 
             <div class="ty-account-info__buttons buttons-container">
-                <a href="/User/Login" data-ca-target-id="login_block139" class="cm-dialog-opener cm-dialog-auto-size ty-btn ty-btn__secondary" rel="nofollow">Đăng nhập</a><a href="/User/Register" rel="nofollow" class="ty-btn ty-btn__primary">Đăng ký</a>
+                <a href="/User/Login" style="margin-top:5px" data-ca-target-id="login_block139" class="cm-dialog-opener cm-dialog-auto-size ty-btn ty-btn__secondary" rel="nofollow">Đăng nhập</a><a href="/User/Register" rel="nofollow" class="ty-btn ty-btn__primary">Đăng ký</a>
                 <div id="login_block139" class="hidden" title="Đăng nhập">
                     @Html.Action("plogin", "User")
                    </div>
@@ -509,20 +501,10 @@
 
                 <li class="ty-account-info__item ty-dropdown-box__item ty-account-info__name">@Session["emailstring"]</li>
                 <li class="ty-account-info__item ty-dropdown-box__item"><a class="ty-account-info__a underlined" href="@Url.Action("ProfileUpdate","User")" rel="nofollow">Thông tin tài khoản</a></li>
-                <li class="ty-account-info__item ty-dropdown-box__item"><a class="ty-account-info__a underlined" href="http://thuyhaisancamau.com/#" rel="nofollow">Tải về</a></li>
                 <li class="ty-account-info__item ty-dropdown-box__item"><a class="ty-account-info__a underlined" href="@Url.Action("Order","User")" rel="nofollow">Đơn hàng</a></li>
-                <li class="ty-account-info__item ty-dropdown-box__item"><a class="ty-account-info__a underlined" href="" rel="nofollow">Danh sách so sánh</a></li>
+ </ul>
 
-                <li class="ty-account-info__item ty-dropdown-box__item"><a class="ty-account-info__a" href="http://hasasa.vn/index.php?dispatch=tags.summary" rel="nofollow">Tags</a></li>
-                <li class="ty-account-info__item ty-dropdown-box__item">
-                    <a href="/User/Returns" rel="nofollow" class="ty-account-info__a">Đổi/Trả hàng</a>
-                </li>
-                <li class="ty-account-info__item ty-dropdown-box__item"><a class="ty-account-info__a" href="http://hasasa.vn/index.php?dispatch=reward_points.userlog" rel="nofollow">My points&nbsp;<span class="ty-reward-points-count">(0)</span></a></li>
-
-
-            </ul>
-
-            <div class="ty-account-info__orders updates-wrapper track-orders" id="track_orders_block_139">
+            @*<div class="ty-account-info__orders updates-wrapper track-orders" id="track_orders_block_139">
                 <form action="/Home/Index" method="get" class="cm-ajax cm-ajax-full-render" name="track_order_quick">
                     <input type="hidden" name="result_ids" value="track_orders_block_*" />
                     <input type="hidden" name="return_url" value="index.php" />
@@ -537,8 +519,7 @@
 
                     </div>
                 </form>
-                <!--track_orders_block_139-->
-            </div>
+            </div>*@
 
             <div class="ty-account-info__buttons buttons-container">
                 <a href="/User/Logout" rel="nofollow" class="ty-btn ty-btn__primary">Đăng xuất</a>
