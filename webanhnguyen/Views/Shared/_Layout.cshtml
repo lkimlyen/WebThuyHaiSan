@@ -11,7 +11,6 @@
     <meta name="google-site-verification" content="aI9teTesBKFz2v7NJ2MCPgoTCP8_7iMd2-jZanuXesc">
     <link href="~/@Session["icon"] rel="shortcut icon">
     <link type="text/css" rel="stylesheet" href="~/Content/standalone.4e1f1fad754ebc0bdb148ced149d7f731458555519.css">
-
     <script type="text/javascript" src="~/Scripts/jquery.min.js"></script>
     <script type="text/javascript" src="~/Scripts/core.js"></script>
     <script type="text/javascript" src="~/Scripts/ajax.js"></script>
@@ -31,6 +30,7 @@
     <script type="text/javascript" src="~/Scripts/owl.carousel.min.js"></script>
     <script type="text/javascript" src="~/Scripts/func(1).js"></script>
     <script type="text/javascript" src="~/Scripts/func(2).js"></script>
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
     <script type="text/javascript">
 (function(_, $) {
 
@@ -550,11 +550,18 @@
 
                                         <div class="span4 ">
                                             <div class="ty-search-block">
-                                                <form action="/Home/Index" name="search_form" method="get" class="cm-processed-form">
-                                                   
-                                                    <input type="text" name="hint_q" value="" id="search_input" placeholder="Tìm sản phẩm" class="ty-search-block__input cm-hint"><button title="Tìm kiếm" class="ty-search-magnifier" type="submit" value="Filter"><i class="ty-icon-search"></i></button>
-                                                    <input type="hidden" name="dispatch" value="products.search">
-                                                </form>
+                                               
+                                                    @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+                                                    {
+                                                        <div class="cm-processed-form">
+
+                                                            <input type="text" name="txttimkiem" value="" id="txttimkiem" placeholder="Tìm sản phẩm" class="ty-search-block__input cm-hint"><button title="Tìm kiếm" class="ty-search-magnifier" type="submit" value="Filter"><i class="ty-icon-search"></i></button>
+
+
+                                                        </div>
+                                                    }
+                                               
+                                              
                                             </div>
                                         </div><div class="span2 ">
                                             <div class="ty-dropdown-box" id="cart_status_144">

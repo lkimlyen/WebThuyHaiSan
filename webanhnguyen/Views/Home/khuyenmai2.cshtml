@@ -1,4 +1,5 @@
-﻿@model IEnumerable<webanhnguyen.Models.tbl_Product>
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<webanhnguyen.Models.tbl_Product>
 @{
     ViewBag.Title = "Khuyến mãi";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -47,46 +48,12 @@
                                     </div>
 
                                     <div class="ty-sort-dropdown">
-                                        <a id="sw_elm_sort_fields" class="ty-sort-dropdown__wrapper cm-combination" href="@Url.Action("ProducType", "Home", new {sortOrder = ViewBag.NameSortAsc})">Sắp xếp: A đến Z<i class="ty-sort-dropdown__icon ty-icon-down-micro"></i></a>
-                                        <ul id="elm_sort_fields" class="ty-sort-dropdown__content cm-popup-box hidden">
-                                            <li class="sort-by-timestamp-desc ty-sort-dropdown__content-item">
-                                                <a class="cm-ajax ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="" rel="nofollow" value="2">Sản phẩm mới</a>
-                                            </li>
-                                            <li class="sort-by-product-desc ty-sort-dropdown__content-item">
-                                                <a class="cm-ajax ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="@Url.Action("ProducType", "Home", new {sortOrder = ViewBag.NameSortDesc})" rel="nofollow">Sắp xếp: Z to A</a>
-                                            </li>
-                                            <li class="sort-by-price-asc ty-sort-dropdown__content-item">
-                                                <a class="cm-ajax ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="" rel="nofollow" value="4">Sắp xếp Giá: Thấp đến Cao</a>
-                                            </li>
-                                            <li class="sort-by-price-desc ty-sort-dropdown__content-item">
-                                                <a class="cm-ajax ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="" rel="nofollow">Sắp xếp Giá: Cao Đến Thấp</a>
-                                            </li>
-                                            <li class="sort-by-popularity-desc ty-sort-dropdown__content-item">
-                                                <a class="cm-ajax ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="" rel="nofollow">Theo Độ Phổ Biến</a>
-                                            </li>
-                                        </ul>
                                     </div>
 
 
                                     <div class="ty-sort-dropdown">
-                                        <a id="sw_elm_pagination_steps" class="ty-sort-dropdown__wrapper cm-combination">100 sản phẩm / trang<i class="ty-sort-dropdown__icon ty-icon-down-micro"></i></a>
-                                        <ul id="elm_pagination_steps" class="ty-sort-dropdown__content cm-popup-box hidden">
-                                            <li class="ty-sort-dropdown__content-item">
-                                                <a class="cm-ajax ty-sort-dropdown__content-item-a" href="http://hasasa.vn/hai-san-tuoi-song.html?%2Fhai-san-tuoi-song_html=&amp;items_per_page=16" data-ca-target-id="pagination_contents" rel="nofollow">16 sản phẩm / trang</a>
-                                            </li>
-                                            <li class="ty-sort-dropdown__content-item">
-                                                <a class="cm-ajax ty-sort-dropdown__content-item-a" href="http://hasasa.vn/hai-san-tuoi-song.html?%2Fhai-san-tuoi-song_html=&amp;items_per_page=32" data-ca-target-id="pagination_contents" rel="nofollow">32 sản phẩm / trang</a>
-                                            </li>
-                                            <li class="ty-sort-dropdown__content-item">
-                                                <a class="cm-ajax ty-sort-dropdown__content-item-a" href="http://hasasa.vn/hai-san-tuoi-song.html?%2Fhai-san-tuoi-song_html=&amp;items_per_page=64" data-ca-target-id="pagination_contents" rel="nofollow">64 sản phẩm / trang</a>
-                                            </li>
-                                            <li class="ty-sort-dropdown__content-item">
-                                                <a class="cm-ajax ty-sort-dropdown__content-item-a" href="http://hasasa.vn/hai-san-tuoi-song.html?%2Fhai-san-tuoi-song_html=&amp;items_per_page=128" data-ca-target-id="pagination_contents" rel="nofollow">128 sản phẩm / trang</a>
-                                            </li>
-                                        </ul>
-                                    </div>
                                 </div>
-
+                                    </div>
 
 
                                 <script type="text/javascript" src="~/Scripts/product_image_gallery.js"></script>
@@ -157,7 +124,19 @@
 
                                     }
                                 </div>
+                                
                             </div>
+                                <div class="ty-pagination__bottom">
+                                    <div class="MenuTrang">
+                                        @Html.PagedListPager(Model, page => Url.Action("khuyenmai2", new { page = page }))
+
+                                    </div>
+                                    <style>
+                                        .MenuTrang li {
+                                            display: inline;
+                                        }
+                                    </style>
+                                </div>
                         </div>
                     </div>
                 </div>

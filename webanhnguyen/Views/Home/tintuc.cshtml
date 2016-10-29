@@ -1,7 +1,7 @@
-﻿@model IEnumerable<webanhnguyen.Models.tbl_new>
-
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<webanhnguyen.Models.tbl_new>
 @{
-    ViewBag.Title = "tintuc";
+    ViewBag.Title = "Tin tức";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="tygh-content clearfix">
@@ -52,8 +52,20 @@
     }
     </div>
 </div>
-</div></div>
 </div>
 </div>
+</div>
+                  <div class="ty-pagination__bottom">
+                      <div class="MenuTrang">
+                          @Html.PagedListPager(Model, page => Url.Action("tintuc", new { page = page }))
+
+                      </div>
+                      <style>
+                          .MenuTrang li {
+                              display: inline;
+                          }
+                      </style>
+                  </div>
+    </div>
 </div>
 </div>
