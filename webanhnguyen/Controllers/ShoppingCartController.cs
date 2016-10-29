@@ -147,7 +147,6 @@ namespace webanhnguyen.Controllers
             List<ShoppingCart> lstGiohang = Laygiohang();
             ViewBag.Tongsoluong = TongSoLuong();
             ViewBag.Tongtien = TongTien();
-
             return View(lstGiohang);
         }
 
@@ -164,10 +163,11 @@ namespace webanhnguyen.Controllers
 
             ddh.status = false;
 
-            ddh.tennguoinhan = kh.name;
-            ddh.diachi = kh.address;
-            ddh.phonenumber = kh.moblie;
-            ddh.state = kh.state;
+            ddh.tennguoinhan = collection["name"];
+            ddh.diachi = collection["address"];
+            ddh.phonenumber = collection["phonenumber"];
+            ddh.gmail = collection["email"];
+           
             db.Orders.InsertOnSubmit(ddh);
             db.SubmitChanges();
 
@@ -186,7 +186,7 @@ namespace webanhnguyen.Controllers
                 db.OrderDetails.InsertOnSubmit(ctdh);
             }
             ddh.price = tong;
-            UpdateModel(ddh);
+            UpdateModel(ddh); 
             db.SubmitChanges();
             Session["ShoppingCart"] = null;
             return RedirectToAction("Xacnhandonhang", "ShoppingCart");

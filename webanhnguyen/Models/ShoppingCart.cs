@@ -27,7 +27,7 @@ namespace webanhnguyen.Models
             tbl_Product sp = db.tbl_Products.Single(n => n.ID == iMasp);
             sTensp = sp.TenSP;
             sAnhbia = sp.UrlHinh;
-            dGiaban = double.Parse(sp.GiaHienTai.ToString());
+            dGiaban = double.Parse(sp.GiaCu.ToString());
             iKhuyenmai = int.Parse(sp.KhuyenMai.ToString());
             dDongia = double.Parse(sp.GiaHienTai.ToString());
             iSoluong = 1;

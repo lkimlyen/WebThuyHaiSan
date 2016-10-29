@@ -17,297 +17,126 @@
                 </div>
             </div>
         </div>
-@using (Html.BeginForm("Account", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
+        @using (Html.BeginForm())
+        {
 
-        <div class="row-fluid ">
-            <div class="span16 main-content-grid">
-                <div class="ty-mainbox-container clearfix">
-                    <h1 class="ty-mainbox-title">
-                        Thông tin tài khoản
-                    </h1>
-                    <div class="ty-mainbox-body">
-                        <script type="text/javascript">
-                            (function (_, $) {
+            <div class="row-fluid ">
+                <div class="span16 main-content-grid">
+                    <div class="ty-mainbox-container clearfix">
+                        <h1 class="ty-mainbox-title">
+                            Thông tin tài khoản
+                        </h1>
+                        <div class="ty-mainbox-body">
+                            <script type="text/javascript">
+                                (function (_, $) {
 
-                                /* Do not put this code to document.ready, because it should be
-                                   initialized first
-                                */
-                                $.ceRebuildStates('init', {
-                                    default_country: 'VN',
-                                    states: { "VN": [{ "country_code": "VN", "code": "92", "state": "Th\u00e0nh Ph\u1ed1 C\u1ea7n Th\u01a1" }, { "country_code": "VN", "code": "01", "state": "Th\u00e0nh Ph\u1ed1 H\u00e0 N\u1ed9i" }, { "country_code": "VN", "code": "31", "state": "Th\u00e0nh Ph\u1ed1 H\u1ea3i Ph\u00f2ng" }, { "country_code": "VN", "code": "79", "state": "Th\u00e0nh Ph\u1ed1 H\u1ed3 Ch\u00ed Minh" }, { "country_code": "VN", "code": "48", "state": "Th\u00e0nh Ph\u1ed1 \u0110\u00e0 N\u1eb5ng" }, { "country_code": "VN", "code": "89", "state": "T\u1ec9nh An Giang" }, { "country_code": "VN", "code": "77", "state": "T\u1ec9nh B\u00e0 R\u1ecba - V\u0169ng T\u00e0u" }, { "country_code": "VN", "code": "24", "state": "T\u1ec9nh B\u1eafc Giang" }, { "country_code": "VN", "code": "06", "state": "T\u1ec9nh B\u1eafc K\u1ea1n" }, { "country_code": "VN", "code": "95", "state": "T\u1ec9nh B\u1ea1c Li\u00eau" }, { "country_code": "VN", "code": "27", "state": "T\u1ec9nh B\u1eafc Ninh" }, { "country_code": "VN", "code": "83", "state": "T\u1ec9nh B\u1ebfn Tre" }, { "country_code": "VN", "code": "74", "state": "T\u1ec9nh B\u00ecnh D\u01b0\u01a1ng" }, { "country_code": "VN", "code": "70", "state": "T\u1ec9nh B\u00ecnh Ph\u01b0\u1edbc" }, { "country_code": "VN", "code": "60", "state": "T\u1ec9nh B\u00ecnh Thu\u1eadn" }, { "country_code": "VN", "code": "52", "state": "T\u1ec9nh B\u00ecnh \u0110\u1ecbnh" }, { "country_code": "VN", "code": "96", "state": "T\u1ec9nh C\u00e0 Mau" }, { "country_code": "VN", "code": "04", "state": "T\u1ec9nh Cao B\u1eb1ng" }, { "country_code": "VN", "code": "64", "state": "T\u1ec9nh Gia Lai" }, { "country_code": "VN", "code": "02", "state": "T\u1ec9nh H\u00e0 Giang" }, { "country_code": "VN", "code": "35", "state": "T\u1ec9nh H\u00e0 Nam" }, { "country_code": "VN", "code": "42", "state": "T\u1ec9nh H\u00e0 T\u0129nh" }, { "country_code": "VN", "code": "30", "state": "T\u1ec9nh H\u1ea3i D\u01b0\u01a1ng" }, { "country_code": "VN", "code": "93", "state": "T\u1ec9nh H\u1eadu Giang" }, { "country_code": "VN", "code": "17", "state": "T\u1ec9nh H\u00f2a B\u00ecnh" }, { "country_code": "VN", "code": "33", "state": "T\u1ec9nh H\u01b0ng Y\u00ean" }, { "country_code": "VN", "code": "56", "state": "T\u1ec9nh Kh\u00e1nh H\u00f2a" }, { "country_code": "VN", "code": "91", "state": "T\u1ec9nh Ki\u00ean Giang" }, { "country_code": "VN", "code": "62", "state": "T\u1ec9nh Kon Tum" }, { "country_code": "VN", "code": "12", "state": "T\u1ec9nh Lai Ch\u00e2u" }, { "country_code": "VN", "code": "68", "state": "T\u1ec9nh L\u00e2m \u0110\u1ed3ng" }, { "country_code": "VN", "code": "20", "state": "T\u1ec9nh L\u1ea1ng S\u01a1n" }, { "country_code": "VN", "code": "10", "state": "T\u1ec9nh L\u00e0o Cai" }, { "country_code": "VN", "code": "80", "state": "T\u1ec9nh Long An" }, { "country_code": "VN", "code": "36", "state": "T\u1ec9nh Nam \u0110\u1ecbnh" }, { "country_code": "VN", "code": "40", "state": "T\u1ec9nh Ngh\u1ec7 An" }, { "country_code": "VN", "code": "37", "state": "T\u1ec9nh Ninh B\u00ecnh" }, { "country_code": "VN", "code": "58", "state": "T\u1ec9nh Ninh Thu\u1eadn" }, { "country_code": "VN", "code": "25", "state": "T\u1ec9nh Ph\u00fa Th\u1ecd" }, { "country_code": "VN", "code": "54", "state": "T\u1ec9nh Ph\u00fa Y\u00ean" }, { "country_code": "VN", "code": "44", "state": "T\u1ec9nh Qu\u1ea3ng B\u00ecnh" }, { "country_code": "VN", "code": "49", "state": "T\u1ec9nh Qu\u1ea3ng Nam" }, { "country_code": "VN", "code": "51", "state": "T\u1ec9nh Qu\u1ea3ng Ng\u00e3i" }, { "country_code": "VN", "code": "22", "state": "T\u1ec9nh Qu\u1ea3ng Ninh" }, { "country_code": "VN", "code": "45", "state": "T\u1ec9nh Qu\u1ea3ng Tr\u1ecb" }, { "country_code": "VN", "code": "94", "state": "T\u1ec9nh S\u00f3c Tr\u0103ng" }, { "country_code": "VN", "code": "14", "state": "T\u1ec9nh S\u01a1n La" }, { "country_code": "VN", "code": "72", "state": "T\u1ec9nh T\u00e2y Ninh" }, { "country_code": "VN", "code": "34", "state": "T\u1ec9nh Th\u00e1i B\u00ecnh" }, { "country_code": "VN", "code": "19", "state": "T\u1ec9nh Th\u00e1i Nguy\u00ean" }, { "country_code": "VN", "code": "38", "state": "T\u1ec9nh Thanh H\u00f3a" }, { "country_code": "VN", "code": "46", "state": "T\u1ec9nh Th\u1eeba Thi\u00ean Hu\u1ebf" }, { "country_code": "VN", "code": "82", "state": "T\u1ec9nh Ti\u1ec1n Giang" }, { "country_code": "VN", "code": "84", "state": "T\u1ec9nh Tr\u00e0 Vinh" }, { "country_code": "VN", "code": "08", "state": "T\u1ec9nh Tuy\u00ean Quang" }, { "country_code": "VN", "code": "86", "state": "T\u1ec9nh V\u0129nh Long" }, { "country_code": "VN", "code": "26", "state": "T\u1ec9nh V\u0129nh Ph\u00fac" }, { "country_code": "VN", "code": "15", "state": "T\u1ec9nh Y\u00ean B\u00e1i" }, { "country_code": "VN", "code": "66", "state": "T\u1ec9nh \u0110\u1eafk L\u1eafk" }, { "country_code": "VN", "code": "67", "state": "T\u1ec9nh \u0110\u1eafk N\u00f4ng" }, { "country_code": "VN", "code": "11", "state": "T\u1ec9nh \u0110i\u1ec7n Bi\u00ean" }, { "country_code": "VN", "code": "75", "state": "T\u1ec9nh \u0110\u1ed3ng Nai" }, { "country_code": "VN", "code": "87", "state": "T\u1ec9nh \u0110\u1ed3ng Th\u00e1p" }] }
-                                });
-
-
-
-                                $.ceFormValidator('setZipcode', {
-                                    US: {
-                                        regexp: /^(\d{5})(-\d{4})?$/,
-                                        format: '01342 (01342-5678)'
-                                    },
-                                    CA: {
-                                        regexp: /^(\w{3} ?\w{3})$/,
-                                        format: 'K1A OB1 (K1AOB1)'
-                                    },
-                                    RU: {
-                                        regexp: /^(\d{6})?$/,
-                                        format: '123456'
-                                    }
-                                });
+                                    /* Do not put this code to document.ready, because it should be
+                                       initialized first
+                                    */
+                                    $.ceRebuildStates('init', {
+                                        default_country: 'VN',
+                                        states: { "VN": [{ "country_code": "VN", "code": "92", "state": "Th\u00e0nh Ph\u1ed1 C\u1ea7n Th\u01a1" }, { "country_code": "VN", "code": "01", "state": "Th\u00e0nh Ph\u1ed1 H\u00e0 N\u1ed9i" }, { "country_code": "VN", "code": "31", "state": "Th\u00e0nh Ph\u1ed1 H\u1ea3i Ph\u00f2ng" }, { "country_code": "VN", "code": "79", "state": "Th\u00e0nh Ph\u1ed1 H\u1ed3 Ch\u00ed Minh" }, { "country_code": "VN", "code": "48", "state": "Th\u00e0nh Ph\u1ed1 \u0110\u00e0 N\u1eb5ng" }, { "country_code": "VN", "code": "89", "state": "T\u1ec9nh An Giang" }, { "country_code": "VN", "code": "77", "state": "T\u1ec9nh B\u00e0 R\u1ecba - V\u0169ng T\u00e0u" }, { "country_code": "VN", "code": "24", "state": "T\u1ec9nh B\u1eafc Giang" }, { "country_code": "VN", "code": "06", "state": "T\u1ec9nh B\u1eafc K\u1ea1n" }, { "country_code": "VN", "code": "95", "state": "T\u1ec9nh B\u1ea1c Li\u00eau" }, { "country_code": "VN", "code": "27", "state": "T\u1ec9nh B\u1eafc Ninh" }, { "country_code": "VN", "code": "83", "state": "T\u1ec9nh B\u1ebfn Tre" }, { "country_code": "VN", "code": "74", "state": "T\u1ec9nh B\u00ecnh D\u01b0\u01a1ng" }, { "country_code": "VN", "code": "70", "state": "T\u1ec9nh B\u00ecnh Ph\u01b0\u1edbc" }, { "country_code": "VN", "code": "60", "state": "T\u1ec9nh B\u00ecnh Thu\u1eadn" }, { "country_code": "VN", "code": "52", "state": "T\u1ec9nh B\u00ecnh \u0110\u1ecbnh" }, { "country_code": "VN", "code": "96", "state": "T\u1ec9nh C\u00e0 Mau" }, { "country_code": "VN", "code": "04", "state": "T\u1ec9nh Cao B\u1eb1ng" }, { "country_code": "VN", "code": "64", "state": "T\u1ec9nh Gia Lai" }, { "country_code": "VN", "code": "02", "state": "T\u1ec9nh H\u00e0 Giang" }, { "country_code": "VN", "code": "35", "state": "T\u1ec9nh H\u00e0 Nam" }, { "country_code": "VN", "code": "42", "state": "T\u1ec9nh H\u00e0 T\u0129nh" }, { "country_code": "VN", "code": "30", "state": "T\u1ec9nh H\u1ea3i D\u01b0\u01a1ng" }, { "country_code": "VN", "code": "93", "state": "T\u1ec9nh H\u1eadu Giang" }, { "country_code": "VN", "code": "17", "state": "T\u1ec9nh H\u00f2a B\u00ecnh" }, { "country_code": "VN", "code": "33", "state": "T\u1ec9nh H\u01b0ng Y\u00ean" }, { "country_code": "VN", "code": "56", "state": "T\u1ec9nh Kh\u00e1nh H\u00f2a" }, { "country_code": "VN", "code": "91", "state": "T\u1ec9nh Ki\u00ean Giang" }, { "country_code": "VN", "code": "62", "state": "T\u1ec9nh Kon Tum" }, { "country_code": "VN", "code": "12", "state": "T\u1ec9nh Lai Ch\u00e2u" }, { "country_code": "VN", "code": "68", "state": "T\u1ec9nh L\u00e2m \u0110\u1ed3ng" }, { "country_code": "VN", "code": "20", "state": "T\u1ec9nh L\u1ea1ng S\u01a1n" }, { "country_code": "VN", "code": "10", "state": "T\u1ec9nh L\u00e0o Cai" }, { "country_code": "VN", "code": "80", "state": "T\u1ec9nh Long An" }, { "country_code": "VN", "code": "36", "state": "T\u1ec9nh Nam \u0110\u1ecbnh" }, { "country_code": "VN", "code": "40", "state": "T\u1ec9nh Ngh\u1ec7 An" }, { "country_code": "VN", "code": "37", "state": "T\u1ec9nh Ninh B\u00ecnh" }, { "country_code": "VN", "code": "58", "state": "T\u1ec9nh Ninh Thu\u1eadn" }, { "country_code": "VN", "code": "25", "state": "T\u1ec9nh Ph\u00fa Th\u1ecd" }, { "country_code": "VN", "code": "54", "state": "T\u1ec9nh Ph\u00fa Y\u00ean" }, { "country_code": "VN", "code": "44", "state": "T\u1ec9nh Qu\u1ea3ng B\u00ecnh" }, { "country_code": "VN", "code": "49", "state": "T\u1ec9nh Qu\u1ea3ng Nam" }, { "country_code": "VN", "code": "51", "state": "T\u1ec9nh Qu\u1ea3ng Ng\u00e3i" }, { "country_code": "VN", "code": "22", "state": "T\u1ec9nh Qu\u1ea3ng Ninh" }, { "country_code": "VN", "code": "45", "state": "T\u1ec9nh Qu\u1ea3ng Tr\u1ecb" }, { "country_code": "VN", "code": "94", "state": "T\u1ec9nh S\u00f3c Tr\u0103ng" }, { "country_code": "VN", "code": "14", "state": "T\u1ec9nh S\u01a1n La" }, { "country_code": "VN", "code": "72", "state": "T\u1ec9nh T\u00e2y Ninh" }, { "country_code": "VN", "code": "34", "state": "T\u1ec9nh Th\u00e1i B\u00ecnh" }, { "country_code": "VN", "code": "19", "state": "T\u1ec9nh Th\u00e1i Nguy\u00ean" }, { "country_code": "VN", "code": "38", "state": "T\u1ec9nh Thanh H\u00f3a" }, { "country_code": "VN", "code": "46", "state": "T\u1ec9nh Th\u1eeba Thi\u00ean Hu\u1ebf" }, { "country_code": "VN", "code": "82", "state": "T\u1ec9nh Ti\u1ec1n Giang" }, { "country_code": "VN", "code": "84", "state": "T\u1ec9nh Tr\u00e0 Vinh" }, { "country_code": "VN", "code": "08", "state": "T\u1ec9nh Tuy\u00ean Quang" }, { "country_code": "VN", "code": "86", "state": "T\u1ec9nh V\u0129nh Long" }, { "country_code": "VN", "code": "26", "state": "T\u1ec9nh V\u0129nh Ph\u00fac" }, { "country_code": "VN", "code": "15", "state": "T\u1ec9nh Y\u00ean B\u00e1i" }, { "country_code": "VN", "code": "66", "state": "T\u1ec9nh \u0110\u1eafk L\u1eafk" }, { "country_code": "VN", "code": "67", "state": "T\u1ec9nh \u0110\u1eafk N\u00f4ng" }, { "country_code": "VN", "code": "11", "state": "T\u1ec9nh \u0110i\u1ec7n Bi\u00ean" }, { "country_code": "VN", "code": "75", "state": "T\u1ec9nh \u0110\u1ed3ng Nai" }, { "country_code": "VN", "code": "87", "state": "T\u1ec9nh \u0110\u1ed3ng Th\u00e1p" }] }
+                                    });
 
 
-                            }(Tygh, Tygh.$));
-                        </script>
 
-                        <div class="ty-profile-field ty-account form-wrap" id="content_general">
-                            <form name="profile_form" action="/Home/Index" method="post">
-                                <input id="selected_section" type="hidden" value="general" name="selected_section" />
-                                <input id="default_card_id" type="hidden" value="" name="default_cc" />
-                                <input type="hidden" name="profile_id" value="144" />
-                                <h3 class="ty-subheader">
-                                    Thông tin tài khoản
-                                </h3>
-                                <div class="ty-control-group">
-                                    <label for="email" class="ty-control-group__title cm-required cm-email cm-trim">Email</label>
-                                    <input type="text" id="email" name="email" size="32" maxlength="128" value="@Model.email" class="ty-input-text" />
-                                </div>
+                                    $.ceFormValidator('setZipcode', {
+                                        US: {
+                                            regexp: /^(\d{5})(-\d{4})?$/,
+                                            format: '01342 (01342-5678)'
+                                        },
+                                        CA: {
+                                            regexp: /^(\w{3} ?\w{3})$/,
+                                            format: 'K1A OB1 (K1AOB1)'
+                                        },
+                                        RU: {
+                                            regexp: /^(\d{6})?$/,
+                                            format: '123456'
+                                        }
+                                    });
 
-                                <div class="ty-control-group">
-                                    <label for="password1" class="ty-control-group__title cm-required cm-password">Mật khẩu</label>
-                                    <input type="password" id="password1" name="password1" size="32" maxlength="32" value="@Model.password" class="ty-input-text cm-autocomplete-off" />
-                                </div>
 
-                                <div class="ty-control-group">
-                                    <label for="password2" class="ty-control-group__title cm-required cm-password">Xác nhận lại mật khẩu</label>
-                                    <input type="password" id="password2" name="password2" size="32" maxlength="32" value="@Model.password" class="ty-input-text cm-autocomplete-off" />
-                                </div>
-                                <input type="hidden" name="ship_to_another" value="1" />
+                                }(Tygh, Tygh.$));
+                            </script>
 
-                                <div class="clearfix">
+                            <div class="ty-profile-field ty-account form-wrap" id="content_general">
+                                <form name="profile_form" action="/Home/Index" method="post">
+                                    <input id="selected_section" type="hidden" value="general" name="selected_section" />
+                                    <input id="default_card_id" type="hidden" value="" name="default_cc" />
+                                    <input type="hidden" name="profile_id" value="144" />
                                     <h3 class="ty-subheader">
-                                        Địa chỉ vận chuyển
+                                        Thông tin tài khoản
                                     </h3>
-                                    <div class="ty-control-group ty-profile-field__item ty-shipping-first-name">
-                                        <label for="elm_15" class="ty-control-group__title cm-profile-field  ">Họ Tên</label>
-                                        <input x-autocompletetype="given-name" type="text" id="elm_15" name="name" size="32" value="@Model.name" class="ty-input-text " />
+                                    <div class="ty-control-group">
+                                        <label for="email" class="ty-control-group__title cm-required cm-email cm-trim">Email</label>
+                                        <input type="text" id="email" name="email" size="32" maxlength="128" value="@Model.email" class="ty-input-text" />
                                     </div>
-                                    <div class="ty-control-group ty-profile-field__item ty-shipping-phone">
-                                        <label for="elm_31" class="ty-control-group__title cm-profile-field  ">Số Điện Thoại</label>
-                                        <input x-autocompletetype="phone-full" type="text" id="elm_31" name="phone" size="32" value="@Model.moblie" class="ty-input-text " />
-                                                                            </div>
-                                    <div class="ty-control-group ty-profile-field__item ty-shipping-address">
-                                        <label for="elm_19" class="ty-control-group__title cm-profile-field  ">Địa Chỉ</label>
-                                        <input x-autocompletetype="street-address" type="text" id="elm_19" name="address" size="32" value="@Model.address" class="ty-input-text " />
-                                    </div>
-                                    <div class="ty-control-group ty-profile-field__item ty-shipping-state">
-                                        <label for="elm_25" class="ty-control-group__title cm-profile-field  ">Tỉnh/Thành</label>
-                                        <select x-autocompletetype="state" id="elm_25" class="ty-profile-field__select-state cm-state cm-location-shipping " name="state">
-                                            <option value="">- Select state -</option>
-                                            <option value="92">Thành Phố Cần Thơ</option>
-                                            <option value="01">Thành Phố Hà Nội</option>
-                                            <option value="31">Thành Phố Hải Phòng</option>
-                                            <option value="79">Thành Phố Hồ Chí Minh</option>
-                                            <option value="48">Thành Phố Đà Nẵng</option>
-                                            <option value="89">Tỉnh An Giang</option>
-                                            <option value="77">Tỉnh Bà Rịa - Vũng Tàu</option>
-                                            <option value="24">Tỉnh Bắc Giang</option>
-                                            <option value="06">Tỉnh Bắc Kạn</option>
-                                            <option value="95">Tỉnh Bạc Liêu</option>
-                                            <option value="27">Tỉnh Bắc Ninh</option>
-                                            <option value="83">Tỉnh Bến Tre</option>
-                                            <option value="74">Tỉnh Bình Dương</option>
-                                            <option value="70">Tỉnh Bình Phước</option>
-                                            <option value="60">Tỉnh Bình Thuận</option>
-                                            <option value="52">Tỉnh Bình Định</option>
-                                            <option value="96">Tỉnh Cà Mau</option>
-                                            <option value="04">Tỉnh Cao Bằng</option>
-                                            <option value="64">Tỉnh Gia Lai</option>
-                                            <option value="02">Tỉnh Hà Giang</option>
-                                            <option value="35">Tỉnh Hà Nam</option>
-                                            <option value="42">Tỉnh Hà Tĩnh</option>
-                                            <option value="30">Tỉnh Hải Dương</option>
-                                            <option value="93">Tỉnh Hậu Giang</option>
-                                            <option value="17">Tỉnh Hòa Bình</option>
-                                            <option value="33">Tỉnh Hưng Yên</option>
-                                            <option value="56">Tỉnh Khánh Hòa</option>
-                                            <option value="91">Tỉnh Kiên Giang</option>
-                                            <option value="62">Tỉnh Kon Tum</option>
-                                            <option value="12">Tỉnh Lai Châu</option>
-                                            <option value="68">Tỉnh Lâm Đồng</option>
-                                            <option value="20">Tỉnh Lạng Sơn</option>
-                                            <option value="10">Tỉnh Lào Cai</option>
-                                            <option value="80">Tỉnh Long An</option>
-                                            <option value="36">Tỉnh Nam Định</option>
-                                            <option value="40">Tỉnh Nghệ An</option>
-                                            <option value="37">Tỉnh Ninh Bình</option>
-                                            <option value="58">Tỉnh Ninh Thuận</option>
-                                            <option value="25">Tỉnh Phú Thọ</option>
-                                            <option value="54">Tỉnh Phú Yên</option>
-                                            <option value="44">Tỉnh Quảng Bình</option>
-                                            <option value="49">Tỉnh Quảng Nam</option>
-                                            <option value="51">Tỉnh Quảng Ngãi</option>
-                                            <option value="22">Tỉnh Quảng Ninh</option>
-                                            <option value="45">Tỉnh Quảng Trị</option>
-                                            <option value="94">Tỉnh Sóc Trăng</option>
-                                            <option value="14">Tỉnh Sơn La</option>
-                                            <option value="72">Tỉnh Tây Ninh</option>
-                                            <option value="34">Tỉnh Thái Bình</option>
-                                            <option value="19">Tỉnh Thái Nguyên</option>
-                                            <option value="38">Tỉnh Thanh Hóa</option>
-                                            <option value="46">Tỉnh Thừa Thiên Huế</option>
-                                            <option value="82">Tỉnh Tiền Giang</option>
-                                            <option value="84">Tỉnh Trà Vinh</option>
-                                            <option value="08">Tỉnh Tuyên Quang</option>
-                                            <option value="86">Tỉnh Vĩnh Long</option>
-                                            <option value="26">Tỉnh Vĩnh Phúc</option>
-                                            <option value="15">Tỉnh Yên Bái</option>
-                                            <option value="66">Tỉnh Đắk Lắk</option>
-                                            <option value="67">Tỉnh Đắk Nông</option>
-                                            <option value="11">Tỉnh Điện Biên</option>
-                                            <option value="75">Tỉnh Đồng Nai</option>
-                                            <option value="87">Tỉnh Đồng Tháp</option>
-                                        </select>
-                                        <input x-autocompletetype="state" type="text" id="elm_25_d" name="state" size="32" maxlength="64" value="@Model.state" disabled="disabled" class="cm-state cm-location-shipping ty-input-text hidden " />
-                                    </div>
-                                </div>
-                                <div class="ty-profile-field__switch ty-address-switch clearfix">
-                                    <div class="ty-profile-field__switch-label">Địa chỉ thanh toán giống địa chỉ vận chuyển</div>
-                                    <div class="ty-profile-field__switch-actions">
-                                        <input class="radio cm-switch-availability cm-switch-inverse cm-switch-visibility" type="radio" name="ship_to_another" value="0" id="sw_ba_suffix_yes" checked="checked" /><label for="sw_ba_suffix_yes">Có</label>
-                                        <input class="radio cm-switch-availability cm-switch-visibility" type="radio" name="ship_to_another" value="1" id="sw_ba_suffix_no" /><label for="sw_ba_suffix_no">Không</label>
-                                    </div>
-                                </div>
-                                                                <div class="clearfix">
-                                    <div id="ba" class="hidden">
-                                        <div class="">
-                                                                                        <h3 class="ty-subheader">
 
-                                                Billing address
-                                                                                                                                        </h3>
-                                            <div class="ty-control-group ty-profile-field__item ty-billing-first-name">
-                                                <label for="elm_14" class="ty-control-group__title cm-profile-field  ">Họ Tên</label>
-                                                <input x-autocompletetype="given-name" type="text" id="elm_14" name="billingname" size="32" value="@Model.billingname" class="ty-input-text disabled" disabled="disabled" />
-                                            </div>
-                                                                                        <div class="ty-control-group ty-profile-field__item ty-billing-phone">
-                                                <label for="elm_30" class="ty-control-group__title cm-profile-field  ">Số Điện Thoại</label>
-                                                <input x-autocompletetype="phone-full" type="text" id="elm_30" name="billingphone" size="32" value="@Model.billingphone" class="ty-input-text disabled" disabled="disabled" />
-                                                                                                                                        </div>
-                                            <div class="ty-control-group ty-profile-field__item ty-billing-address">
-                                                <label for="elm_18" class="ty-control-group__title cm-profile-field  ">Địa Chỉ</label>
-                                                <input x-autocompletetype="street-address" type="text" id="elm_18" name="billingaddress" size="32" value="@Model.billingaddress" class="ty-input-text disabled" disabled="disabled" />
-                                            </div>
-                                            <div class="ty-control-group ty-profile-field__item ty-billing-state">
-                                                <label for="elm_24" class="ty-control-group__title cm-profile-field  ">Tỉnh/Thành</label>
-                                                <select x-autocompletetype="state" id="elm_24" class="ty-profile-field__select-state cm-state cm-location-billing disabled" name="user_data[b_state]" disabled="disabled">
-                                                    <option value="">- Select state -</option>
-                                                    <option value="92">Thành Phố Cần Thơ</option>
-                                                    <option value="01">Thành Phố Hà Nội</option>
-                                                    <option value="31">Thành Phố Hải Phòng</option>
-                                                    <option value="79">Thành Phố Hồ Chí Minh</option>
-                                                    <option value="48">Thành Phố Đà Nẵng</option>
-                                                    <option value="89">Tỉnh An Giang</option>
-                                                    <option value="77">Tỉnh Bà Rịa - Vũng Tàu</option>
-                                                    <option value="24">Tỉnh Bắc Giang</option>
-                                                    <option value="06">Tỉnh Bắc Kạn</option>
-                                                    <option value="95">Tỉnh Bạc Liêu</option>
-                                                    <option value="27">Tỉnh Bắc Ninh</option>
-                                                    <option value="83">Tỉnh Bến Tre</option>
-                                                    <option value="74">Tỉnh Bình Dương</option>
-                                                    <option value="70">Tỉnh Bình Phước</option>
-                                                    <option value="60">Tỉnh Bình Thuận</option>
-                                                    <option value="52">Tỉnh Bình Định</option>
-                                                    <option value="96">Tỉnh Cà Mau</option>
-                                                    <option value="04">Tỉnh Cao Bằng</option>
-                                                    <option value="64">Tỉnh Gia Lai</option>
-                                                    <option value="02">Tỉnh Hà Giang</option>
-                                                    <option value="35">Tỉnh Hà Nam</option>
-                                                    <option value="42">Tỉnh Hà Tĩnh</option>
-                                                    <option value="30">Tỉnh Hải Dương</option>
-                                                    <option value="93">Tỉnh Hậu Giang</option>
-                                                    <option value="17">Tỉnh Hòa Bình</option>
-                                                    <option value="33">Tỉnh Hưng Yên</option>
-                                                    <option value="56">Tỉnh Khánh Hòa</option>
-                                                    <option value="91">Tỉnh Kiên Giang</option>
-                                                    <option value="62">Tỉnh Kon Tum</option>
-                                                    <option value="12">Tỉnh Lai Châu</option>
-                                                    <option value="68">Tỉnh Lâm Đồng</option>
-                                                    <option value="20">Tỉnh Lạng Sơn</option>
-                                                    <option value="10">Tỉnh Lào Cai</option>
-                                                    <option value="80">Tỉnh Long An</option>
-                                                    <option value="36">Tỉnh Nam Định</option>
-                                                    <option value="40">Tỉnh Nghệ An</option>
-                                                    <option value="37">Tỉnh Ninh Bình</option>
-                                                    <option value="58">Tỉnh Ninh Thuận</option>
-                                                    <option value="25">Tỉnh Phú Thọ</option>
-                                                    <option value="54">Tỉnh Phú Yên</option>
-                                                    <option value="44">Tỉnh Quảng Bình</option>
-                                                    <option value="49">Tỉnh Quảng Nam</option>
-                                                    <option value="51">Tỉnh Quảng Ngãi</option>
-                                                    <option value="22">Tỉnh Quảng Ninh</option>
-                                                    <option value="45">Tỉnh Quảng Trị</option>
-                                                    <option value="94">Tỉnh Sóc Trăng</option>
-                                                    <option value="14">Tỉnh Sơn La</option>
-                                                    <option value="72">Tỉnh Tây Ninh</option>
-                                                    <option value="34">Tỉnh Thái Bình</option>
-                                                    <option value="19">Tỉnh Thái Nguyên</option>
-                                                    <option value="38">Tỉnh Thanh Hóa</option>
-                                                    <option value="46">Tỉnh Thừa Thiên Huế</option>
-                                                    <option value="82">Tỉnh Tiền Giang</option>
-                                                    <option value="84">Tỉnh Trà Vinh</option>
-                                                    <option value="08">Tỉnh Tuyên Quang</option>
-                                                    <option value="86">Tỉnh Vĩnh Long</option>
-                                                    <option value="26">Tỉnh Vĩnh Phúc</option>
-                                                    <option value="15">Tỉnh Yên Bái</option>
-                                                    <option value="66">Tỉnh Đắk Lắk</option>
-                                                    <option value="67">Tỉnh Đắk Nông</option>
-                                                    <option value="11">Tỉnh Điện Biên</option>
-                                                    <option value="75">Tỉnh Đồng Nai</option>
-                                                    <option value="87">Tỉnh Đồng Tháp</option>
-                                                </select><input x-autocompletetype="state" type="text" id="elm_24_d" name="billingstate" size="32" maxlength="64" value="@Model.billingstate" disabled="disabled" class="cm-state cm-location-billing ty-input-text hidden disabled" />
-                                            </div>
+                                    <div class="ty-control-group">
+                                        <label for="password1" class="ty-control-group__title cm-required cm-password">Mật khẩu</label>
+                                        <input type="password" id="password1" name="password1" size="32" maxlength="32" value="@Model.password" class="ty-input-text cm-autocomplete-off" />
+                                    </div>
+
+                                    <div class="ty-control-group">
+                                        <label for="password2" class="ty-control-group__title cm-required cm-password">Xác nhận lại mật khẩu</label>
+                                        <input type="password" id="password2" name="password2" size="32" maxlength="32" value="@Model.password" class="ty-input-text cm-autocomplete-off" />
+                                    </div>
+                                    <input type="hidden" name="ship_to_another" value="1" />
+
+                                    <div class="clearfix">
+                                        <h3 class="ty-subheader">
+                                            Thông tin cá nhân
+                                        </h3>
+                                        <div class="ty-control-group ty-profile-field__item ty-shipping-first-name">
+                                            <label for="elm_15" class="ty-control-group__title cm-profile-field  ">Họ Tên</label>
+                                            <input x-autocompletetype="given-name" type="text" id="elm_15" name="name" size="32" value="@Model.name" class="ty-input-text " />
+                                        </div>
+                                        <div class="ty-control-group ty-profile-field__item ty-shipping-phone">
+                                            <label for="elm_31" class="ty-control-group__title cm-profile-field  ">Số Điện Thoại</label>
+                                            <input x-autocompletetype="phone-full" type="text" id="elm_31" name="phone" size="32" value="@Model.moblie" class="ty-input-text " />
+                                        </div>
+                                        <div class="ty-control-group ty-profile-field__item ty-shipping-address">
+                                            <label for="elm_19" class="ty-control-group__title cm-profile-field  ">Địa Chỉ</label>
+                                            <input x-autocompletetype="street-address" type="text" id="elm_19" name="address" size="32" value="@Model.address" class="ty-input-text " />
                                         </div>
                                     </div>
-                                </div>
-                                <h3 class="ty-subheader">
+                                
+                                    <h3 class="ty-subheader">
 
-                                    Assigning social network accounts
+                                        Assigning social network accounts
 
-                                </h3>
-                                <p>Assign your social network account to this one and use it to log in</p>
+                                    </h3>
+                                    <p>Assign your social network account to this one and use it to log in</p>
 
-                                <div id="hybrid_providers">
-                                    <!--hybrid_providers-->
-                                </div>
+                                    <div id="hybrid_providers">
+                                        <!--hybrid_providers-->
+                                    </div>
 
-
-
-
-
-                                <div class="ty-profile-field__buttons buttons-container">
+                                    <div class="ty-profile-field__buttons buttons-container">
 
 
-                                    <button id="save_profile_but" class="ty-btn__secondary ty-btn" type="submit" name="sua">Lưu thông tin</button>
+                                        <button id="sua" class="ty-btn__secondary ty-btn" type="submit" name="sua">Lưu thông tin</button>
 
 
-                                    <input class="ty-profile-field__reset ty-btn ty-btn__tertiary" type="reset" name="reset" value="Hủy bỏ" id="shipping_address_reset" />
+                                        <input class="ty-profile-field__reset ty-btn ty-btn__tertiary" type="reset" name="reset" value="Hủy bỏ" id="shipping_address_reset" />
 
-                                    <script type="text/javascript">
-                                        (function (_, $) {
-                                            var address_switch = $('input:radio:checked', '.ty-address-switch');
-                                            $("#shipping_address_reset").on("click", function (e) {
-                                                setTimeout(function () {
-                                                    address_switch.click();
-                                                }, 50);
-                                            });
-                                        }(Tygh, Tygh.$));
-                                    </script>
-                                </div>
-                            </form>
+                                        <script type="text/javascript">
+                                            (function (_, $) {
+                                                var address_switch = $('input:radio:checked', '.ty-address-switch');
+                                                $("#shipping_address_reset").on("click", function (e) {
+                                                    setTimeout(function () {
+                                                        address_switch.click();
+                                                    }, 50);
+                                                });
+                                            }(Tygh, Tygh.$));
+                                        </script>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         }
     </div>
 
