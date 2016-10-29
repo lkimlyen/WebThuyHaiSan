@@ -73,7 +73,7 @@ namespace webanhnguyen.Controllers.Admin
             if (btnDel != null)
             {
                 //Delete all
-                DataHelper.AccountHelper.getInstance().deleteAllMembers(data);
+                DataHelper.AccountHelper.getInstance().deleteAllCustomers(data);
             }
 
             var keyword = form["keyword"];
