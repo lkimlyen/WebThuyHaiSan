@@ -167,6 +167,7 @@ namespace webanhnguyen.Controllers
             ddh.diachi = collection["address"];
             ddh.phonenumber = collection["phonenumber"];
             ddh.gmail = collection["email"];
+           
             db.Orders.InsertOnSubmit(ddh);
             db.SubmitChanges();
 

@@ -1,5 +1,5 @@
 ﻿@using webanhnguyen.Models
-@model List<OrderDetail>
+@model List<webanhnguyen.Controllers.DataHelper.ShoppingCardItemModel>
 @{
     ViewBag.Title = "Chi tiết đơn hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -124,19 +124,21 @@
                                                            
                                                             <td>
                                                                 
-                                                               
-                                                                <div class="ty-orders-detail__table-code">Mã SP:@item.idsp</div>
+                                                               <a href="@Url.Action("Details","Home", new {id = item.id })">
+                                                                   Tên sản phẩm: @item.name
+                                                               </a>
+                                                                <div class="ty-orders-detail__table-code">Mã SP:@item.id</div>
 
 
 
                                                             </td>
                                                             
                                                             <td class="ty-right">
-                                                                <span>@item.dongia</span>&nbsp;đ
+                                                                <span>@item.price</span>&nbsp;đ
                                                             </td>
-                                                            <td class="ty-center">&nbsp;@item.soluong</td>
+                                                            <td class="ty-center">&nbsp;@item.quantity</td>
                                                             <td class="ty-right">
-                                                                &nbsp;<span>@item.thanhtien</span>&nbsp;đ
+                                                                &nbsp;<span>@item.total</span>&nbsp;đ
                                                             </td>
                                                         </tr>
 

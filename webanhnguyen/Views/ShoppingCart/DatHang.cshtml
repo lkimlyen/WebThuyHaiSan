@@ -11,7 +11,7 @@
                 <div id="breadcrumbs_73">
 
                     <div class="ty-breadcrumbs clearfix">
-                        <a href="/Home/Index" class="ty-breadcrumbs__a">Trang chủ</a><span class="ty-breadcrumbs__slash">/</span><a href="http://hasasa.vn/index.php?dispatch=orders.search" class="ty-breadcrumbs__a">Đơn hàng</a><span class="ty-breadcrumbs__slash">/</span><span class="ty-breadcrumbs__current">Thông tin đơn hàng</span>
+                        <a href="/Home/Index" class="ty-breadcrumbs__a">Trang chủ</a><span class="ty-breadcrumbs__slash">/</span><a href="@Url.Action("Order","User")" class="ty-breadcrumbs__a">Đơn hàng</a><span class="ty-breadcrumbs__slash">/</span><span class="ty-breadcrumbs__current">Thông tin đơn hàng</span>
                     </div>
 
                     <!--breadcrumbs_73-->
@@ -62,13 +62,13 @@
                                             <div id="tygh_order_billing_adress" class="ty-profiles-info__item ty-profiles-info__billing">
                                                 <h5 class="ty-profiles-info__title">Thông tin người nhận</h5>
                                                 <div class="ty-profiles-info__field">
-                                                    <div class="ty-info-field b-firstname"> <a class="ty-profiles-info__title">Tên người nhận:</a><input type="text" id="name" name="name" class="ty-input-text"></div>
+                                                    <div class="ty-info-field b-firstname"> <a class="ty-profiles-info__title" style="width: 200px">Tên người nhận:</a><input type="text" id="name" name="name" style="float: right" class="ty-input-text"></div>
 
-                                                    <div class="ty-info-field b-phone"><a class="ty-profiles-info__title">Số điện thoại:</a><input type="text" id="phonenumber" name="phonenumber" class="ty-input-text"></div>
+                                                    <div class="ty-info-field b-phone"><a class="ty-profiles-info__title" style="width: 200px">Số điện thoại:</a><input type="text" id="phonenumber" name="phonenumber" class="ty-input-text" style="float: right"></div>
 
-                                                    <div class="ty-info-field b-address"><a class="ty-profiles-info__title">Địa chỉ:</a><input type="text" id="address" name="address" class="ty-input-text"></div>
+                                                    <div class="ty-info-field b-address"><a class="ty-profiles-info__title" style="width: 200px">Địa chỉ:</a><input type="text" id="address" name="address" class="ty-input-text" style="float: right"></div>
 
-                                                    <div class="ty-info-field b-state"><a class="ty-profiles-info__title">Email:</a><input type="text" id="email" name="email" class="ty-input-text"> </div>
+                                                    <div class="ty-info-field b-state"><a class="ty-profiles-info__title" style="width: 200px">Email:</a><input type="text" id="email" name="email" class="ty-input-text" style="float: right"> </div>
                                                 </div>
                                             </div>
                                             <div id="tygh_order_shipping_adress" class="ty-profiles-info__item ty-profiles-info__shipping">
@@ -218,17 +218,7 @@
 
 
                                                                     </div>
-
-
-
-                                                                    <div class="ty-customer-notes">
-                                                                        <p class="ty-customer-notes__title">Ghi chú cho Đơn hàng</p>
-                                                                        <textarea class="ty-customer-notes__text" name="customer_notes" cols="60" rows="3"></textarea>
-                                                                    </div>
-
-
-
-                                                                    <div class="ty-checkout-buttons">
+<div class="ty-checkout-buttons">
                                                                         <div class="ty-repay-button">
 
 
@@ -267,10 +257,6 @@
                                     </div>
 }
                                 </div><!-- main order info -->
-
-                                <div id="content_shipment_info" class="ty-orders-shipment hidden">
-                                    <p class="ty-no-items">Chưa có thông tin vận chuyển</p>
-                                </div>
 
 
 

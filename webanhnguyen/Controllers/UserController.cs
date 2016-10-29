@@ -186,8 +186,7 @@ namespace webanhnguyen.Controllers
 
             try
             {
-                //Lấy giá trị ở Form Register         
-                var _Email = collection["email"];
+                //Lấy giá trị ở Form Register    
                 var _Password = collection["password1"];
                 var _RePassword = collection["password2"];
                 string _Email = collection["email1"];
@@ -195,8 +194,6 @@ namespace webanhnguyen.Controllers
                 {
                     return View();
                 }
-                string _Password = collection["password1"];
-                string _RePassword = collection["password2"];
                 //Kiểm tra xem tài khoản đã có người sử dụng chưa?
                 var _CheckUser = db.Customers.FirstOrDefault(k => k.email == _Email);
                 if (_CheckUser != null)
@@ -258,27 +255,36 @@ namespace webanhnguyen.Controllers
             return View(donhang.ToList());
         }
         #endregion
-        #region Đổi trả hàng
-        public ActionResult Returns()
-        {
-            return View();
-        }
-        #endregion
- 
+       
         #region chi tiết đơn hàng
         public ActionResult OrderDetail(int id)
         {
+            if (Session["Email"] == null)
+                return RedirectToAction("Login");
             List<OrderDetail> CT_SP = (from n in db.OrderDetails
                                        from s in db.tbl_Products
                                        where n.iddh == id && n.idsp == s.ID
                                        select n).ToList();
 
             Order order = db.Orders.SingleOrDefault(n => n.id == id );
-           
+
+            List<DataHelper.ShoppingCardItemModel> CT_SP_CO_LUON_TEN_SP = new List<DataHelper.ShoppingCardItemModel>();
+            foreach(OrderDetail orderDetail in CT_SP)
+            {
+                DataHelper.ShoppingCardItemModel model = new DataHelper.ShoppingCardItemModel();
+                model.name = DataHelper.ProductHelper.getInstance().getProductById(db, orderDetail.idsp.Value).TenSP;
+                model.price = orderDetail.dongia.Value;
+                model.id = orderDetail.idsp.Value;
+                model.quantity = orderDetail.soluong.Value;
+                model.total = orderDetail.thanhtien.Value;
+                CT_SP_CO_LUON_TEN_SP.Add(model);
+            }
+          
+
             ViewBag.order = (from c in db.Orders where c.id == id select c).ToList();
             ViewBag.Tongtien = order.price;
             ViewBag.kh = (from c in db.Customers where c.id == order.idkh  select c).ToList();
-            return View(CT_SP);
+            return View(CT_SP_CO_LUON_TEN_SP);
         }
         #endregion
         #endregion

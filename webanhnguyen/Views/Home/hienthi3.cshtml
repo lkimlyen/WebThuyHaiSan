@@ -33,24 +33,8 @@
                     </h1>
                     <div class="ty-mainbox-body">
                         <div id="category_products_74">
-
-
-
-
-
-
-
-                            <script type="text/javascript" src="~/Scripts/exceptions.js"></script>
-
-
-
+<script type="text/javascript" src="~/Scripts/exceptions.js"></script>
                             <div class="ty-pagination-container cm-pagination-container" id="pagination_contents">
-
-
-
-
-
-
                                 <div class="ty-sort-container">
                                     <div class="ty-sort-container__views-icons">
                                         <a class="ty-sort-container__views-a" data-ca-target-id="pagination_contents" href="@Url.Action("ProductType","Home", new { id=Session["loai"]})" rel="nofollow">
@@ -119,7 +103,7 @@
 
                                                 <div class="ty-compact-list__image">
                                                     <a href="@Url.Action("Details", "Home", new { id = item.ID })">
-                                                        <img class="ty-pict   " id="det_img_298" src="~/@item.UrlHinh" alt="" title="" />
+                                                        <img class="ty-pict" id="det_img_298" src="~/@item.UrlHinh" style="height: 292px; width: 292px" alt="" title="" />
                                                     </a>
                                                     @if (item.KhuyenMai > 0)
                                                     {
