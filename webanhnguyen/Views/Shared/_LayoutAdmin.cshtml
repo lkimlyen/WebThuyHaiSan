@@ -13,10 +13,24 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-    <script>tinymce.init({ selector: 'textarea' });</script>
+    <script src="//cdn.tinymce.com/4/tinymce.js"></script>
+    <script>
+tinymce.init({
+  selector: 'textarea',
+  height: 500,
+  plugins: [
+    'advlist autolink lists link image charmap print preview anchor',
+    'searchreplace visualblocks code fullscreen',
+    'insertdatetime media table contextmenu paste code'
+  ],
+  toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+  content_css: '//www.tinymce.com/css/codepen.min.css'
+});</script>
 </head>
 <body>
+
     <div id="page-loader"></div>
     <div id="page-container" class="sidebar-l sidebar-o side-scroll header-navbar-fixed">
         <nav id="sidebar">
@@ -40,12 +54,12 @@
                                 </a>
                             </li>
                             <!-- admin management -->
-                            <li>
-                                <a href="@Url.Action("adminManagementView","Admin")">
-                                    <i class="fa fa-users"></i>
-                                    <span class="sidebar-mini-hide">Quản lý admin</span>
-                                </a>
-                            </li>
+                            @*<li>
+                                    <a href="@Url.Action("adminManagementView","Admin")">
+                                        <i class="fa fa-users"></i>
+                                        <span class="sidebar-mini-hide">Quản lý admin</span>
+                                    </a>
+                                </li>*@
                             <!-- shop information -->
                             <li>
                                 <a href="@Url.Action("shopInformationEdit","Shop")">
@@ -74,7 +88,7 @@
                                     <span class="sidebar-mini-hide">Menu bên dưới</span>
                                 </a>
                             </li>
-                         
+
                             <!-- header -->
                             <li>
                                 <a href="@Url.Action("headerEdit","Header")">
@@ -176,16 +190,18 @@
     </div>
     <script type="text/javascript" src="~/assets/Admin/plugins/oneui-fw/js/oneui.min-1.4.js"></script>
     <script type="text/javascript" src="~/assets/Admin/plugins/fancybox/source/jquery.fancybox.js"></script>
-    <script type="text/javascript" src="~/assets/Admin/plugins/tinymce/tinymce.min.js"></script>
-    <script type="text/javascript" src="~/assets/Admin/plugins/tinymce/tinymce.config.js"></script>
+    @*<script type="text/javascript" src="~/assets/Admin/plugins/tinymce/tinymce.min.js"></script>
+        <script type="text/javascript" src="~/assets/Admin/plugins/tinymce/tinymce.config.js"></script>*@
     <script type="text/javascript" src="~/assets/Admin/javascript/jquery.number.min.js"></script>
     <script type="text/javascript" src="~/assets/Admin/javascript/custom.js"></script>
     <script type="text/javascript" src="~/assets/Admin/javascript/admin.js"></script>
-    <script src="~/assets/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
-    <script>
+    @*<script src="~/assets/plugins/tinymce/js/tinymce/tinymce.min.js"></script>*@
+    @*<script>
         tinymce.init({
-            theme: "simple",
-            mode: "textareas"
-        });</script>
+            theme: "advanced",
+            mode: "textareas",
+            plugins : "autolink,lists,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template"
+
+        });</script>*@
 </body>
 </html>
