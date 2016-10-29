@@ -1045,6 +1045,11 @@
     <Content Include="Views\Admin\Member\MemberDetail.cshtml" />
     <Content Include="Views\Home\khuyenmai1.cshtml" />
     <Content Include="Views\Home\khuyenmai2.cshtml" />
+    <Content Include="Views\Home\footer.cshtml" />
+    <Content Include="Views\Home\menuinfo.cshtml" />
+    <Content Include="Views\Home\infomation.cshtml" />
+    <Content Include="Views\Home\MenuBottom.cshtml" />
+    <Content Include="Views\Home\Sodoweb.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

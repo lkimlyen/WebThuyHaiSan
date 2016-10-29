@@ -44,7 +44,7 @@ namespace webanhnguyen.Controllers
                         Session["ID"] = kh.id;
                         //Lưu các thông tin vào Session
                         Session["Email"] = kh;
-                        Session["email"] = kh.email;
+                        Session["emailstring"] = kh.email;
                         if (Session["Giohang"] == null)
                         {//Chuyển đến trang thông báo Login thành công (Ở đây không dùng được RedirectToAction vì [ChildActionOnly])
                             return Content("<script>alert('Đăng nhập thành công!');window.location='/Home/Index';</script>");
@@ -94,7 +94,7 @@ namespace webanhnguyen.Controllers
                         Session["ID"] = kh.id;
                         //Lưu các thông tin vào Session
                         Session["Email"] = kh;
-                        Session["email"] = kh.email;
+                        Session["emailstring"] = kh.email;
                         if (Session["Giohang"] == null)
                             {//Chuyển đến trang thông báo Login thành công (Ở đây không dùng được RedirectToAction vì [ChildActionOnly])
                             return Content("<script>window.location='/Home/Index';</script>");
@@ -146,43 +146,20 @@ namespace webanhnguyen.Controllers
             {
                   
                 //Lấy giá trị ở Form ChangePassword
-                string _Email = collection["email"];
-                string _PassNew = collection["password1"];
-                string _RePassNew = collection["password2"];
-                string _Name = collection["name"];
-                string _SDT = collection["phone"];
-                string _Address = collection["address"];
-                string _State = collection["state"];
-                string _BillingName = collection["billingname"];
-                string _BillingPhone = collection["billingphone"];
-                string _BillingAddress = collection["billingaddress"];
-                string _BillingState = collection["billingstate"];
+                var _Email = collection["email"];
+                var _PassNew = collection["password1"];
+                var _RePassNew = collection["password2"];
+                var _Name = collection["name"];
+                var _SDT = collection["phone"];
+                var _Address = collection["address"];
                 int _MaKH = int.Parse(Session["ID"].ToString());
                 var kh = db.Customers.SingleOrDefault(k => k.id == _MaKH);
-                if (collection["ship_to_another"] == "1")
-                {
                     kh.name = _Name;
                     kh.moblie = _SDT;
                     kh.address = _Address;
-                    kh.state = _State;
+        
                     kh.password = _PassNew;
-                    kh.billingname = _BillingName;
-                    kh.billingphone = _BillingPhone;
-                    kh.billingaddress = _BillingAddress;
-                    kh.billingstate = _BillingState;
-                }
-                else
-                {
-                    kh.name = _Name;
-                    kh.moblie = _SDT;
-                    kh.address = _Address;
-                    kh.state = _State;
-                    kh.password = _PassNew;
-                    kh.billingname = _Name;
-                    kh.billingphone = _SDT;
-                    kh.billingaddress = _Address;
-                    kh.billingstate = _State;
-                }
+                
                 UpdateModel(kh);
                 db.SubmitChanges();
                 return Content("<script>alert('Cập nhật thành công!');window.location='/User/ProfileUpdate';</script>");
@@ -210,9 +187,9 @@ namespace webanhnguyen.Controllers
             try
             {
                 //Lấy giá trị ở Form Register         
-                string _Email = collection["email"];
-                string _Password = collection["password1"];
-                string _RePassword = collection["password2"];
+                var _Email = collection["email"];
+                var _Password = collection["password1"];
+                var _RePassword = collection["password2"];
                 //Kiểm tra xem tài khoản đã có người sử dụng chưa?
                 var _CheckUser = db.Customers.FirstOrDefault(k => k.email == _Email);
                 if (_CheckUser != null)
@@ -267,10 +244,11 @@ namespace webanhnguyen.Controllers
             if (Session["Email"] == null)
                 return RedirectToAction("Index");
             int _MaKH = int.Parse(Session["ID"].ToString());
-            var donhang = (from d in db.Orders
+            var donhang = from d in db.Orders
                            where d.idkh == _MaKH
-                           select d).ToList();
-            return View(donhang);
+                           select d;
+            
+            return View(donhang.ToList());
         }
         #endregion
         #region Đổi trả hàng
@@ -279,15 +257,21 @@ namespace webanhnguyen.Controllers
             return View();
         }
         #endregion
+ 
         #region chi tiết đơn hàng
         public ActionResult OrderDetail(int id)
         {
+            List<OrderDetail> CT_SP = (from n in db.OrderDetails
+                                       from s in db.tbl_Products
+                                       where n.iddh == id && n.idsp == s.ID
+                                       select n).ToList();
 
-            var CT_SP = from c in db.OrderDetails
-                        from d in db.Orders
-                        where c.iddh == d.id
-                        select c;
-            return View(CT_SP.Single());
+            Order order = db.Orders.SingleOrDefault(n => n.id == id );
+           
+            ViewBag.order = (from c in db.Orders where c.id == id select c).ToList();
+            ViewBag.Tongtien = order.price;
+            ViewBag.kh = (from c in db.Customers where c.id == order.idkh  select c).ToList();
+            return View(CT_SP);
         }
         #endregion
         #endregion
