@@ -56,7 +56,7 @@
 
 
                                     <div class="ty-sort-container__views-icons">
-                                        <a class="ty-sort-container__views-a " data-ca-target-id="pagination_contents" href="@Url.Action("Laycatoi","Home")" rel="nofollow">
+                                        <a class="ty-sort-container__views-a " data-ca-target-id="pagination_contents" href="@Url.Action("Laycatuoi","Home")" rel="nofollow">
                                             <i class="ty-icon-products-multicolumns"></i>
                                         </a>
                                         <a class="ty-sort-container__views-a active" data-ca-target-id="pagination_contents" href="@Url.Action("hienthica2","Home")" rel="nofollow">
@@ -68,7 +68,26 @@
                                     </div>
 
                                     <div class="ty-sort-dropdown">
-                                        
+                                        <a id="sw_elm_sort_fields" class="ty-sort-dropdown__wrapper cm-combination">@ViewBag.TenSapXep<i class="ty-sort-dropdown__icon ty-icon-down-micro"></i></a>
+                                        <ul id="elm_sort_fields" class="ty-sort-dropdown__content cm-popup-box hidden">
+                                            <li class="sort-by-timestamp-desc ty-sort-dropdown__content-item">
+                                                <a class="ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="@Url.Action("hienthica2","Home", new {sorting = ViewBag.DateSortParm })" rel="nofollow">Sản phẩm mới</a>
+                                            </li>
+                                            <li class="sort-by-product-desc ty-sort-dropdown__content-item">
+                                                <a class="ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="@Url.Action("hienthica2","Home", new {sorting = ViewBag.NameSortParmasc })" rel="nofollow">Sắp xếp: A đến Z</a>
+                                            </li>
+                                            <li class="sort-by-product-desc ty-sort-dropdown__content-item">
+                                                <a class="ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="@Url.Action("hienthica2","Home", new {sorting = ViewBag.NameSortParm })" rel="nofollow">Sắp xếp: Z to A</a>
+                                            </li>
+                                            <li class="sort-by-price-asc ty-sort-dropdown__content-item">
+                                                <a class="ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="@Url.Action("hienthica2","Home", new {sorting = ViewBag.PriceSortPasc })" rel="nofollow">Sắp xếp Giá: Thấp đến Cao</a>
+                                            </li>
+                                            <li class="sort-by-price-desc ty-sort-dropdown__content-item">
+                                                <a class="ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="@Url.Action("hienthica2","Home", new {sorting = ViewBag.PriceSortParm })" rel="nofollow">Sắp xếp Giá: Cao Đến Thấp</a>
+                                            </li>
+
+                                        </ul>
+
                                     </div>
 
 
@@ -84,83 +103,6 @@
                                 <script type="text/javascript" src="~/Scripts/product_image_gallery.js"></script>
                                 @foreach (var item in Model)
                                 {
-                                    <div class="hidden" id="content_call_request_414" title="Đặt mua ngay">
-                                        <div class="call_requests">
-                                            <form name="call_requests_form" id="form_call_request_414" action="http://thuyhaisancamau.com/" method="post" class="">
-
-                                                <input type="hidden" name="call_data[product_id]" value="414" />
-                                                <div class="ty-cr-product-info-container">
-                                                    <div class="ty-cr-product-info-image">
-                                                        <img class="ty-pict" id="det_img_414" src="~/@item.UrlHinh" style="height: 292px; width: 292px" alt="" title="" />
-                                                    </div>
-                                                    <div class="ty-cr-product-info-header">
-                                                        <h1 class="ty-product-block-title">@item.TenSP</h1>
-                                                        @if (item.KhuyenMai > 0)
-                                                        {
-                                                            <span class="ty-list-price ty-nowrap" id="line_list_price_414"><span class="ty-strike"><span id="sec_list_price_414" class="ty-list-price ty-nowrap">@string.Format("{0:#,##0}", item.GiaCu)</span><span class="ty-list-price ty-nowrap"> đ</span></span></span>
-                                                        }
-                                                        &nbsp;&nbsp;
-                                                        <span class="ty-price" id="line_discounted_price_414"><span id="sec_discounted_price_414" class="ty-price-num">@string.Format("{0:#,##0}", item.GiaHienTai)</span><span class="ty-price-num">đ</span></span>
-                                                    </div>
-
-                                                    <p style="color: #F00; margin-bottom: 10px;">
-                                                        Vui lòng nhập thông tin. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.
-                                                    </p>
-                                                </div>
-
-                                                <div class="ty-control-group">
-                                                    <label class="ty-control-group__title cm-required" for="call_data_call_request_414_name">Tên của bạn</label>
-                                                    <input id="call_data_call_request_414_name" size="50" class="ty-input-text-full" type="text" name="call_data[name]" value="" />
-                                                </div>
-
-                                                <div class="ty-control-group">
-                                                    <label for="call_data_call_request_414_phone" class="ty-control-group__title cm-required">SĐT</label>
-                                                    <input id="call_data_call_request_414_phone" class="ty-input-text-full" size="50" type="text" name="call_data[phone]" value="" />
-                                                </div>
-
-
-                                                <div class="ty-control-group">
-                                                    <label for="call_data_call_request_414_email" class="ty-control-group__title cm-required cm-email">Email</label>
-                                                    <input id="call_data_call_request_414_email" class="ty-input-text-full" size="50" type="text" name="call_data[email]" value="" />
-                                                </div>
-
-                                                <div class="ty-control-group">
-                                                    <label for="call_data_call_request_414_address" class="ty-control-group__title cm-required">Địa chỉ</label>
-                                                    <input id="call_data_call_request_414_address" class="ty-input-text-full" size="50" type="text" name="call_data[address]" value="" />
-                                                </div>
-
-                                                <div class="ty-control-group">
-                                                    <label for="call_data_call_request_414_quantity" class="ty-control-group__title">Số lượng</label>
-                                                    <select id="call_data_call_request_414_quantity" name="call_data[quantity]">
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="6">6</option>
-                                                        <option value="7">7</option>
-                                                        <option value="8">8</option>
-                                                        <option value="9">9</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="cr-popup-error-box">
-                                                    <div class="hidden cm-cr-error-box help-inline">
-                                                        <p>Vui lòng nhập thông tin. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.</p>
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="buttons-container">
-
-
-                                                    <button class="ty-btn__primary ty-btn__big cm-form-dialog-closer ty-btn ty-btn" type="submit" name="dispatch[call_requests.request]">Gửi thông tin</button>
-
-
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
 
 
 
@@ -186,7 +128,7 @@
 
 
                                                         <input type="hidden" name="image[list_image_update_414][data]" value="414,315,315,product" />
-                                                        <img class="ty-pict   " id="det_img_414" src="~/@item.UrlHinh" alt="" title="" />
+                                                        <img class="ty-pict   " id="det_img_414" src="~/@item.UrlHinh" style="height: 315px; width: 315px" alt="" title="" />
 
                                                     </a>
                                                     <!--list_image_update_414-->
@@ -311,6 +253,8 @@
                                     <hr />
                                 }
                             </div>
+                            @if (Model.PageSize > 20)
+                            {
                             <div class="ty-pagination__bottom">
                                 <div class="MenuTrang">
                                     @Html.PagedListPager(Model, page => Url.Action("hienthica2", new { page = page }))
@@ -322,6 +266,7 @@
                                     }
                                 </style>
                             </div>
+                            }
 
                         </div>
                     </div>

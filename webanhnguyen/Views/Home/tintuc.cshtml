@@ -21,10 +21,7 @@
             <div class="span16 main-content-grid">
                 <div class="ty-mainbox-container clearfix">
                     <h1 class="ty-mainbox-title">
-
                         Tin tức
-
-
                     </h1>
                     <div class="ty-mainbox-body">
                         <div class="ty-pagination-container cm-pagination-container" id="pagination_contents">
@@ -55,10 +52,11 @@
 </div>
 </div>
 </div>
+        @if (Model.PageSize > 20)
+        {
                   <div class="ty-pagination__bottom">
                       <div class="MenuTrang">
                           @Html.PagedListPager(Model, page => Url.Action("tintuc", new { page = page }))
-
                       </div>
                       <style>
                           .MenuTrang li {
@@ -66,6 +64,7 @@
                           }
                       </style>
                   </div>
+        }
     </div>
 </div>
 </div>

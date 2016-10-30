@@ -96,33 +96,59 @@ namespace webanhnguyen.Controllers
         }
         #endregion
         #region sản phẩm theo loại
-        public ActionResult ProductType(int id, int? page)
+        public ActionResult ProductType(int id, int? page, string sorting)
         {
-            int pageSize = 16;
+            int pageSize = 20;
             int pageNum = (page ?? 1);
 
             var laysp = from g in db.tbl_Products
                          from h in db.tbl_product_types 
                         where h.ID == id && g.IDLoaiSP == id &&g.Status == true && h.Status == true
                          select g;
-            
             Session["loai"] = id;
             tbl_product_type loai = db.tbl_product_types.SingleOrDefault(n => n.ID == id);
             Session["tenloai"] = loai.TenLoaiSP;
             ViewBag.TenLoai = (from l in db.tbl_product_types
                                where l.ID == id
                                select l);
-                        return View(laysp.ToPagedList(pageNum,pageSize));
+            ViewBag.TenSapXep = "Sắp xếp: A đến Z";
+            ViewBag.NameSortParm = "Name_desc";
+            ViewBag.NameSortParmasc = "Name_asc";
+            ViewBag.DateSortParm = "Date_desc";
+            ViewBag.PriceSortParm = "Price_desc" ;
+            ViewBag.PriceSortPasc = "Price";
+            if (sorting == "Name_desc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp: Z đến A";
+                return View(laysp.OrderByDescending(n => n.TenSP).ToPagedList(pageNum, pageSize));
+            }
+            if (sorting == "Name_asc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp: A đến Z";
+                return View(laysp.OrderBy(n => n.TenSP).ToPagedList(pageNum, pageSize));
+            }
+            if (sorting == "Date_desc")
+            {
+                ViewBag.TenSapXep = "Sản phẩm mới";
+                return View(laysp.OrderByDescending(n => n.NgayCapNhat).ToPagedList(pageNum, pageSize));
+            }
+             if (sorting == "Price_desc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp Giá: Cao Đến Thấp";
+                return View(laysp.OrderByDescending(n => n.GiaHienTai).ToPagedList(pageNum, pageSize));
+            }
+
+            if (sorting == "Price")
+            {
+                ViewBag.TenSapXep = "Sắp xếp Giá: Thấp đến Cao";
+                return View(laysp.OrderBy(n => n.GiaHienTai).ToPagedList(pageNum, pageSize));
+            }
+            return View(laysp.ToPagedList(pageNum,pageSize));
         }
-
-       
-
-
-        
-        public ActionResult hienthi2(int id, int? page)
+        public ActionResult hienthi2(int id, int? page, string sorting)
         {
 
-            int pageSize = 16;
+            int pageSize = 20;
             int pageNum = (page ?? 1);
             var laysp = from g in db.tbl_Products
                         from h in db.tbl_product_types
@@ -132,11 +158,44 @@ namespace webanhnguyen.Controllers
                                where l.ID == id
                                select l);
             Session["loai"] = id;
+            ViewBag.TenSapXep = "Sắp xếp: A đến Z";
+           
+            ViewBag.NameSortParm = "Name_desc";
+            ViewBag.NameSortParmasc = "Name_asc";
+            ViewBag.DateSortParm = "Date_desc";
+            ViewBag.PriceSortParm = "Price_desc";
+            ViewBag.PriceSortPasc = "Price";
+            if (sorting == "Name_desc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp: Z đến A";
+                return View(laysp.OrderByDescending(n => n.TenSP).ToPagedList(pageNum, pageSize));
+            }
+            if (sorting == "Name_asc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp: A đến Z";
+                return View(laysp.OrderBy(n => n.TenSP).ToPagedList(pageNum, pageSize));
+            }
+            if (sorting == "Date_desc")
+            {
+                ViewBag.TenSapXep = "Sản phẩm mới";
+                return View(laysp.OrderByDescending(n => n.NgayCapNhat).ToPagedList(pageNum, pageSize));
+            }
+            if (sorting == "Price_desc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp Giá: Cao Đến Thấp";
+                return View(laysp.OrderByDescending(n => n.GiaHienTai).ToPagedList(pageNum, pageSize));
+            }
+
+            if (sorting == "Price")
+            {
+                ViewBag.TenSapXep = "Sắp xếp Giá: Thấp đến Cao";
+                return View(laysp.OrderBy(n => n.GiaHienTai).ToPagedList(pageNum, pageSize));
+            }
             return View(laysp.ToPagedList(pageNum,pageSize));       
-    }
-        public ActionResult hienthi3(int id, int ? page)
+        }
+        public ActionResult hienthi3(int id, int ? page, string sorting)
         {
-            int pageSize = 16;
+            int pageSize = 20;
             int pageNum = (page ?? 1);
             var laysp = from g in db.tbl_Products
                         from h in db.tbl_product_types
@@ -146,65 +205,227 @@ namespace webanhnguyen.Controllers
                                where l.ID == id
                                select l);
             Session["loai"] = id;
+            ViewBag.TenSapXep = "Sắp xếp: A đến Z";
+            ViewBag.NameSortParm = "Name_desc";
+            ViewBag.NameSortParmasc = "Name_asc";
+            ViewBag.DateSortParm = "Date_desc";
+            ViewBag.PriceSortParm = "Price_desc";
+            ViewBag.PriceSortPasc = "Price";
+            if (sorting == "Name_desc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp: Z đến A";
+                return View(laysp.OrderByDescending(n => n.TenSP).ToPagedList(pageNum, pageSize));
+            }
+            if (sorting == "Name_asc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp: A đến Z";
+                return View(laysp.OrderBy(n => n.TenSP).ToPagedList(pageNum, pageSize));
+            }
+            if (sorting == "Date_desc")
+            {
+                ViewBag.TenSapXep = "Sản phẩm mới";
+                return View(laysp.OrderByDescending(n => n.NgayCapNhat).ToPagedList(pageNum, pageSize));
+            }
+            if (sorting == "Price_desc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp Giá: Cao Đến Thấp";
+                return View(laysp.OrderByDescending(n => n.GiaHienTai).ToPagedList(pageNum, pageSize));
+            }
+
+            if (sorting == "Price")
+            {
+                ViewBag.TenSapXep = "Sắp xếp Giá: Thấp đến Cao";
+                return View(laysp.OrderBy(n => n.GiaHienTai).ToPagedList(pageNum, pageSize));
+            }
+
             return View(laysp.ToPagedList(pageNum, pageSize));
         }
         #endregion
 
         #region sản phẩm theo loại
-        public ActionResult Laycatuoi(int ? page)
+        public ActionResult Laycatuoi(int ? page, string sorting)
         {
-            int pageSize = 16;
+            int pageSize = 20;
             int pageNum = (page ?? 1);
             var laysp = from g in db.tbl_Products
+                        where g.CaTuoiMoiNgay == true && g.Status == true
                          orderby g.NgayCapNhat descending
                          select g;
            
             tbl_menu tenmenu = db.tbl_menus.SingleOrDefault(n => n.id == 5);
             Session["TenMenu"] = tenmenu.TenMenu;
+            ViewBag.TenSapXep = "Sắp xếp: A đến Z";
+
+            ViewBag.NameSortParm = "Name_desc";
+            ViewBag.NameSortParmasc = "Name_asc";
+            ViewBag.DateSortParm = "Date_desc";
+            ViewBag.PriceSortParm = "Price_desc";
+            ViewBag.PriceSortPasc = "Price";
+            if (sorting == "Name_desc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp: Z đến A";
+                return View(laysp.OrderByDescending(n => n.TenSP).ToPagedList(pageNum, pageSize));
+            }
+            if (sorting == "Name_asc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp: A đến Z";
+                return View(laysp.OrderBy(n => n.TenSP).ToPagedList(pageNum, pageSize));
+            }
+            if (sorting == "Date_desc")
+            {
+                ViewBag.TenSapXep = "Sản phẩm mới";
+                return View(laysp.OrderByDescending(n => n.NgayCapNhat).ToPagedList(pageNum, pageSize));
+            }
+            if (sorting == "Price_desc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp Giá: Cao Đến Thấp";
+                return View(laysp.OrderByDescending(n => n.GiaHienTai).ToPagedList(pageNum, pageSize));
+            }
+
+            if (sorting == "Price")
+            {
+                ViewBag.TenSapXep = "Sắp xếp Giá: Thấp đến Cao";
+                return View(laysp.OrderBy(n => n.GiaHienTai).ToPagedList(pageNum, pageSize));
+            }
             return View(laysp.ToPagedList(pageNum, pageSize));
         }
         
-        public ActionResult hienthica2(int ? page)
+        public ActionResult hienthica2(int ? page, string sorting)
         {
-            int pageSize = 16;
+            int pageSize = 20;
             int pageNum = (page ?? 1);
 
-            var laysp = (from g in db.tbl_Products
-                         orderby g.NgayCapNhat descending
-                         select g).ToPagedList(pageNum, pageSize);
+            var laysp = from g in db.tbl_Products
+                        where g.CaTuoiMoiNgay == true && g.Status == true
+                        orderby g.NgayCapNhat descending
+                        select g;
             ViewBag.tenmenu = (from s in db.tbl_menus where s.id == 5 select s);
-            return View(laysp);
+            ViewBag.TenSapXep = "Sắp xếp: A đến Z";
+
+            ViewBag.NameSortParm = "Name_desc";
+            ViewBag.NameSortParmasc = "Name_asc";
+            ViewBag.DateSortParm = "Date_desc";
+            ViewBag.PriceSortParm = "Price_desc";
+            ViewBag.PriceSortPasc = "Price";
+            if (sorting == "Name_desc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp: Z đến A";
+                return View(laysp.OrderByDescending(n => n.TenSP).ToPagedList(pageNum, pageSize));
+            }
+            if (sorting == "Name_asc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp: A đến Z";
+                return View(laysp.OrderBy(n => n.TenSP).ToPagedList(pageNum, pageSize));
+            }
+            if (sorting == "Date_desc")
+            {
+                ViewBag.TenSapXep = "Sản phẩm mới";
+                return View(laysp.OrderByDescending(n => n.NgayCapNhat).ToPagedList(pageNum, pageSize));
+            }
+            if (sorting == "Price_desc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp Giá: Cao Đến Thấp";
+                return View(laysp.OrderByDescending(n => n.GiaHienTai).ToPagedList(pageNum, pageSize));
+            }
+
+            if (sorting == "Price")
+            {
+                ViewBag.TenSapXep = "Sắp xếp Giá: Thấp đến Cao";
+                return View(laysp.OrderBy(n => n.GiaHienTai).ToPagedList(pageNum, pageSize));
+            }
+            return View(laysp.ToPagedList(pageNum, pageSize));
         }
-        public ActionResult hienthica3(int ? page)
+        public ActionResult hienthica3(int ? page, string sorting)
         {
-            int pageSize = 16;
+            int pageSize = 20;
             int pageNum = (page ?? 1);
 
-            var laysp = (from g in db.tbl_Products
-                         orderby g.NgayCapNhat descending
-                         select g).ToPagedList( pageNum, pageSize);
+            var laysp = from g in db.tbl_Products
+                        where g.CaTuoiMoiNgay == true && g.Status == true
+                        orderby g.NgayCapNhat descending
+                        select g;
             ViewBag.tenmenu = (from s in db.tbl_menus where s.id == 5 select s);
-            return View(laysp);
+            ViewBag.TenSapXep = "Sắp xếp: A đến Z";
+
+            ViewBag.NameSortParm = "Name_desc";
+            ViewBag.NameSortParmasc = "Name_asc";
+            ViewBag.DateSortParm = "Date_desc";
+            ViewBag.PriceSortParm = "Price_desc";
+            ViewBag.PriceSortPasc = "Price";
+            if (sorting == "Name_desc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp: Z đến A";
+                return View(laysp.OrderByDescending(n => n.TenSP).ToPagedList(pageNum, pageSize));
+            }
+            if (sorting == "Name_asc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp: A đến Z";
+                return View(laysp.OrderBy(n => n.TenSP).ToPagedList(pageNum, pageSize));
+            }
+            if (sorting == "Date_desc")
+            {
+                ViewBag.TenSapXep = "Sản phẩm mới";
+                return View(laysp.OrderByDescending(n => n.NgayCapNhat).ToPagedList(pageNum, pageSize));
+            }
+            if (sorting == "Price_desc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp Giá: Cao Đến Thấp";
+                return View(laysp.OrderByDescending(n => n.GiaHienTai).ToPagedList(pageNum, pageSize));
+            }
+
+            if (sorting == "Price")
+            {
+                ViewBag.TenSapXep = "Sắp xếp Giá: Thấp đến Cao";
+                return View(laysp.OrderBy(n => n.GiaHienTai).ToPagedList(pageNum, pageSize));
+            }
+            return View(laysp.ToPagedList(pageNum, pageSize));
         }
         #endregion
         #region Sản phẩm tìm kiếm (Search)
-        [HttpPost]
-        public ActionResult Search(FormCollection f, int ? page)
+        [HttpGet]
+        public ActionResult Search(string txttimkiem, string sorting, int ? page)
         {
-            string tukhoa = f["txttimkiem"];
+            int pageNum = (page ?? 1);
+            int pageSize = 20;
+            string tukhoa = txttimkiem;
+            if (String.IsNullOrEmpty(tukhoa))
+                tukhoa = "";
             ViewBag.tukhoa = tukhoa;
+            Session["timkiem"] = txttimkiem;
             List<tbl_Product> sp = db.tbl_Products.Where(n => n.TenSP.Contains(tukhoa)).ToList();
-           
-           
-            return View(sp.OrderBy(n => n.TenSP).ToList());
-        }
-        [HttpPost]
-        public ActionResult Search(string tukhoa)
-        {
-            ViewBag.tukhoa = tukhoa;
-            List<tbl_Product> sp = db.tbl_Products.Where(n => n.TenSP.Contains(tukhoa)).ToList();
-            return View(sp.OrderBy(n => n.TenSP).ToList());
+            ViewBag.TenSapXep = "Sắp xếp: A đến Z";
+            ViewBag.NameSortParm = "Name_desc";
+            ViewBag.NameSortParmasc = "Name_asc";
+            ViewBag.DateSortParm = "Date_desc";
+            ViewBag.PriceSortParm = "Price_desc";
+            ViewBag.PriceSortPasc = "Price";
+            if (sorting == "Name_desc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp: Z đến A";
+                return View(sp.OrderByDescending(n => n.TenSP).ToPagedList(pageNum, pageSize));
+            }
+            if (sorting == "Name_asc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp: A đến Z";
+                return View(sp.OrderBy(n => n.TenSP).ToPagedList(pageNum, pageSize));
+            }
+            if (sorting == "Date_desc")
+            {
+                ViewBag.TenSapXep = "Sản phẩm mới";
+                return View(sp.OrderByDescending(n => n.NgayCapNhat).ToPagedList(pageNum, pageSize));
+            }
+            if (sorting == "Price_desc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp Giá: Cao Đến Thấp";
+                return View(sp.OrderByDescending(n => n.GiaHienTai).ToPagedList(pageNum, pageSize));
+            }
 
+            if (sorting == "Price")
+            {
+                ViewBag.TenSapXep = "Sắp xếp Giá: Thấp đến Cao";
+                return View(sp.OrderBy(n => n.GiaHienTai).ToPagedList(pageNum, pageSize));
+            }
+            return View(sp.OrderBy(n => n.TenSP).ToPagedList(pageNum, pageSize));
         }
         #endregion
         #region menutop
@@ -225,16 +446,16 @@ namespace webanhnguyen.Controllers
         {
             //Lấy ra danh sách Menu
             var header = (from mn in db.tbl_headers where mn.id == 1
-                           select mn).ToList();
+                           select mn);
            
-            return PartialView(header);
+            return PartialView(header.Single());
         }
         #endregion
         #region tintuc
         public ActionResult tintuc(int ? page)
         {
             int pageNume = (page ?? 1);
-            int pageSize = 16;
+            int pageSize = 20;
             var tintuc = (from tt in db.tbl_news
                      where tt.status == true
                      orderby tt.NgayCapNhat descending
@@ -260,34 +481,133 @@ namespace webanhnguyen.Controllers
 
         #endregion
         #region khuyenmai
-        public ActionResult khuyenmai(int ? page)
+        public ActionResult khuyenmai(int ? page, string sorting)
         {
             int pageNume = (page ?? 1);
-            int pageSize = 16;
+            int pageSize = 20;
             var km = (from k in db.tbl_Products
                           where k.Status == true && k.KhuyenMai > 0
                         
-                          select k).ToPagedList(pageNume,pageSize);
-            return View(km);
+                          select k);
+            ViewBag.TenSapXep = "Sắp xếp: A đến Z";
+            ViewBag.NameSortParm = "Name_desc";
+            ViewBag.NameSortParmasc = "Name_asc";
+            ViewBag.DateSortParm = "Date_desc";
+            ViewBag.PriceSortParm = "Price_desc";
+            ViewBag.PriceSortPasc = "Price";
+            if (sorting == "Name_desc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp: Z đến A";
+                return View(km.OrderByDescending(n => n.TenSP).ToPagedList(pageNume, pageSize));
+            }
+            if (sorting == "Name_asc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp: A đến Z";
+                return View(km.OrderBy(n => n.TenSP).ToPagedList(pageNume, pageSize));
+            }
+            if (sorting == "Date_desc")
+            {
+                ViewBag.TenSapXep = "Sản phẩm mới";
+                return View(km.OrderByDescending(n => n.NgayCapNhat).ToPagedList(pageNume, pageSize));
+            }
+            if (sorting == "Price_desc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp Giá: Cao Đến Thấp";
+                return View(km.OrderByDescending(n => n.GiaHienTai).ToPagedList(pageNume, pageSize));
+            }
+
+            if (sorting == "Price")
+            {
+                ViewBag.TenSapXep = "Sắp xếp Giá: Thấp đến Cao";
+                return View(km.OrderBy(n => n.GiaHienTai).ToPagedList(pageNume, pageSize));
+            }
+
+            return View(km.ToPagedList(pageNume, pageSize));
         }
-        public ActionResult khuyenmai1(int ? page)
+        public ActionResult khuyenmai1(int ? page, string sorting)
         {
             int pageNume = (page ?? 1);
-            int pageSize = 16;
+            int pageSize = 20;
             var km = (from k in db.tbl_Products
                       where k.Status == true && k.KhuyenMai > 0
                      
-                      select k).ToPagedList(pageNume,pageSize);
-            return View(km);
+                      select k);
+            ViewBag.TenSapXep = "Sắp xếp: A đến Z";
+            ViewBag.NameSortParm = "Name_desc";
+            ViewBag.NameSortParmasc = "Name_asc";
+            ViewBag.DateSortParm = "Date_desc";
+            ViewBag.PriceSortParm = "Price_desc";
+            ViewBag.PriceSortPasc = "Price";
+            if (sorting == "Name_desc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp: Z đến A";
+                return View(km.OrderByDescending(n => n.TenSP).ToPagedList(pageNume, pageSize));
+            }
+            if (sorting == "Name_asc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp: A đến Z";
+                return View(km.OrderBy(n => n.TenSP).ToPagedList(pageNume, pageSize));
+            }
+            if (sorting == "Date_desc")
+            {
+                ViewBag.TenSapXep = "Sản phẩm mới";
+                return View(km.OrderByDescending(n => n.NgayCapNhat).ToPagedList(pageNume, pageSize));
+            }
+            if (sorting == "Price_desc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp Giá: Cao Đến Thấp";
+                return View(km.OrderByDescending(n => n.GiaHienTai).ToPagedList(pageNume, pageSize));
+            }
+
+            if (sorting == "Price")
+            {
+                ViewBag.TenSapXep = "Sắp xếp Giá: Thấp đến Cao";
+                return View(km.OrderBy(n => n.GiaHienTai).ToPagedList(pageNume, pageSize));
+            }
+
+            return View(km.ToPagedList(pageNume, pageSize));
         }
-        public ActionResult khuyenmai2(int ? page)
+        public ActionResult khuyenmai2(int ? page, string sorting)
         {
             int pageNume = (page ?? 1);
-            int pageSize = 16;
+            int pageSize = 20;
             var km = (from k in db.tbl_Products
                       where k.Status == true && k.KhuyenMai > 0
-                      select k).ToPagedList(pageNume,pageSize);
-            return View(km);
+                      select k);
+            ViewBag.TenSapXep = "Sắp xếp: A đến Z";
+            ViewBag.NameSortParm = "Name_desc";
+            ViewBag.NameSortParmasc = "Name_asc";
+            ViewBag.DateSortParm = "Date_desc";
+            ViewBag.PriceSortParm = "Price_desc";
+            ViewBag.PriceSortPasc = "Price";
+            if (sorting == "Name_desc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp: Z đến A";
+                return View(km.OrderByDescending(n => n.TenSP).ToPagedList(pageNume, pageSize));
+            }
+            if (sorting == "Name_asc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp: A đến Z";
+                return View(km.OrderBy(n => n.TenSP).ToPagedList(pageNume, pageSize));
+            }
+            if (sorting == "Date_desc")
+            {
+                ViewBag.TenSapXep = "Sản phẩm mới";
+                return View(km.OrderByDescending(n => n.NgayCapNhat).ToPagedList(pageNume, pageSize));
+            }
+            if (sorting == "Price_desc")
+            {
+                ViewBag.TenSapXep = "Sắp xếp Giá: Cao Đến Thấp";
+                return View(km.OrderByDescending(n => n.GiaHienTai).ToPagedList(pageNume, pageSize));
+            }
+
+            if (sorting == "Price")
+            {
+                ViewBag.TenSapXep = "Sắp xếp Giá: Thấp đến Cao";
+                return View(km.OrderBy(n => n.GiaHienTai).ToPagedList(pageNume, pageSize));
+            }
+
+            return View(km.ToPagedList(pageNume, pageSize));
         }
         #endregion
         #region footer
