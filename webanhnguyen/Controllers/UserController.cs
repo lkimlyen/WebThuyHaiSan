@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using webanhnguyen.Models;
-using System.IO;
+using PagedList;
 namespace webanhnguyen.Controllers
 {
     public class UserController : Controller
@@ -243,16 +243,23 @@ namespace webanhnguyen.Controllers
         }
         #endregion
         #region Đơn hàng
-        public ActionResult Order()
+        public ActionResult Order(int ? page, string sorting)
         {
+            int pageNum = (page ?? 1);
+            int pageSize = 20;
             if (Session["Email"] == null)
                 return RedirectToAction("Login");
             int _MaKH = int.Parse(Session["ID"].ToString());
             var donhang = from d in db.Orders
                            where d.idkh == _MaKH
                            select d;
+            ViewBag.DateSortParm = "Date_desc";
+            if(sorting == "Date_desc")
+            {
+                return View(donhang.OrderByDescending(n => n.thoidiemdathang).ToPagedList(pageNum, pageSize));
+            }
             
-            return View(donhang.ToList());
+            return View(donhang.ToPagedList(pageNum, pageSize));
         }
         #endregion
        

@@ -1,5 +1,5 @@
-﻿@model IEnumerable<webanhnguyen.Models.Order>
-
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<webanhnguyen.Models.Order>
 @{
     ViewBag.Title = "Đơn hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -33,15 +33,15 @@
                               <div class="ty-pagination-container cm-pagination-container" id="pagination_contents">
 <table class="ty-table ty-orders-search">
                                 <thead>
-                                    <tr>
-                                        <th><a class="" href="" data-ca-target-id="pagination_contents">ID</a></th>
-                                        <th><a class="" href="" data-ca-target-id="pagination_contents">Trang thái</a></th>
-                                        <th><a class="" href="" data-ca-target-id="pagination_contents">Tên người nhận</a></th>
-                                        <th><a class="" href="" data-ca-target-id="pagination_contents">Địa chỉ</a></th>
-                                        <th><a class="" href="" data-ca-target-id="pagination_contents">Số điện thoại</a></th>
-                                        <th><a class="" href="" data-ca-target-id="pagination_contents">Email</a></th>
-                                        <th><a class="" href="" data-ca-target-id="pagination_contents">Ngày đặt</a><i class="ty-icon-up-dir"></i></th>
-                                        <th><a class="" href="" data-ca-target-id="pagination_contents">Tổng cộng</a></th>
+                                    <tr style="text-align: center">
+                                        <th style="text-align: center" ><a class="" href="" data-ca-target-id="pagination_contents">ID</a></th>
+                                        <th style="text-align: center"><a class="" href="" data-ca-target-id="pagination_contents">Trạng thái</a></th>
+                                        <th style="text-align: center"><a class="" href="" data-ca-target-id="pagination_contents">Tên người nhận</a></th>
+                                        <th style="text-align: center"><a class="" href="" data-ca-target-id="pagination_contents">Địa chỉ</a></th>
+                                        <th style="text-align: center"><a class="" href="" data-ca-target-id="pagination_contents">Số điện thoại</a></th>
+                                        <th style="text-align: center"><a class="" href="" data-ca-target-id="pagination_contents">Email</a></th>
+                                        <th style="text-align: center"><a class="" href="@Url.Action("Order","User", new {sorting = ViewBag.DateSortParm})" data-ca-target-id="pagination_contents">Ngày đặt</a><i class="ty-icon-up-dir"></i></th>
+                                        <th style="text-align: center"><a class="" href="" data-ca-target-id="pagination_contents">Tổng cộng</a></th>
                                     </tr>
                                 </thead>
                                 @if (@Model.Count() == 0)
@@ -74,7 +74,6 @@
                                     <td class="ty-orders-search__item">
                                         <ul class="ty-orders-search__user-info">
                                             <li class="ty-orders-search__user-name">@item.tennguoinhan </li>
-                                            <li class="ty-orders-search__user-mail"><a href="mailto:@item.gmail">@item.gmail</a></li>
                                         </ul>
                                     </td>
                                     <td class="ty-orders-search__item">
@@ -106,6 +105,21 @@
 
 
                     </div>
+                        @if (Model.PageSize > 20)
+                        {
+                            <div class="ty-pagination__bottom">
+                                <div class="MenuTrang">
+                                    @Html.PagedListPager(Model, page => Url.Action("Order", new { page = page }))
+
+                                </div>
+                                <style>
+                                    .MenuTrang li {
+                                        display: inline;
+                                    }
+                                </style>
+                            </div>
+                        }
+
                 </div>
             </div>
         </div>
