@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using webanhnguyen.Models;
 using System.IO;
+using PagedList;
 
 namespace webanhnguyen.Controllers.Admin
 {
@@ -54,7 +55,7 @@ namespace webanhnguyen.Controllers.Admin
          */
         public ActionResult Index()
         {
-            return MemberView();
+            return MemberView(1);
         }
         /*
          * 
@@ -62,10 +63,12 @@ namespace webanhnguyen.Controllers.Admin
          * 
          */
         [HttpGet]
-        public ActionResult MemberView()
+        public ActionResult MemberView(int ? page)
         {
+            int pageNum = (page ?? 1);
+            int pageSize = 20;
             var listMember = getMember(10);
-            return View(URLHelper.URL_ADMIN_MEMBER, listMember);
+            return View(URLHelper.URL_ADMIN_MEMBER, listMember.ToPagedList(pageNum,pageSize));
         }
         [HttpPost]
         public ActionResult MemberView(FormCollection form, String btnDel)
@@ -110,7 +113,7 @@ namespace webanhnguyen.Controllers.Admin
             {
                 return View(URLHelper.URL_ADMIN_MEMBER_DETAIL, getOneMember(Int32.Parse(id)));
             }
-            return MemberView();
+            return MemberView(1);
         }
         /*
       *
@@ -176,7 +179,7 @@ namespace webanhnguyen.Controllers.Admin
                     ViewBag.AlertError = "Không xoá được";
                 }
             }
-            return MemberView();
+            return MemberView(1);
         }
     }
 }

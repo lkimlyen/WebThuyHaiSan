@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using webanhnguyen.Models;
 using System.IO;
+using PagedList;
 
 namespace webanhnguyen.Controllers.Admin
 {
@@ -80,7 +81,7 @@ namespace webanhnguyen.Controllers.Admin
          */
         public ActionResult Index()
         {
-            return OrderView();
+            return OrderView(1);
         }
 
         [HttpGet]
@@ -162,10 +163,12 @@ namespace webanhnguyen.Controllers.Admin
          * 
          */
         [HttpGet]
-        public ActionResult OrderView()
+        public ActionResult OrderView(int ? page)
         {
+            int pageNum = (page ?? 1);
+            int pageSize = 20;
             var listOrder = getOrder(10);
-            return View(URLHelper.URL_ADMIN_ORDER, listOrder);
+            return View(URLHelper.URL_ADMIN_ORDER, listOrder.ToPagedList(pageNum, pageSize));
         }
         [HttpPost]
         public ActionResult OrderView(FormCollection form, String btnDel)
@@ -222,7 +225,7 @@ namespace webanhnguyen.Controllers.Admin
                     ViewBag.AlertError = "Không xoá được";
                 }
             }
-            return OrderView();
+            return OrderView(1);
         }
 
         public ActionResult OrderDetailDelete(String id, int idorder)

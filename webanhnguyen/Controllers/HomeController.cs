@@ -433,10 +433,9 @@ namespace webanhnguyen.Controllers
         public ActionResult MenuTop()
         {
             //Lấy ra danh sách Menu
-            var MenuTop = (from mn in db.tbl_menus
+            var MenuTop = (from mn in db.tbl_product_types
                            where mn.Status == true
-                              orderby mn.ThuTu
-                              select mn).ToList();
+                                        select mn).ToList();
             return PartialView(MenuTop);
         }
         #endregion
@@ -626,11 +625,11 @@ namespace webanhnguyen.Controllers
         public ActionResult MenuBottom()
         {
             //Lấy ra danh sách Menu
-            var MenuBottom = (from mn in db.tbl_menubottoms
-                              where mn.status == true
-                              orderby mn.thutu
+            var menu = (from mn in db.tbl_informations
+                              where mn.Status == true 
+                         
                               select mn).ToList();
-            return PartialView(MenuBottom);
+            return PartialView(menu);
         }
         #endregion
         #region sodoweb

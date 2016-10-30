@@ -12,7 +12,7 @@
                 <div class="news-description">
                     <h3><a href="@Url.Action("Reader", "Home", new { id = item.id })">@item.TieuDe</a></h3>
                     <div class="excerpt">
-                        @item.TomTat
+                        @Html.Raw(item.TomTat)
                     </div>
                 </div>
             </div>

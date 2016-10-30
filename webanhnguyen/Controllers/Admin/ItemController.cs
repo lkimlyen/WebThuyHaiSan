@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using webanhnguyen.Models;
 using System.IO;
-
+using PagedList;
 namespace webanhnguyen.Controllers.Admin
 {
     public class ItemController : BaseAdminController
@@ -75,7 +75,7 @@ namespace webanhnguyen.Controllers.Admin
          */
         public ActionResult Index()
         {
-            return itemView();
+            return itemView(1);
         }
 
         public ActionResult ItemSetStatusEnable(int id)
@@ -103,10 +103,12 @@ namespace webanhnguyen.Controllers.Admin
          * 
          */
         [HttpGet]
-        public ActionResult itemView()
+        public ActionResult itemView(int ? page)
         {
+            int pageNum = (page ?? 1);
+            int pageSize = 20;
             var listItem = getItem(50);
-            return View(URLHelper.URL_ADMIN_ITEM, listItem);
+            return View(URLHelper.URL_ADMIN_ITEM, listItem.ToPagedList(pageNum,pageSize));
         }
         [HttpPost]
         public ActionResult itemView(FormCollection form, String btnDel)
@@ -354,7 +356,7 @@ namespace webanhnguyen.Controllers.Admin
                     ViewBag.AlertError = "Không xoá được";
                 }
             }
-            return itemView();
+            return itemView(1);
         }
     }
 }

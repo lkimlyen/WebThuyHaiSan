@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using webanhnguyen.Models;
 using System.IO;
+using PagedList;
 
 namespace webanhnguyen.Controllers.Admin
 {
@@ -48,7 +49,7 @@ namespace webanhnguyen.Controllers.Admin
             return itemCategory.Single();
         }
         
-        public ActionResult ItemSetStatusEnable(int id)
+        public ActionResult ItemCategorySetStatusEnable(int id)
         {
             tbl_product_type tic = getOneItemCategory(id);
             tic.Status = !tic.Status;
@@ -64,7 +65,7 @@ namespace webanhnguyen.Controllers.Admin
          */
         public ActionResult Index()
         {
-            return itemCategoryView();
+            return itemCategoryView(1);
         }
         /*
          * 
@@ -72,10 +73,12 @@ namespace webanhnguyen.Controllers.Admin
          * 
          */
         [HttpGet]
-        public ActionResult itemCategoryView()
+        public ActionResult itemCategoryView(int ? page)
         {
+            int pageNum = (page ?? 1);
+            int pageSize = 20;
             var listItemCategory = getItemCategory(10);
-            return View(URLHelper.URL_ADMIN_ITEM_CATEGORY, listItemCategory);
+            return View(URLHelper.URL_ADMIN_ITEM_CATEGORY, listItemCategory.ToPagedList(pageNum,pageSize));
         }
         [HttpPost]
         public ActionResult itemCategoryView(FormCollection form, String btnDel)
@@ -206,7 +209,7 @@ namespace webanhnguyen.Controllers.Admin
                     ViewBag.AlertError = "Không xoá được";
                 }
             }
-            return itemCategoryView();
+            return itemCategoryView(1);
         }
     }
 }
