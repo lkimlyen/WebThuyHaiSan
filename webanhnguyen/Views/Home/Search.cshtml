@@ -1,4 +1,5 @@
-﻿@model IEnumerable<webanhnguyen.Models.tbl_Product>
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<webanhnguyen.Models.tbl_Product>
 
 @{
     ViewBag.Title = "Search";
@@ -30,182 +31,35 @@
                     </h1>
                     <div class="ty-mainbox-body">
                         <div id="products_search_74">
-                            <div class="ty-section ty-search-form" id="ds_679791332">
-                                <div class="ty-section__title  cm-combination cm-save-state cm-ss-reverse" id="sw_s_02bd5be3772a4009083c4a8a8dd72eca">
-                                    <span>Tùy chọn tìm kiếm</span>
-                                    <span class="ty-section__switch ty-section_switch_on">Mở<i class="ty-section__arrow ty-icon-down-open"></i></span>
-                                    <span class="ty-section__switch ty-section_switch_off">Ẩn<i class="ty-section__arrow ty-icon-up-open"></i></span>
-                                </div>
-                                <div id="s_02bd5be3772a4009083c4a8a8dd72eca" class="ty-section__body hidden">
-                                    <form action="/Home/Index" name="advanced_search_form" method="get" class="">
-                                        <input type="hidden" name="search_performed" value="Y" />
-                                        <div class="ty-control-group">
-                                            <label for="match" class="ty-control-group__title">Tìm kiếm kết quả với</label>
-                                            <select name="match" id="match">
-                                                <option value="any">Một trong các từ</option>
-                                                <option value="all">Tất cả các từ</option>
-                                                <option value="exact">Chính xác cụm từ</option>
-                                            </select>&nbsp;&nbsp;
-                                            <input type="text" name="q" size="38" value="cua" class="ty-search-form__input ty-search-form__input-large" />
-                                        </div>
-
-                                        <div class="ty-control-group">
-                                            <label class="ty-control-group__title">Tìm kiếm trong</label>
-                                            <div class="ty-select-field">
-                                                <input type="hidden" name="pname" value="N" />
-                                                <label for="pname" class="ty-select-field__label">
-                                                    <input type="checkbox" value="Y" checked="checked" name="pname" id="pname" class="checkbox ty-select-field__checkbox" />Tên sản phẩm
-                                                </label>
-
-                                                <label for="pshort" class="ty-select-field__label">
-                                                    <input type="checkbox" value="Y" checked="checked" name="pshort" id="pshort" class="checkbox ty-select-field__checkbox" />Mô tả ngắn
-                                                </label>
-
-                                                <label for="pfull" class="ty-select-field__label">
-                                                    <input type="checkbox" value="Y" checked="checked" name="pfull" id="pfull" class="checkbox ty-select-field__checkbox" />Mô tả đầy đủ
-                                                </label>
-
-                                                <label for="pkeywords" class="ty-select-field__label">
-                                                    <input type="checkbox" value="Y" checked="checked" name="pkeywords" id="pkeywords" class="checkbox ty-select-field__checkbox" />Từ khóa
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        <div class="ty-control-group">
-                                            <input type="hidden" name="supplier_id" id="supplier_id" value="" />
-                                            <div class="select-vendor">
-                                                <label class="ty-control-group__title select-vendor__title">Tìm kiếm theo nhà cung cấp</label>
-
-                                                <a class="ty-select-block__a">
-                                                    <span id="sw_company_id_selector_wrap_" class="ty-select-block__a-item cm-combination">Không có</span>
-                                                    <i class="ty-select-block__arrow ty-icon-down-micro"></i>
-                                                </a>
-                                                <div id="company_id_selector_wrap_" class="ty-select-block cm-popup-box cm-smart-position hidden">
-                                                    <input type="text" value="Tìm kiếm..." class="ty-select-block__input cm-hint cm-ajax-content-input" data-ca-target-id="content_loader_company_id_selector" size="16" />
-                                                    <div id="scroller_company_id_selector">
-                                                        <ul class="cm-select-list ty-select-block__list" id="company_id_selector">
-                                                            <li class="ty-select-block__list-item hidden">&nbsp;</li><!-- hidden li element for successfully html validation -->
-                                                            <!--company_id_selector-->
-                                                        </ul>
-                                                        <ul>
-                                                            <li id="content_loader_company_id_selector" class="cm-ajax-content-more small-description" data-ca-target-url="http://hasasa.vn/index.php?dispatch=suppliers.get_suppliers_list&amp;show_all=Y&amp;search=Y" data-ca-target-id="company_id_selector" data-ca-result-id="supplier_id">Loading...</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ty-control-group">
-                                            <label class="ty-control-group__title">Tìm trong danh mục</label>
-                                            <div class="ty-float-left">
-                                                <select name="cid">
-                                                    <option value="0">- All categories -</option>
-                                                    <option value="259" title="Tươi sống">Tươi sống</option>
-                                                    <option value="260" title="Khô">Khô</option>
-                                                    <option value="261" title="Đông lạnh">Đông lạnh</option>
-                                                    <option value="264" title="Cá tươi mỗi ngày">Cá tươi mỗi ngày</option>
-                                                </select>
-                                            </div>
-                                            <div class="ty-select-field ty-subcategories-field clearfix">
-                                                <input type="hidden" name="subcats" value="N" />
-                                                <label for="subcats" class="ty-select-field__label">
-                                                    <input type="checkbox" value="Y" checked="checked" name="subcats" id="subcats" class="checkbox ty-select-field__checkbox" />
-                                                    Tìm trong danh mục con
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        <h3 class="ty-subheader">
-
-                                            Tìm kiếm nâng cao
-
-                                        </h3>
-                                        <div class="ty-control-group">
-                                            <input type="hidden" name="company_id" id="company_id" value="" />
-                                        </div>
-
-                                        <div class="ty-control-group">
-                                            <label for="pcode" class="ty-control-group__title">Tìm theo Mã SP</label>
-                                            <input type="text" name="pcode" id="pcode" value="" onfocus="this.select();" class="ty-search-form__input" size="30" />
-                                        </div>
-
-                                        <div class="ty-control-group">
-                                            <label for="price_from" class="ty-control-group__title">Tìm theo giá&nbsp;(đ)</label>
-                                            <input type="text" name="price_from" id="price_from" value="" onfocus="this.select();" class="ty-search-form__input" size="30" />&nbsp;-&nbsp;<input type="text" name="price_to" value="" onfocus="this.select();" class="ty-search-form__input" size="30" />
-                                        </div>
-
-                                        <div class="ty-control-group">
-                                            <label for="weight_from" class="ty-control-group__title">Tìm theo trọng lượng&nbsp;(lbs)</label>
-                                            <input type="text" name="weight_from" id="weight_from" value="" onfocus="this.select();" class="ty-search-form__input" size="30" />&nbsp;-&nbsp;<input type="text" name="weight_to" value="" onfocus="this.select();" class="ty-search-form__input" size="30" />
-                                        </div>
-
-
-
-                                        <div class="ty-search-form__buttons-container buttons-container">
-
-
-                                            <button class="ty-btn__secondary ty-btn" type="submit" name="dispatch[products.search]">Tìm kiếm</button>
-
-                                            &nbsp;&nbsp;hoặc<a class="ty-btn ty-btn__tertiary cm-reset-link">Hủy bỏ</a>
-                                        </div>
-
-                                    </form>
-
-                                </div>
-                            </div>
-                          
-                                <p class="ty-no-items">Không có sản phẩm nào phù hợp điều kiện tìm kiếm</p>
-                                
                             
+                              
                             <script type="text/javascript" src="~/Scripts/exceptions.js"></script>
                             <div class="ty-pagination-container cm-pagination-container" id="pagination_contents">
                                 <div class="ty-sort-container">
-                                    <div class="ty-sort-container__views-icons">
-                                        <a class="ty-sort-container__views-a cm-ajax active" data-ca-target-id="pagination_contents" href="http://hasasa.vn/index.php?subcats=Y&amp;status=A&amp;pshort=Y&amp;pfull=Y&amp;pname=Y&amp;pkeywords=Y&amp;search_performed=Y&amp;q=cua&amp;dispatch=products.search&amp;sort_by=product&amp;sort_order=desc&amp;layout=products_multicolumns" rel="nofollow">
-                                            <i class="ty-icon-products-multicolumns"></i>
-                                        </a>
-                                        <a class="ty-sort-container__views-a cm-ajax " data-ca-target-id="pagination_contents" href="http://hasasa.vn/index.php?subcats=Y&amp;status=A&amp;pshort=Y&amp;pfull=Y&amp;pname=Y&amp;pkeywords=Y&amp;search_performed=Y&amp;q=cua&amp;dispatch=products.search&amp;sort_by=product&amp;sort_order=asc&amp;layout=products_without_options" rel="nofollow">
-                                            <i class="ty-icon-products-without-options"></i>
-                                        </a>
-                                        <a class="ty-sort-container__views-a cm-ajax " data-ca-target-id="pagination_contents" href="http://hasasa.vn/index.php?subcats=Y&amp;status=A&amp;pshort=Y&amp;pfull=Y&amp;pname=Y&amp;pkeywords=Y&amp;search_performed=Y&amp;q=cua&amp;dispatch=products.search&amp;sort_by=product&amp;sort_order=asc&amp;layout=short_list" rel="nofollow">
-                                            <i class="ty-icon-short-list"></i>
-                                        </a>
-                                    </div>
                                     <div class="ty-sort-dropdown">
-                                        <a id="sw_elm_sort_fields" class="ty-sort-dropdown__wrapper cm-combination">Sắp xếp: A đến Z<i class="ty-sort-dropdown__icon ty-icon-down-micro"></i></a>
+                                        <a id="sw_elm_sort_fields" class="ty-sort-dropdown__wrapper cm-combination">@ViewBag.TenSapXep<i class="ty-sort-dropdown__icon ty-icon-down-micro"></i></a>
                                         <ul id="elm_sort_fields" class="ty-sort-dropdown__content cm-popup-box hidden">
                                             <li class="sort-by-timestamp-desc ty-sort-dropdown__content-item">
-                                                <a class="cm-ajax ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="http://hasasa.vn/index.php?subcats=Y&amp;status=A&amp;pshort=Y&amp;pfull=Y&amp;pname=Y&amp;pkeywords=Y&amp;search_performed=Y&amp;q=cua&amp;dispatch=products.search&amp;sort_by=timestamp&amp;sort_order=desc" rel="nofollow">Sản phẩm mới</a>
+                                                <a class="ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="@Url.Action("Search","Home", new {txttimkiem = Session["timkiem"],sorting = ViewBag.DateSortParm })" rel="nofollow">Sản phẩm mới</a>
                                             </li>
                                             <li class="sort-by-product-desc ty-sort-dropdown__content-item">
-                                                <a class="cm-ajax ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="http://hasasa.vn/index.php?subcats=Y&amp;status=A&amp;pshort=Y&amp;pfull=Y&amp;pname=Y&amp;pkeywords=Y&amp;search_performed=Y&amp;q=cua&amp;dispatch=products.search&amp;sort_by=product&amp;sort_order=desc" rel="nofollow">Sắp xếp: Z to A</a>
+                                                <a class="ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="@Url.Action("Search","Home", new {txttimkiem = Session["timkiem"],sorting = ViewBag.NameSortParmasc })" rel="nofollow">Sắp xếp: A đến Z</a>
+                                            </li>
+                                            <li class="sort-by-product-desc ty-sort-dropdown__content-item">
+                                                <a class="ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="@Url.Action("Search","Home", new {txttimkiem = Session["timkiem"], sorting = ViewBag.NameSortParm })" rel="nofollow">Sắp xếp: Z to A</a>
                                             </li>
                                             <li class="sort-by-price-asc ty-sort-dropdown__content-item">
-                                                <a class="cm-ajax ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="http://hasasa.vn/index.php?subcats=Y&amp;status=A&amp;pshort=Y&amp;pfull=Y&amp;pname=Y&amp;pkeywords=Y&amp;search_performed=Y&amp;q=cua&amp;dispatch=products.search&amp;sort_by=price&amp;sort_order=asc" rel="nofollow">Sắp xếp Giá: Thấp đến Cao</a>
+                                                <a class="ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="@Url.Action("Search","Home", new {txttimkiem = Session["timkiem"],sorting = ViewBag.PriceSortPasc })" rel="nofollow">Sắp xếp Giá: Thấp đến Cao</a>
                                             </li>
                                             <li class="sort-by-price-desc ty-sort-dropdown__content-item">
-                                                <a class="cm-ajax ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="http://hasasa.vn/index.php?subcats=Y&amp;status=A&amp;pshort=Y&amp;pfull=Y&amp;pname=Y&amp;pkeywords=Y&amp;search_performed=Y&amp;q=cua&amp;dispatch=products.search&amp;sort_by=price&amp;sort_order=desc" rel="nofollow">Sắp xếp Giá: Cao Đến Thấp</a>
+                                                <a class="ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="@Url.Action("Search","Home", new {txttimkiem = Session["timkiem"],sorting = ViewBag.PriceSortParm })" rel="nofollow">Sắp xếp Giá: Cao Đến Thấp</a>
                                             </li>
-                                            <li class="sort-by-popularity-desc ty-sort-dropdown__content-item">
-                                                <a class="cm-ajax ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="http://hasasa.vn/index.php?subcats=Y&amp;status=A&amp;pshort=Y&amp;pfull=Y&amp;pname=Y&amp;pkeywords=Y&amp;search_performed=Y&amp;q=cua&amp;dispatch=products.search&amp;sort_by=popularity&amp;sort_order=desc" rel="nofollow">Theo Độ Phổ Biến</a>
-                                            </li>
+
                                         </ul>
+
                                     </div>
                                     <div class="ty-sort-dropdown">
-                                        <a id="sw_elm_pagination_steps" class="ty-sort-dropdown__wrapper cm-combination">100 sản phẩm / trang<i class="ty-sort-dropdown__icon ty-icon-down-micro"></i></a>
-                                        <ul id="elm_pagination_steps" class="ty-sort-dropdown__content cm-popup-box hidden">
-                                            <li class="ty-sort-dropdown__content-item">
-                                                <a class="cm-ajax ty-sort-dropdown__content-item-a" href="http://hasasa.vn/index.php?subcats=Y&amp;status=A&amp;pshort=Y&amp;pfull=Y&amp;pname=Y&amp;pkeywords=Y&amp;search_performed=Y&amp;q=cua&amp;dispatch=products.search&amp;items_per_page=16" data-ca-target-id="pagination_contents" rel="nofollow">16 sản phẩm / trang</a>
-                                            </li>
-                                            <li class="ty-sort-dropdown__content-item">
-                                                <a class="cm-ajax ty-sort-dropdown__content-item-a" href="http://hasasa.vn/index.php?subcats=Y&amp;status=A&amp;pshort=Y&amp;pfull=Y&amp;pname=Y&amp;pkeywords=Y&amp;search_performed=Y&amp;q=cua&amp;dispatch=products.search&amp;items_per_page=32" data-ca-target-id="pagination_contents" rel="nofollow">32 sản phẩm / trang</a>
-                                            </li>
-                                            <li class="ty-sort-dropdown__content-item">
-                                                <a class="cm-ajax ty-sort-dropdown__content-item-a" href="http://hasasa.vn/index.php?subcats=Y&amp;status=A&amp;pshort=Y&amp;pfull=Y&amp;pname=Y&amp;pkeywords=Y&amp;search_performed=Y&amp;q=cua&amp;dispatch=products.search&amp;items_per_page=64" data-ca-target-id="pagination_contents" rel="nofollow">64 sản phẩm / trang</a>
-                                            </li>
-                                            <li class="ty-sort-dropdown__content-item">
-                                                <a class="cm-ajax ty-sort-dropdown__content-item-a" href="http://hasasa.vn/index.php?subcats=Y&amp;status=A&amp;pshort=Y&amp;pfull=Y&amp;pname=Y&amp;pkeywords=Y&amp;search_performed=Y&amp;q=cua&amp;dispatch=products.search&amp;items_per_page=128" data-ca-target-id="pagination_contents" rel="nofollow">128 sản phẩm / trang</a>
-                                            </li>
-                                        </ul>
+                                        
                                     </div>
                                 </div>
                                 <script type="text/javascript" src="~/Scripts/product_image_gallery.js?ver=4.2.3"></script>
@@ -220,7 +74,7 @@
                                                         <input type="hidden" name="call_data[product_id]" value="443" />
                                                         <div class="ty-cr-product-info-container">
                                                             <div class="ty-cr-product-info-image">
-                                                                <img class="ty-pict   " id="det_img_443" src="@Url.Action("Index","Home")" alt="" title="" />
+                                                                <img class="ty-pict   " id="det_img_443" src="@Url.Action("Index","Home")" style="height: 292px; width: 292px" alt="" title="" />
                                                             </div>
                                                             <div class="ty-cr-product-info-header">
                                                                 <h1 class="ty-product-block-title">@item.TenSP</h1>
@@ -289,13 +143,13 @@
                                                 </div>
                                             </div>
                                             <div class="ty-grid-list__item ty-quick-view-button__wrapper">
-                                                <form action="http://hasasa.vn/" method="post" name="product_form_443" enctype="multipart/form-data" class="cm-disable-empty-files  cm-ajax cm-ajax-full-render cm-ajax-status-middle ">
+                                                <form action="/Home/Index" method="post" name="product_form_443" enctype="multipart/form-data" class="cm-disable-empty-files  cm-ajax cm-ajax-full-render cm-ajax-status-middle ">
                                                     <input type="hidden" name="result_ids" value="cart_status*,wish_list*,checkout*,account_info*" />
                                                     <input type="hidden" name="redirect_url" value="index.php?subcats=Y&amp;status=A&amp;pshort=Y&amp;pfull=Y&amp;pname=Y&amp;pkeywords=Y&amp;search_performed=Y&amp;q=cua&amp;dispatch=products.search" />
                                                     <input type="hidden" name="product_data[443][product_id]" value="443" />
                                                     <div class="ty-grid-list__image">
                                                         <a href="@Url.Action("Details","Home",new { id=item.ID})">
-                                                            <img class="ty-pict   " id="det_img_443" src="~/@item.UrlHinh" alt="" title="" />
+                                                            <img class="ty-pict   " id="det_img_443" src="~/@item.UrlHinh" style="height: 292px; width: 292px" alt="" title="" />
                                                         </a>
                                                         @if (@item.KhuyenMai > 0)
                                                         {
@@ -328,6 +182,20 @@
                                         </div>
                                     }
                                 </div>
+                                @if (Model.PageSize > 20)
+                                {
+                                    <div class="ty-pagination__bottom">
+                                        <div class="MenuTrang">
+                                            @Html.PagedListPager(Model, page => Url.Action("Search", new { page = page }))
+
+                                        </div>
+                                        <style>
+                                            .MenuTrang li {
+                                                display: inline;
+                                            }
+                                        </style>
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>

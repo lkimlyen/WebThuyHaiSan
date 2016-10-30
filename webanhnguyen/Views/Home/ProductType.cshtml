@@ -51,7 +51,26 @@
                             </div>
 
                             <div class="ty-sort-dropdown">
-                               
+                                <a id="sw_elm_sort_fields" class="ty-sort-dropdown__wrapper cm-combination">@ViewBag.TenSapXep<i class="ty-sort-dropdown__icon ty-icon-down-micro"></i></a>
+                                <ul id="elm_sort_fields" class="ty-sort-dropdown__content cm-popup-box hidden">
+                                    <li class="sort-by-timestamp-desc ty-sort-dropdown__content-item">
+                                        <a class="ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="@Url.Action("ProductType","Home", new {id = Session["loai"], sorting = ViewBag.DateSortParm })" rel="nofollow">Sản phẩm mới</a>
+                                    </li>
+                                    <li class="sort-by-product-desc ty-sort-dropdown__content-item">
+                                        <a class="ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="@Url.Action("ProductType","Home", new {id = Session["loai"], sorting = ViewBag.NameSortParmasc })" rel="nofollow">Sắp xếp: A đến Z</a>
+                                    </li>
+                                    <li class="sort-by-product-desc ty-sort-dropdown__content-item">
+                                        <a class="ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="@Url.Action("ProductType","Home", new {id = Session["loai"], sorting = ViewBag.NameSortParm })" rel="nofollow">Sắp xếp: Z đến A</a>
+                                    </li>
+                                    <li class="sort-by-price-asc ty-sort-dropdown__content-item">
+                                        <a class="ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="@Url.Action("ProductType","Home", new {id = Session["loai"], sorting = ViewBag.PriceSortPasc })" rel="nofollow">Sắp xếp Giá: Thấp đến Cao</a>
+                                    </li>
+                                    <li class="sort-by-price-desc ty-sort-dropdown__content-item">
+                                        <a class="ty-sort-dropdown__content-item-a" data-ca-target-id="pagination_contents" href="@Url.Action("ProductType","Home", new {id = Session["loai"], sorting = ViewBag.PriceSortParm })" rel="nofollow">Sắp xếp Giá: Cao Đến Thấp</a>
+                                    </li>
+                                  
+                                </ul>
+   
                             </div>
 
 
@@ -184,6 +203,8 @@
                                 </div>
                             }
                         </div>
+                        @if (Model.PageSize > 20)
+                        {
                         <div class="ty-pagination__bottom">
                             <div class="MenuTrang">
                                 @Html.PagedListPager(Model, page => Url.Action("ProductType", new { page = page }))
@@ -195,6 +216,7 @@
                                 }
                             </style>
                         </div>
+                        }
                         </div>
 
                     </div>
