@@ -7,6 +7,34 @@ namespace WebApplication1.Controllers
 {
     public class DataHelper
     {
+        //File writing class
+        public static void writeFileCSS(String text)
+        {
+            // Example #2: Write one string to a text file.
+            string text = "A class is the most powerful data type in C#. Like a structure, " +
+                           "a class defines the data and behavior of the data type. ";
+            // WriteAllText creates a file, writes the specified string to the file,
+            // and then closes the file.    You do NOT need to call Flush() or Close().
+            System.IO.File.WriteAllText(@"C:\Users\Public\TestFolder\WriteText.txt", text);
+        }
+
+        //Output (to WriteLines.txt):
+        //   First line
+        //   Second line
+        //   Third line
+
+        //Output (to WriteText.txt):
+        //   A class is the most powerful data type in C#. Like a structure, a class defines the data and behavior of the data type.
+
+        //Output to WriteLines2.txt after Example #3:
+        //   First line
+        //   Third line
+
+        //Output to WriteLines2.txt after Example #4:
+        //   First line
+        //   Third line
+        //   Fourth line
+
         //Model class
         public class ShoppingCardItemModel
         {

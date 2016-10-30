@@ -64,7 +64,10 @@ namespace webanhnguyen.Controllers.Admin
                        select ic;
             if (item == null)
             {
-                return new tbl_Product();
+                var product = new tbl_Product();
+                product.GiaCu = 0;
+                product.GiaHienTai = 0;
+                return product;
             }
             return item.Single();
         }
@@ -149,7 +152,10 @@ namespace webanhnguyen.Controllers.Admin
         [HttpGet]
         public ActionResult itemCreate()
         {
-            return View(URLHelper.URL_ADMIN_ITEM_M, new Tuple<tbl_Product, List<tbl_product_type>>(new tbl_Product(), getAllItemCategories()));
+            var product = new tbl_Product();
+            product.GiaCu = 0;
+            product.GiaHienTai = 0;
+            return View(URLHelper.URL_ADMIN_ITEM_M, new Tuple<tbl_Product, List<tbl_product_type>>(product, getAllItemCategories()));
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult itemCreate(FormCollection form, HttpPostedFileBase fileUpload)
@@ -167,7 +173,7 @@ namespace webanhnguyen.Controllers.Admin
             var detail_short = form["detail_short"];
             var sold_amount = form["soldamount"];
             var current_amount = form["currentamount"];
-            
+
             bool err = false;
             if (String.IsNullOrEmpty(name))
             {
@@ -203,7 +209,10 @@ namespace webanhnguyen.Controllers.Admin
                 tic.SoLuongTon = Int32.Parse(current_amount);
             else
                 tic.SoLuongTon = 0;
-
+            if (tic.GiaHienTai > 0 && tic.GiaCu > tic.GiaHienTai)
+                tic.KhuyenMai = (int)(100 - tic.GiaHienTai * new decimal(100) / tic.GiaCu);
+            else
+                tic.KhuyenMai = 0;
             tic.MoTaCT = detail;
             tic.MoTaCT = detail_short;
             if (form["chkClearImg"] != null)
@@ -299,6 +308,10 @@ namespace webanhnguyen.Controllers.Admin
                 else
                     tic.SoLuongTon = 0;
 
+                if (tic.GiaHienTai > 0 && tic.GiaCu > tic.GiaHienTai)
+                    tic.KhuyenMai = (int)(100 - tic.GiaHienTai * new decimal(100) / tic.GiaCu);
+                else
+                    tic.KhuyenMai = 0;
                 tic.MoTaCT = detail;
                 tic.MoTa = detail_short;
                 if (form["chkClearImg"] != null)

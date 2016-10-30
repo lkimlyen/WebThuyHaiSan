@@ -20,12 +20,12 @@ namespace webanhnguyen.Controllers
         public override void OnActionExecuting(ActionExecutingContext context)
         {
             hasAdminLoginSession = DataHelper.AccountHelper.getInstance().checkIsAdminLoggingIn(context.HttpContext);
-            hasAdminLoginSession = true;
             base.OnActionExecuting(context);
         }
         public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
             base.OnActionExecuted(filterContext);
+            hasAdminLoginSession = DataHelper.AccountHelper.getInstance().checkIsAdminLoggingIn(filterContext.HttpContext);
             bool isCurrentLyInLoginPage = filterContext.ActionDescriptor.ActionName.Equals("Login");
             if (!hasAdminLoginSession && !isCurrentLyInLoginPage)
             {

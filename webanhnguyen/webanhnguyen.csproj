@@ -185,6 +185,7 @@
     <Compile Include="Controllers\Admin\ItemController.cs" />
     <Compile Include="Controllers\Admin\MemberController.cs" />
     <Compile Include="Controllers\Admin\HeaderController.cs" />
+    <Compile Include="Controllers\Admin\CssController.cs" />
     <Compile Include="Controllers\Admin\ShopController.cs" />
     <Compile Include="Controllers\Admin\NewsController.cs" />
     <Compile Include="Controllers\Admin\OrderController.cs" />
@@ -1554,6 +1555,7 @@
     <Content Include="tinymce\skins\lightgray\ToolTip.less" />
     <Content Include="tinymce\skins\lightgray\Variables.less" />
     <Content Include="tinymce\skins\lightgray\Window.less" />
+    <Content Include="Views\Admin\Css\Css_m.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -27,6 +27,16 @@ namespace webanhnguyen.Controllers
                 }
                 return instance;
             }
+
+            public void saveCSSFile(string text)
+            {
+                System.IO.File.WriteAllText(HttpContext.Current.Server.MapPath("~/Content/standalone.4e1f1fad754ebc0bdb148ced149d7f731458555519.css"), text);
+            }
+
+            public string readCSSFile()
+            {
+                return System.IO.File.ReadAllText(HttpContext.Current.Server.MapPath("~/Content/standalone.4e1f1fad754ebc0bdb148ced149d7f731458555519.css"));
+            }
         }
 
         public class NewsHelper

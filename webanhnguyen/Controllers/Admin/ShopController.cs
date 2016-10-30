@@ -51,6 +51,8 @@ namespace webanhnguyen.Controllers.Admin
             var addressshop = form["addressshop"];
             var thoigianlamviec2 = form["thoigianlamviec2"];
             var phoneshop2 = form["phoneshop2"];
+            var longtitude = form["longtitude"];
+            var lattitude = form["lattitude"];
 
             tic.tenshop = tenshop;
             tic.emailshop = emailshop;
@@ -59,6 +61,8 @@ namespace webanhnguyen.Controllers.Admin
             tic.thoigianlamviec2 = thoigianlamviec2;
             tic.addressshop = addressshop;
             tic.phoneshop2 = phoneshop2;
+            tic.longtitude = longtitude;
+            tic.lattitude = lattitude;
 
             UpdateModel(tic);
             data.SubmitChanges();

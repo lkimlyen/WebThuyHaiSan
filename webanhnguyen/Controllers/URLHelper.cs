@@ -59,6 +59,7 @@ namespace webanhnguyen.Controllers
         public const String URL_ADMIN_ORDER = "~/Views/Admin/Order/Order.cshtml";
         public const String URL_ADMIN_ORDER_DETAIL = "~/Views/Admin/Order/OrderDetail.cshtml";
         public const String URL_ADMIN_SHOP_INFORMATION = "~/Views/Admin/ShopInformation/ShopInformation_m.cshtml";
+        public const String URL_ADMIN_CSS_EDITING = "~/Views/Admin/Css/Css_m.cshtml";
         public const String URL_ADMIN_HEADER = "~/Views/Admin/Header/Header_m.cshtml";
 
         //Partial Views' URLs
