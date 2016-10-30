@@ -30,7 +30,7 @@
                     <div class="dataTable_filter">
                         <div class="row">
                             <div class="col-md-6">
-                                <input name="keyword" type="text" class="form-control" id="tukhoa" placeholder="Tìm kiếm email khách hàng..." style="display: inline-block; width: auto; margin-right: 5px;">
+                                <input name="keyword" type="text" class="form-control" id="tukhoa" placeholder="Tìm kiếm..." style="display: inline-block; width: auto; margin-right: 5px;">
                                 <button type="submit" name="search" class="btn btn-default">
                                     <i class="fa fa-search"></i>
                                 </button>
@@ -61,11 +61,11 @@
                                 </td>
                                 <td style="width: 50px;" class="text-center">ID</td>
                                 <td style="width: 150px;" class="text-center">Tên khách hàng</td>
-                                <td class="text-left">Tổng trị giá</td>
+                                <td style="width: 150px;" class="text-center">Tổng trị giá</td>
                                 <td style="width: 100px;" class="text-center">Thời gian</td>
                                 <td style="width: 100px;" class="text-center">Khu vực</td>
                                 <td style="width: 100px;" class="text-center">Đã thanh toán</td>
-                                <td style="width: 100px;" class="text-right">Tùy chọn</td>
+                                <td style="width: 100px;" class="text-center">Tùy chọn</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -78,16 +78,16 @@
                                     <td class="text-center">
                                         @order.id
                                     </td>
-                                    <td class="text-left name-to-confirm">
+                                    <td class="text-center">
                                         @order.tennguoinhan
                                     </td>
-                                    <td class="text-left name-to-confirm">
-                                        @order.price
+                                    <td class="text-center">
+                                        @String.Format("{0:#,##0}", @order.price)&nbsp; VND
                                     </td>
-                                    <td class="text-left name-to-confirm">
+                                    <td class="text-center">
                                         @order.thoidiemdathang
                                     </td>
-                                    <td class="text-left name-to-confirm">
+                                    <td class="text-center">
                                         @order.state
                                     </td>
                                     <td class="text-center">
@@ -95,7 +95,7 @@
                                             <div class="check tool @(order.status.HasValue && order.status.Value?"active":"")" data-action="toggleStatus" data-field="status" data-table="tbl_item" title="Ẩn hiện" value="@order.id"></div>
                                         </a>
                                     </td>
-                                    <td class="text-right">
+                                    <td class="text-center">
                                         <a href='@Url.Action("OrderDetail", "Order", new { id = @order.id })' class="btn btn-xs btn-pencil btn-primary" title="Chi tiết">
                                             <i class="fa fa-pencil"></i>
                                         </a>

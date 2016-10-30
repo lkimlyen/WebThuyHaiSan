@@ -62,9 +62,9 @@
                                 </td>
                                 <td style="width: 50px;" class="text-center">ID</td>
                                 <td style="width: 150px;" class="text-center">Hình đại diện</td>
-                                <td class="text-left">Tên tin tức</td>
+                                <td class="text-center">Tên tin tức</td>
                                 <td style="width: 100px;" class="text-center">Ẩn/Hiện</td>
-                                <td style="width: 100px;" class="text-right">Tùy chọn</td>
+                                <td style="width: 100px;" class="text-center">Tùy chọn</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -87,7 +87,7 @@
                                             <img src="~/@news.UrlHinh" border="0" class="img-thumbnail" style="max-width: 50px;">
                                         }
                                     </td>
-                                    <td class="text-left name-to-confirm">
+                                    <td class="text-center name-to-confirm">
                                         @news.TieuDe
                                     </td>
                                     <td class="text-center">
@@ -95,7 +95,7 @@
                                             <div class="check tool @(news.status?"active":"")" data-action="toggleStatus" data-field="status" data-table="tbl_item" title="Ẩn hiện" value="@news.id"></div>
                                         </a>
                                     </td>
-                                     <td class="text-right">
+                                     <td class="text-center">
                                         <a href='@Url.Action("newsEdit", "News", new { id = @news.id })' class="btn btn-xs btn-pencil btn-primary" title="Sửa">
                                             <i class="fa fa-pencil"></i>
                                         </a>

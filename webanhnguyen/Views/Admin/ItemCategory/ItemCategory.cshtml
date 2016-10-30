@@ -61,10 +61,10 @@
                                     <input type="checkbox" name="chk[]" class="tai_c" id="chkall" value="">
                                 </td>
                                 <td style="width: 50px;" class="text-center">ID</td>
-                                <td class="text-left">Tên danh mục</td>
+                                <td class="text-center">Tên danh mục</td>
 
                                 <td style="width: 100px;" class="text-center">Ẩn/Hiện</td>
-                                <td style="width: 100px;" class="text-right">Tùy chọn</td>
+                                <td style="width: 100px;" class="text-center">Tùy chọn</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -77,7 +77,7 @@
                                     <td class="text-center">
                                         @itemCategory.ID
                                     </td>
-                                    <td class="text-left name-to-confirm">
+                                    <td class="text-center name-to-confirm">
                                         @itemCategory.TenLoaiSP
                                     </td>
                                     <td class="text-center">
@@ -85,7 +85,7 @@
                                             <div class="check tool @(itemCategory.Status?"active":"")" data-action="toggleStatus" data-field="status" data-table="tbl_item" title="Ẩn hiện" value="@itemCategory.ID"></div>
                                         </a>
                                     </td>
-                                    <td class="text-right">
+                                    <td class="text-center">
                                         <a href='@Url.Action("itemCategoryEdit", "ItemCategory", new { id = @itemCategory.ID})' class="btn btn-xs btn-pencil btn-primary" title="Sửa">
                                             <i class="fa fa-pencil"></i>
                                         </a>

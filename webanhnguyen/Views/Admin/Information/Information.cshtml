@@ -61,9 +61,9 @@
                                     <input type="checkbox" name="chk[]" class="tai_c" id="chkall" value="">
                                 </td>
                                 <td style="width: 50px;" class="text-center">ID</td>
-                                <td class="text-left">Tên thông tin</td>
+                                <td class="text-center">Tên thông tin</td>
                                 <td style="width: 100px;" class="text-center">Ẩn/Hiện</td>
-                                <td style="width: 100px;" class="text-right">Tùy chọn</td>
+                                <td style="width: 100px;" class="text-center">Tùy chọn</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -76,7 +76,7 @@
                                     <td class="text-center">
                                         @information.id
                                     </td>
-                                    <td class="text-left name-to-confirm">
+                                    <td class="text-center name-to-confirm">
                                         @information.TenTT
                                     </td>
                                     <td class="text-center">
@@ -85,7 +85,7 @@
                                         </a>
                                     </td>
 
-                                    <td class="text-right">
+                                    <td class="text-center">
                                         <a href='@Url.Action("informationEdit", "Information", new { id = @information.id})' class="btn btn-xs btn-pencil btn-primary" title="Sửa">
                                             <i class="fa fa-pencil"></i>
                                         </a>
