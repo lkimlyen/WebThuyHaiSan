@@ -84,9 +84,27 @@ namespace webanhnguyen.Controllers.Admin
         {
             if (btnDel != null)
             {
-                //Delete all
-                DataHelper.ProductHelper.getInstance().deleteAllProductCategory(data);
+                //Delete checked items
+                string checkedList = form["chk[]"];
+                if (!String.IsNullOrEmpty(checkedList))
+                {
+                    string[] arrayStringCheckedList = checkedList.Split(new char[] { ',' });
+                    for (int i = 0; i < arrayStringCheckedList.Length; i++)
+                    {
+                        try
+                        {
+                            data.tbl_informations.DeleteOnSubmit(getOneInformation(Int32.Parse(arrayStringCheckedList[i])));
+                            data.SubmitChanges();
+                            ViewBag.AlertSuccess = "Xoá thành công!";
+                        }
+                        catch (Exception e)
+                        {
+                            ViewBag.AlertError = "Không xoá được";
+                        }
+                    }
+                }
             }
+
 
             var keyword = form["keyword"];
             var listInformation = getInformation(10, keyword);
@@ -102,7 +120,7 @@ namespace webanhnguyen.Controllers.Admin
         {
             return View(URLHelper.URL_ADMIN_INFORMATION_M, new tbl_information());
         }
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult informationCreate(FormCollection form, HttpPostedFileBase fileUpload)
         {
             tbl_information tic = new tbl_information();
@@ -140,7 +158,7 @@ namespace webanhnguyen.Controllers.Admin
         {
             return View(URLHelper.URL_ADMIN_INFORMATION_M, getOneInformation(Int32.Parse(id)));
         }
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult informationEdit(FormCollection form, HttpPostedFileBase fileUpload)
         {
             var id = form["id"];

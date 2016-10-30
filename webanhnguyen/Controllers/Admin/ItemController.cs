@@ -101,12 +101,29 @@ namespace webanhnguyen.Controllers.Admin
         [HttpPost]
         public ActionResult itemView(FormCollection form, String btnDel)
         {
-
             if (btnDel != null)
             {
-                //Delete all
-                DataHelper.ProductHelper.getInstance().deleteAllProduct(data);
+                //Delete checked items
+                string checkedList = form["chk[]"];
+                if (!String.IsNullOrEmpty(checkedList))
+                {
+                    string[] arrayStringCheckedList = checkedList.Split(new char[] { ',' });
+                    for (int i = 0; i < arrayStringCheckedList.Length; i++)
+                    {
+                        try
+                        {
+                            data.tbl_Products.DeleteOnSubmit(getOneItem(Int32.Parse(arrayStringCheckedList[i])));
+                            data.SubmitChanges();
+                            ViewBag.AlertSuccess = "Xoá thành công!";
+                        }
+                        catch (Exception e)
+                        {
+                            ViewBag.AlertError = "Không xoá được";
+                        }
+                    }
+                }
             }
+
 
             var keyword = form["keyword"];
             var listItem = getItem(10, keyword);

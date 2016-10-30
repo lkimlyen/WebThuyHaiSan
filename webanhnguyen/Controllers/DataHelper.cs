@@ -194,7 +194,7 @@ namespace webanhnguyen.Controllers
                 data.Customers.DeleteAllOnSubmit(data.Customers);
                 data.SubmitChanges();
             }
-
+            
             public void deleteAllAdmins(Models.databaseDataContext data)
             {
                 data.tbl_admins.DeleteAllOnSubmit(data.tbl_admins);

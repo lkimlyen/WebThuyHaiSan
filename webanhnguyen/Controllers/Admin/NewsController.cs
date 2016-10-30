@@ -82,9 +82,27 @@ namespace webanhnguyen.Controllers.Admin
         {
             if (btnDel != null)
             {
-                //Delete all
-                DataHelper.NewsHelper.getInstance().deleteAllNews(data);
+                //Delete checked items
+                string checkedList = form["chk[]"];
+                if (!String.IsNullOrEmpty(checkedList))
+                {
+                    string[] arrayStringCheckedList = checkedList.Split(new char[] { ',' });
+                    for (int i = 0; i < arrayStringCheckedList.Length; i++)
+                    {
+                        try
+                        {
+                            data.tbl_news.DeleteOnSubmit(getOneNews(Int32.Parse(arrayStringCheckedList[i])));
+                            data.SubmitChanges();
+                            ViewBag.AlertSuccess = "Xoá thành công!";
+                        }
+                        catch (Exception e)
+                        {
+                            ViewBag.AlertError = "Không xoá được";
+                        }
+                    }
+                }
             }
+
 
             var keyword = form["keyword"];
             var listNews = getNews(10, keyword);

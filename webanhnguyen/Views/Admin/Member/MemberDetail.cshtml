@@ -16,39 +16,7 @@
                         Tên khách hàng
                     </label>
                     <div class="col-sm-6">
-                        <input type="text" name="name" class="form-control" value="@Model.name" readonly/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">
-                        Ngày sinh
-                    </label>
-                    <div class="col-sm-6">
-                        <input type="text" name="birthday" class="form-control" value="@Model.birthday" readonly/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">
-                        Giới tính
-                    </label>
-                    <div class="col-sm-6">
-                        @if (@Model.sex.HasValue && @Model.sex.Value)
-                        {
-                            <input type="text" name="birthday" class="form-control" value="Nam" readonly/>
-                        }
-                        else
-                        {
-                            <input type="text" name="birthday" class="form-control" value="Nữ" readonly/>
-                        }
-
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">
-                        ID Card
-                    </label>
-                    <div class="col-sm-6">
-                        <input type="text" name="idcard" class="form-control" value="@Model.idcard" readonly/>
+                        <input type="text" name="name" class="form-control" value="@Model.name" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -56,7 +24,7 @@
                         Email
                     </label>
                     <div class="col-sm-6">
-                        <input type="text" name="email" class="form-control" value="@Model.email" readonly/>
+                        <input type="text" name="email" class="form-control" value="@Model.email" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -64,7 +32,7 @@
                         Địa chỉ
                     </label>
                     <div class="col-sm-6">
-                        <input type="text" name="address" class="form-control" value="@Model.address" readonly/>
+                        <input type="text" name="address" class="form-control" value="@Model.address" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -72,7 +40,7 @@
                         Số điện thoại
                     </label>
                     <div class="col-sm-6">
-                        <input type="text" name="phone" class="form-control" value="@Model.moblie" readonly/>
+                        <input type="text" name="phone" class="form-control" value="@Model.moblie" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -80,12 +48,13 @@
                         Ngày gia nhập
                     </label>
                     <div class="col-sm-6">
-                        <input type="text" name="date_added" class="form-control" value="@Model.date_added" readonly/>
+                        <input type="text" name="date_added" class="form-control" value="@Model.date_added" readonly />
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4 btn-gr">
+                        <button type="submit" name="btnSave" class="btn btn-default">Chấp nhận</button>
                         <button onclick="goBack()" type="button" name="goback" class="btn btn-default">Quay lại</button>
                     </div>
                 </div>

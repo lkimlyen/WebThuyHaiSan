@@ -79,6 +79,11 @@
                                     <td class="text-left name-to-confirm">
                                         @information.TenTT
                                     </td>
+                                    <td class="text-center">
+                                        <a href='@Url.Action("InformationSetStatusEnable", "Item", new { id = @information.id})' title="Reverse">
+                                            <div class="check tool @(information.Status.HasValue && information.Status.Value?"active":"")" data-action="toggleStatus" data-field="status" data-table="tbl_item" title="Ẩn hiện" value="@information.id"></div>
+                                        </a>
+                                    </td>
 
                                     <td class="text-right">
                                         <a href='@Url.Action("informationEdit", "Information", new { id = @information.id})' class="btn btn-xs btn-pencil btn-primary" title="Sửa">
