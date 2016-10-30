@@ -54,9 +54,6 @@ namespace webanhnguyen.Models
     partial void Inserttbl_information(tbl_information instance);
     partial void Updatetbl_information(tbl_information instance);
     partial void Deletetbl_information(tbl_information instance);
-    partial void Inserttbl_shop(tbl_shop instance);
-    partial void Updatetbl_shop(tbl_shop instance);
-    partial void Deletetbl_shop(tbl_shop instance);
     partial void Inserttbl_menu(tbl_menu instance);
     partial void Updatetbl_menu(tbl_menu instance);
     partial void Deletetbl_menu(tbl_menu instance);
@@ -66,6 +63,9 @@ namespace webanhnguyen.Models
     partial void Inserttbl_Product(tbl_Product instance);
     partial void Updatetbl_Product(tbl_Product instance);
     partial void Deletetbl_Product(tbl_Product instance);
+    partial void Inserttbl_shop(tbl_shop instance);
+    partial void Updatetbl_shop(tbl_shop instance);
+    partial void Deletetbl_shop(tbl_shop instance);
     #endregion
 		
 		public databaseDataContext() : 
@@ -162,14 +162,6 @@ namespace webanhnguyen.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<tbl_shop> tbl_shops
-		{
-			get
-			{
-				return this.GetTable<tbl_shop>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tbl_menu> tbl_menus
 		{
 			get
@@ -191,6 +183,14 @@ namespace webanhnguyen.Models
 			get
 			{
 				return this.GetTable<tbl_Product>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbl_shop> tbl_shops
+		{
+			get
+			{
+				return this.GetTable<tbl_shop>();
 			}
 		}
 	}
@@ -1603,260 +1603,6 @@ namespace webanhnguyen.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_shop")]
-	public partial class tbl_shop : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _tenshop;
-		
-		private string _emailshop;
-		
-		private string _phoneshop1;
-		
-		private string _thoigianlamviec1;
-		
-		private string _masodoanhnghiep;
-		
-		private string _addressshop;
-		
-		private string _thoigianlamviec2;
-		
-		private string _phoneshop2;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OntenshopChanging(string value);
-    partial void OntenshopChanged();
-    partial void OnemailshopChanging(string value);
-    partial void OnemailshopChanged();
-    partial void Onphoneshop1Changing(string value);
-    partial void Onphoneshop1Changed();
-    partial void Onthoigianlamviec1Changing(string value);
-    partial void Onthoigianlamviec1Changed();
-    partial void OnmasodoanhnghiepChanging(string value);
-    partial void OnmasodoanhnghiepChanged();
-    partial void OnaddressshopChanging(string value);
-    partial void OnaddressshopChanged();
-    partial void Onthoigianlamviec2Changing(string value);
-    partial void Onthoigianlamviec2Changed();
-    partial void Onphoneshop2Changing(string value);
-    partial void Onphoneshop2Changed();
-    #endregion
-		
-		public tbl_shop()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tenshop", DbType="NVarChar(255)")]
-		public string tenshop
-		{
-			get
-			{
-				return this._tenshop;
-			}
-			set
-			{
-				if ((this._tenshop != value))
-				{
-					this.OntenshopChanging(value);
-					this.SendPropertyChanging();
-					this._tenshop = value;
-					this.SendPropertyChanged("tenshop");
-					this.OntenshopChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_emailshop", DbType="VarChar(255)")]
-		public string emailshop
-		{
-			get
-			{
-				return this._emailshop;
-			}
-			set
-			{
-				if ((this._emailshop != value))
-				{
-					this.OnemailshopChanging(value);
-					this.SendPropertyChanging();
-					this._emailshop = value;
-					this.SendPropertyChanged("emailshop");
-					this.OnemailshopChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_phoneshop1", DbType="VarChar(255)")]
-		public string phoneshop1
-		{
-			get
-			{
-				return this._phoneshop1;
-			}
-			set
-			{
-				if ((this._phoneshop1 != value))
-				{
-					this.Onphoneshop1Changing(value);
-					this.SendPropertyChanging();
-					this._phoneshop1 = value;
-					this.SendPropertyChanged("phoneshop1");
-					this.Onphoneshop1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_thoigianlamviec1", DbType="NVarChar(255)")]
-		public string thoigianlamviec1
-		{
-			get
-			{
-				return this._thoigianlamviec1;
-			}
-			set
-			{
-				if ((this._thoigianlamviec1 != value))
-				{
-					this.Onthoigianlamviec1Changing(value);
-					this.SendPropertyChanging();
-					this._thoigianlamviec1 = value;
-					this.SendPropertyChanged("thoigianlamviec1");
-					this.Onthoigianlamviec1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_masodoanhnghiep", DbType="NVarChar(255)")]
-		public string masodoanhnghiep
-		{
-			get
-			{
-				return this._masodoanhnghiep;
-			}
-			set
-			{
-				if ((this._masodoanhnghiep != value))
-				{
-					this.OnmasodoanhnghiepChanging(value);
-					this.SendPropertyChanging();
-					this._masodoanhnghiep = value;
-					this.SendPropertyChanged("masodoanhnghiep");
-					this.OnmasodoanhnghiepChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_addressshop", DbType="NVarChar(255)")]
-		public string addressshop
-		{
-			get
-			{
-				return this._addressshop;
-			}
-			set
-			{
-				if ((this._addressshop != value))
-				{
-					this.OnaddressshopChanging(value);
-					this.SendPropertyChanging();
-					this._addressshop = value;
-					this.SendPropertyChanged("addressshop");
-					this.OnaddressshopChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_thoigianlamviec2", DbType="NVarChar(255)")]
-		public string thoigianlamviec2
-		{
-			get
-			{
-				return this._thoigianlamviec2;
-			}
-			set
-			{
-				if ((this._thoigianlamviec2 != value))
-				{
-					this.Onthoigianlamviec2Changing(value);
-					this.SendPropertyChanging();
-					this._thoigianlamviec2 = value;
-					this.SendPropertyChanged("thoigianlamviec2");
-					this.Onthoigianlamviec2Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_phoneshop2", DbType="VarChar(50)")]
-		public string phoneshop2
-		{
-			get
-			{
-				return this._phoneshop2;
-			}
-			set
-			{
-				if ((this._phoneshop2 != value))
-				{
-					this.Onphoneshop2Changing(value);
-					this.SendPropertyChanging();
-					this._phoneshop2 = value;
-					this.SendPropertyChanged("phoneshop2");
-					this.Onphoneshop2Changed();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_menu")]
 	public partial class tbl_menu : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2810,6 +2556,308 @@ namespace webanhnguyen.Models
 					this._CaTuoiMoiNgay = value;
 					this.SendPropertyChanged("CaTuoiMoiNgay");
 					this.OnCaTuoiMoiNgayChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_shop")]
+	public partial class tbl_shop : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _tenshop;
+		
+		private string _emailshop;
+		
+		private string _phoneshop1;
+		
+		private string _thoigianlamviec1;
+		
+		private string _masodoanhnghiep;
+		
+		private string _addressshop;
+		
+		private string _thoigianlamviec2;
+		
+		private string _phoneshop2;
+		
+		private string _longtitude;
+		
+		private string _lattitude;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OntenshopChanging(string value);
+    partial void OntenshopChanged();
+    partial void OnemailshopChanging(string value);
+    partial void OnemailshopChanged();
+    partial void Onphoneshop1Changing(string value);
+    partial void Onphoneshop1Changed();
+    partial void Onthoigianlamviec1Changing(string value);
+    partial void Onthoigianlamviec1Changed();
+    partial void OnmasodoanhnghiepChanging(string value);
+    partial void OnmasodoanhnghiepChanged();
+    partial void OnaddressshopChanging(string value);
+    partial void OnaddressshopChanged();
+    partial void Onthoigianlamviec2Changing(string value);
+    partial void Onthoigianlamviec2Changed();
+    partial void Onphoneshop2Changing(string value);
+    partial void Onphoneshop2Changed();
+    partial void OnlongtitudeChanging(string value);
+    partial void OnlongtitudeChanged();
+    partial void OnlattitudeChanging(string value);
+    partial void OnlattitudeChanged();
+    #endregion
+		
+		public tbl_shop()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tenshop", DbType="NVarChar(255)")]
+		public string tenshop
+		{
+			get
+			{
+				return this._tenshop;
+			}
+			set
+			{
+				if ((this._tenshop != value))
+				{
+					this.OntenshopChanging(value);
+					this.SendPropertyChanging();
+					this._tenshop = value;
+					this.SendPropertyChanged("tenshop");
+					this.OntenshopChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_emailshop", DbType="VarChar(255)")]
+		public string emailshop
+		{
+			get
+			{
+				return this._emailshop;
+			}
+			set
+			{
+				if ((this._emailshop != value))
+				{
+					this.OnemailshopChanging(value);
+					this.SendPropertyChanging();
+					this._emailshop = value;
+					this.SendPropertyChanged("emailshop");
+					this.OnemailshopChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_phoneshop1", DbType="VarChar(255)")]
+		public string phoneshop1
+		{
+			get
+			{
+				return this._phoneshop1;
+			}
+			set
+			{
+				if ((this._phoneshop1 != value))
+				{
+					this.Onphoneshop1Changing(value);
+					this.SendPropertyChanging();
+					this._phoneshop1 = value;
+					this.SendPropertyChanged("phoneshop1");
+					this.Onphoneshop1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_thoigianlamviec1", DbType="NVarChar(255)")]
+		public string thoigianlamviec1
+		{
+			get
+			{
+				return this._thoigianlamviec1;
+			}
+			set
+			{
+				if ((this._thoigianlamviec1 != value))
+				{
+					this.Onthoigianlamviec1Changing(value);
+					this.SendPropertyChanging();
+					this._thoigianlamviec1 = value;
+					this.SendPropertyChanged("thoigianlamviec1");
+					this.Onthoigianlamviec1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_masodoanhnghiep", DbType="NVarChar(255)")]
+		public string masodoanhnghiep
+		{
+			get
+			{
+				return this._masodoanhnghiep;
+			}
+			set
+			{
+				if ((this._masodoanhnghiep != value))
+				{
+					this.OnmasodoanhnghiepChanging(value);
+					this.SendPropertyChanging();
+					this._masodoanhnghiep = value;
+					this.SendPropertyChanged("masodoanhnghiep");
+					this.OnmasodoanhnghiepChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_addressshop", DbType="NVarChar(255)")]
+		public string addressshop
+		{
+			get
+			{
+				return this._addressshop;
+			}
+			set
+			{
+				if ((this._addressshop != value))
+				{
+					this.OnaddressshopChanging(value);
+					this.SendPropertyChanging();
+					this._addressshop = value;
+					this.SendPropertyChanged("addressshop");
+					this.OnaddressshopChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_thoigianlamviec2", DbType="NVarChar(255)")]
+		public string thoigianlamviec2
+		{
+			get
+			{
+				return this._thoigianlamviec2;
+			}
+			set
+			{
+				if ((this._thoigianlamviec2 != value))
+				{
+					this.Onthoigianlamviec2Changing(value);
+					this.SendPropertyChanging();
+					this._thoigianlamviec2 = value;
+					this.SendPropertyChanged("thoigianlamviec2");
+					this.Onthoigianlamviec2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_phoneshop2", DbType="VarChar(50)")]
+		public string phoneshop2
+		{
+			get
+			{
+				return this._phoneshop2;
+			}
+			set
+			{
+				if ((this._phoneshop2 != value))
+				{
+					this.Onphoneshop2Changing(value);
+					this.SendPropertyChanging();
+					this._phoneshop2 = value;
+					this.SendPropertyChanged("phoneshop2");
+					this.Onphoneshop2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_longtitude", DbType="VarChar(50)")]
+		public string longtitude
+		{
+			get
+			{
+				return this._longtitude;
+			}
+			set
+			{
+				if ((this._longtitude != value))
+				{
+					this.OnlongtitudeChanging(value);
+					this.SendPropertyChanging();
+					this._longtitude = value;
+					this.SendPropertyChanged("longtitude");
+					this.OnlongtitudeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_lattitude", DbType="VarChar(50)")]
+		public string lattitude
+		{
+			get
+			{
+				return this._lattitude;
+			}
+			set
+			{
+				if ((this._lattitude != value))
+				{
+					this.OnlattitudeChanging(value);
+					this.SendPropertyChanging();
+					this._lattitude = value;
+					this.SendPropertyChanged("lattitude");
+					this.OnlattitudeChanged();
 				}
 			}
 		}

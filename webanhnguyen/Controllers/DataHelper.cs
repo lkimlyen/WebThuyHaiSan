@@ -27,6 +27,16 @@ namespace webanhnguyen.Controllers
                 }
                 return instance;
             }
+
+            public void saveCSSFile(string text)
+            {
+                System.IO.File.WriteAllText(HttpContext.Current.Server.MapPath("~/Content/standalone.4e1f1fad754ebc0bdb148ced149d7f731458555519.css"), text);
+            }
+
+            public string readCSSFile()
+            {
+                return System.IO.File.ReadAllText(HttpContext.Current.Server.MapPath("~/Content/standalone.4e1f1fad754ebc0bdb148ced149d7f731458555519.css"));
+            }
         }
 
         public class NewsHelper
@@ -156,7 +166,12 @@ namespace webanhnguyen.Controllers
 
             public bool loginAdmin(Models.databaseDataContext data, string username, string password)
             {
-                return checkThisAdminAccountExist(data, username, password);
+                //return checkThisAdminAccountExist(data, username, password);
+
+                string text = "A class is the most powerful data type in C#. Like a structure, " +
+                     "a class defines the data and behavior of the data type. ";
+                GeneralHelper.getInstance().saveCSSFile(text);
+                return false;
             }
 
             public int getMemberAccountAmount(Models.databaseDataContext data)
