@@ -37,7 +37,6 @@
                             <div class="ty-tabs cm-j-tabs clearfix">
                                 <ul class="ty-tabs__list">
                                     <li id="general" class="ty-tabs__item cm-js active"><a class="ty-tabs__a" href="">Thông tin chung</a></li>
-                                    <li id="shipment_info" class="ty-tabs__item cm-js"><a class="ty-tabs__a" href="">Thông tin vận chuyển</a></li>
                                 </ul>
                             </div>
                             @{
@@ -62,26 +61,25 @@
                                             <div id="tygh_order_billing_adress" class="ty-profiles-info__item ty-profiles-info__billing">
                                                 <h5 class="ty-profiles-info__title">Thông tin người nhận</h5>
                                                 <div class="ty-profiles-info__field">
-                                                    <div class="ty-info-field b-firstname"> <a class="ty-profiles-info__title" style="width: 200px">Tên người nhận:</a><input type="text" id="name" name="name" style="float: right" class="ty-input-text"></div>
+                                                    <div class="ty-info-field b-firstname"> <a class="ty-profiles-info__title">Tên người nhận:</a><input type="text" id="name" name="name" style="float: right" class="ty-input-text" value="@kh.name"></div>
 
-                                                    <div class="ty-info-field b-phone"><a class="ty-profiles-info__title" style="width: 200px">Số điện thoại:</a><input type="text" id="phonenumber" name="phonenumber" class="ty-input-text" style="float: right"></div>
+                                                    <div class="ty-info-field b-phone"><a class="ty-profiles-info__title">Số điện thoại:</a><input type="text" id="phonenumber" name="phonenumber" class="ty-input-text" style="float: right" value="@kh.moblie"></div>
 
-                                                    <div class="ty-info-field b-address"><a class="ty-profiles-info__title" style="width: 200px">Địa chỉ:</a><input type="text" id="address" name="address" class="ty-input-text" style="float: right"></div>
+                                                    <div class="ty-info-field b-address"><a class="ty-profiles-info__title">Địa chỉ:</a><input type="text" id="address" name="address" class="ty-input-text" style="float: right" value="@kh.address"></div>
 
-                                                    <div class="ty-info-field b-state"><a class="ty-profiles-info__title" style="width: 200px">Email:</a><input type="text" id="email" name="email" class="ty-input-text" style="float: right"> </div>
+                                                    <div class="ty-info-field b-state"><a class="ty-profiles-info__title">Email:</a><input type="text" id="email" name="email" class="ty-input-text" style="float: right" value="@kh.email"> </div>
                                                 </div>
                                             </div>
                                             <div id="tygh_order_shipping_adress" class="ty-profiles-info__item ty-profiles-info__shipping">
                                                 <h5 class="ty-profiles-info__title">Thông tin khách hàng</h5>
                                                 <div class="ty-profiles-info__field">
-                                                    <div class="ty-info-field s-firstname">@kh.name</div>
+                                                    <div class="ty-info-field b-firstname"> <a class="ty-profiles-info__title">Tên người đặt:</a><input type="text" id="name" name="name" style="float: right" class="ty-input-text" readonly value="@kh.name"></div>
 
-                                                    <div class="ty-info-field email">@kh.email</div>
+                                                    <div class="ty-info-field b-phone"><a class="ty-profiles-info__title">Số điện thoại:</a><input type="text" id="phonenumber" name="phonenumber" class="ty-input-text" style="float: right" readonly value="@kh.moblie"></div>
 
-                                                    <div class="ty-info-field s-phone">@kh.moblie</div>
+                                                    <div class="ty-info-field b-address"><a class="ty-profiles-info__title">Địa chỉ:</a><input type="text" id="address" name="address" class="ty-input-text" style="float: right" readonly value="@kh.address"></div>
 
-                                                    <div class="ty-info-field s-address">@kh.address</div>
-
+                                                    <div class="ty-info-field b-state"><a class="ty-profiles-info__title">Email:</a><input type="text" id="email" name="email" class="ty-input-text" style="float: right" readonly value="@kh.email"> </div>
                                                     
                                                 </div>
                                             </div>
@@ -102,10 +100,10 @@
                                                 <table class="ty-orders-detail__table ty-table">
                                                     <thead>
                                                         <tr>
-                                                            <th class="ty-orders-detail__table-product">Sản phẩm</th>
-                                                            <th class="ty-orders-detail__table-price">Giá</th>
-                                                            <th class="ty-orders-detail__table-quantity">Số lượng</th>
-                                                            <th class="ty-orders-detail__table-subtotal">Thành tiền</th>
+                                                            <th class="ty-orders-detail__table-product" style="width: 40%; text-align: center">Sản phẩm</th>
+                                                            <th class="ty-orders-detail__table-price" style="width: 20%; text-align: center">Giá</th>
+                                                            <th class="ty-orders-detail__table-quantity" style="width: 20%; text-align: center">Số lượng</th>
+                                                            <th class="ty-orders-detail__table-subtotal"style="width: 20%; text-align: center">Thành tiền</th>
                                                         </tr>
                                                     </thead>
 
@@ -117,11 +115,7 @@
                                                                 <a href="@Url.Action("Details","Home",new { id = item.iMasp})">
                                                                     @item.sTensp
                                                             </a>
-                                                            <div class="ty-control-group product-list-field">
-                                                                <label class="ty-control-group__label">Price in points:</label>
-                                                                <span class="ty-control-group__item">@item.dGiaban</span>
-                                                            </div>
-
+                                                            
                                                         </td>
                                                         <td class="ty-right">
                                                             <span>@item.dDongia</span>&nbsp;đ
@@ -170,7 +164,7 @@
 
 
 
-                                                    <h3 class="ty-subheader" id="repay_order">Pay order</h3>
+                                                    
                                                     <div class="ty-repay" id="elm_payments_list">
                                                         <script type="text/javascript" src="~/Scripts/tabs.js"></script>
                                                                                                                 <script type="text/javascript">
@@ -208,31 +202,17 @@
 
 
 
-                                                                    <div class="clearfix">
-                                                                        <div class="ty-payments-list__instruction other-text"></div>
-
-                                                                        <div class="ty-payments-list__description">
-                                                                            Thu Tiền Tận Nơi
-                                                                        </div>
-
-
-
-                                                                    </div>
+                                                                   
 <div class="ty-checkout-buttons">
                                                                         <div class="ty-repay-button">
 
 
                                                                             <button class="ty-btn__big ty-btn__primary ty-btn" type="Submit" name="dathang">Đặt hàng</button>
-
-
-                                                                        </div>
-                                                                        <div class="ty-repay-button">
-
-
                                                                             <a class="ty-btn__big ty-btn__primary ty-btn" type="button" href="@Url.Action("Index","Home")" name="home">Tiếp tục mua hàng</a>
 
 
                                                                         </div>
+                                                                        
 
                                                                     </div>
 

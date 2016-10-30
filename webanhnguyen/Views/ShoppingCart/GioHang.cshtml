@@ -21,11 +21,11 @@
                 <table class="ty-orders-detail__table ty-table">
                     <thead>
                         <tr>
-                            <th class="ty-orders-detail__table-product">Sản phẩm</th>
-                            <th class="ty-orders-detail__table-price">Số lượng</th>
-                            <th class="ty-orders-detail__table-quantity">Đơn giá</th>
-                            <th class="ty-orders-detail__table-subtotal">Thành tiền</th>
-                            <th class="ty-orders-detail__table-subtotal">Xóa</th>
+                            <th class="ty-orders-detail__table-product" style="width: 40%; text-align: center">Sản phẩm</th>
+                            <th class="ty-orders-detail__table-price" style="width: 17%; text-align: center">Số lượng</th>
+                            <th class="ty-orders-detail__table-quantity" style="width: 17%; text-align: center">Đơn giá</th>
+                            <th class="ty-orders-detail__table-subtotal"style="width: 17%; text-align: center">Thành tiền</th>
+                            <th class="ty-orders-detail__table-subtotal"style="width: 9%; text-align: center">Xóa</th>
                         </tr>
                     </thead>
 
@@ -34,8 +34,10 @@
                         <tr class="ty-valign-top">
                             <td>
                                 <a href="@Url.Action("Details", "Home", new { id = item.iMasp})">
-                                    <img src="~/@item.sAnhbia" style="width: 120px;vertical-align:middle" />
+                                    <img src="~/@item.sAnhbia" style="width: 120px;vertical-align:middle; float:left; margin-right: 10px" />
+                                    @item.sTensp
                                 </a>
+                                
                             </td>
 
 
@@ -47,7 +49,7 @@
                                     <input class="ty-btn ty-btn__secondary" type="submit" value="Cập Nhật" />
                                 </td>
 
-                                <td class="ty-right"><span style="font-weight: 700; ">@string.Format("{0:#,##0}", item.dGiaban)<sup> VNĐ</sup></span> </td>
+                                <td class="ty-center"><span style="font-weight: 700; ">@string.Format("{0:#,##0}", item.dGiaban)<sup> VNĐ</sup></span> </td>
                                
                                 <td class="ty-center">
                                     <span style="color: #666; font-size: 12px; font-weight: bold">Đã - @item.iKhuyenmai % Khuyến mãi</span><br />

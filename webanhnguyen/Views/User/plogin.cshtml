@@ -1,6 +1,6 @@
 ﻿
 <div class="ty-login-popup">
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Login","User",FormMethod.Post))
     {
     <form name="popup139_form" action="" method="post" class="cm-processed-form">
         <input type="hidden" name="return_url" value="/Home/Index">

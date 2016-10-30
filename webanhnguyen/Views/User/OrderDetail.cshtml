@@ -68,11 +68,12 @@
                                                     {
                                                         <div class="ty-info-field b-firstname">@item.tennguoinhan</div>
 
+                                                        <div class="ty-info-field b-state"> @item.gmail</div>
                                                         <div class="ty-info-field b-phone">@item.phonenumber</div>
 
                                                         <div class="ty-info-field b-address">@item.diachi</div>
 
-                                                        <div class="ty-info-field b-state"> @item.gmail</div>
+                                                       
                                                     }
                                                 </div>
                                             </div>
@@ -110,10 +111,10 @@
 
                                                     <thead>
                                                         <tr>
-                                                            <th class="ty-orders-detail__table-product">Sản phẩm</th>
-                                                            <th class="ty-orders-detail__table-price">Giá</th>
-                                                            <th class="ty-orders-detail__table-quantity">Số lượng</th>
-                                                            <th class="ty-orders-detail__table-subtotal">Thành tiền</th>
+                                                            <th class="ty-orders-detail__table-product" style="width: 40%; text-align: center" >Sản phẩm</th>
+                                                            <th class="ty-orders-detail__table-price" style="width: 20%; text-align: center">Giá</th>
+                                                            <th class="ty-orders-detail__table-quantity" style="width: 20%; text-align: center">Số lượng</th>
+                                                            <th class="ty-orders-detail__table-subtotal" style="width: 20%; text-align: center">Thành tiền</th>
                                                         </tr>
                                                     </thead>
 
@@ -127,10 +128,7 @@
                                                                <a href="@Url.Action("Details","Home", new {id = item.id })">
                                                                    Tên sản phẩm: @item.name
                                                                </a>
-                                                                <div class="ty-orders-detail__table-code">Mã SP:@item.id</div>
-
-
-
+                                                                
                                                             </td>
                                                             
                                                             <td class="ty-right">
@@ -148,13 +146,8 @@
 
 
 
-                                                <div class="ty-orders-summary clearfix">
-                                                    <h3 class="ty-subheader">
-
-                                                        Tổng kết
-
-                                                    </h3>
-
+                                                <div class="ty-orders-summary">
+                                                  
                                                     <div class="ty-orders-summary__right">
 
                                                         <div class="ty-barcode ty-center"></div>
@@ -176,35 +169,11 @@
 
 
 
-                                                        <h3 class="ty-subheader" id="repay_order">Pay order</h3>
                                                         <div class="ty-repay" id="elm_payments_list">
 
-                                                            <div class="cm-tabs-content tabs-content clearfix">
+                                                            <div class="">
                                                                 <div class="" id="content_payments_tab3">
                                                                     <form name="payments_form_tab3" action="http://thuyhaisancamau.com/" method="post" class="payments-form">
-                                                                        <input type="hidden" name="payment_id" value="6" />
-                                                                        <input type="hidden" name="result_ids" value="elm_payments_list" />
-
-                                                                        <input type="hidden" name="order_id" value="10427" />
-
-
-
-                                                                        <div class="clearfix">
-                                                                            <div class="ty-payments-list__instruction other-text"></div>
-
-                                                                            <div class="ty-payments-list__description">
-                                                                                Thu Tiền Tận Nơi
-                                                                            </div>
-
-
-
-                                                                        </div>
-
-
-
-                                                                    
-
-
                                                                         <div class="ty-checkout-buttons">
                                                                             <div class="ty-repay-button">
 
