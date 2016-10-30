@@ -64,7 +64,10 @@ namespace webanhnguyen.Controllers.Admin
                        select ic;
             if (item == null)
             {
-                return new tbl_Product();
+                var product = new tbl_Product();
+                product.GiaCu = 0;
+                product.GiaHienTai = 0;
+                return product;
             }
             return item.Single();
         }
@@ -147,7 +150,10 @@ namespace webanhnguyen.Controllers.Admin
         [HttpGet]
         public ActionResult itemCreate()
         {
-            return View(URLHelper.URL_ADMIN_ITEM_M, new Tuple<tbl_Product, List<tbl_product_type>>(new tbl_Product(), getAllItemCategories()));
+            var product = new tbl_Product();
+            product.GiaCu = 0;
+            product.GiaHienTai = 0;
+            return View(URLHelper.URL_ADMIN_ITEM_M, new Tuple<tbl_Product, List<tbl_product_type>>(product, getAllItemCategories()));
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult itemCreate(FormCollection form, HttpPostedFileBase fileUpload)
