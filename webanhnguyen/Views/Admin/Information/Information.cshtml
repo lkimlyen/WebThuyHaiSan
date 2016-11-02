@@ -63,6 +63,7 @@
                                 </td>
                                 <td style="width: 50px;" class="text-center">ID</td>
                                 <td class="text-center">Tên thông tin</td>
+                                <td style="width: 100px;" class="text-center">Giới thiệu</td>
                                 <td style="width: 100px;" class="text-center">Ẩn/Hiện</td>
                                 <td style="width: 100px;" class="text-center">Tùy chọn</td>
                             </tr>
@@ -81,7 +82,12 @@
                                         @information.TenTT
                                     </td>
                                     <td class="text-center">
-                                        <a href='@Url.Action("InformationSetStatusEnable", "Item", new { id = @information.id})' title="Reverse">
+                                        <a href='@Url.Action("InformationSetGioiThieuEnable", "Information", new { id = @information.id})' title="Reverse">
+                                            <div class="check tool @(information.GioiThieu.HasValue && information.GioiThieu.Value?"active":"")" data-action="toggleStatus" data-field="status" data-table="tbl_item" title="Giới thiệu" value="@information.id"></div>
+                                        </a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href='@Url.Action("InformationSetStatusEnable", "Information", new { id = @information.id})' title="Reverse">
                                             <div class="check tool @(information.Status.HasValue && information.Status.Value?"active":"")" data-action="toggleStatus" data-field="status" data-table="tbl_item" title="Ẩn hiện" value="@information.id"></div>
                                         </a>
                                     </td>

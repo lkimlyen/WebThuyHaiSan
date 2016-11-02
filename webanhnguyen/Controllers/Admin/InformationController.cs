@@ -49,6 +49,16 @@ namespace webanhnguyen.Controllers.Admin
             return information.Single();
         }
         
+               public ActionResult InformationSetGioiThieuEnable(int id)
+        {
+            tbl_information tic = getOneInformation(id);
+            tic.GioiThieu = !tic.GioiThieu;
+            UpdateModel(tic);
+            data.SubmitChanges();
+            return RedirectToAction("informationView");
+        }
+
+
         public ActionResult InformationSetStatusEnable(int id)
         {
             tbl_information tic = getOneInformation(id);
