@@ -67,7 +67,7 @@
                                 <td class="text-center">Email</td>
                                 <td class="text-center">Đã kích hoạt</td>
 
-                                <td style="width: 100px;" class="text-right">Tùy chọn</td>
+                                <td style="width: 100px;" class="text-center">Tùy chọn</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -95,7 +95,7 @@
                                     <td class="text-center">
                                         <div class="check tool @(member.status.HasValue && member.status.Value)?" active" data-action="toggleStatus" data-field="status" data-table="tbl_news" title="Ẩn hiện" value="@member.id"></div>
                                     </td>
-                                    <td class="text-right">
+                                    <td class="text-center">
                                         <a href='@Url.Action("MemberDetailView", "Member", new { id = @member.id})' class="btn btn-xs btn-pencil btn-primary" title="Xem">
                                             <i class="fa fa-pencil"></i>
                                         </a>

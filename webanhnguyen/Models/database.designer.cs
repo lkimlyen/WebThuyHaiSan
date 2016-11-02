@@ -51,9 +51,6 @@ namespace webanhnguyen.Models
     partial void Inserttbl_menubottom(tbl_menubottom instance);
     partial void Updatetbl_menubottom(tbl_menubottom instance);
     partial void Deletetbl_menubottom(tbl_menubottom instance);
-    partial void Inserttbl_information(tbl_information instance);
-    partial void Updatetbl_information(tbl_information instance);
-    partial void Deletetbl_information(tbl_information instance);
     partial void Inserttbl_menu(tbl_menu instance);
     partial void Updatetbl_menu(tbl_menu instance);
     partial void Deletetbl_menu(tbl_menu instance);
@@ -63,6 +60,9 @@ namespace webanhnguyen.Models
     partial void Inserttbl_Product(tbl_Product instance);
     partial void Updatetbl_Product(tbl_Product instance);
     partial void Deletetbl_Product(tbl_Product instance);
+    partial void Inserttbl_information(tbl_information instance);
+    partial void Updatetbl_information(tbl_information instance);
+    partial void Deletetbl_information(tbl_information instance);
     partial void Inserttbl_shop(tbl_shop instance);
     partial void Updatetbl_shop(tbl_shop instance);
     partial void Deletetbl_shop(tbl_shop instance);
@@ -154,14 +154,6 @@ namespace webanhnguyen.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<tbl_information> tbl_informations
-		{
-			get
-			{
-				return this.GetTable<tbl_information>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tbl_menu> tbl_menus
 		{
 			get
@@ -183,6 +175,14 @@ namespace webanhnguyen.Models
 			get
 			{
 				return this.GetTable<tbl_Product>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbl_information> tbl_informations
+		{
+			get
+			{
+				return this.GetTable<tbl_information>();
 			}
 		}
 		
@@ -1469,140 +1469,6 @@ namespace webanhnguyen.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_information")]
-	public partial class tbl_information : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _TenTT;
-		
-		private string _NoiDung;
-		
-		private System.Nullable<bool> _Status;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnTenTTChanging(string value);
-    partial void OnTenTTChanged();
-    partial void OnNoiDungChanging(string value);
-    partial void OnNoiDungChanged();
-    partial void OnStatusChanging(System.Nullable<bool> value);
-    partial void OnStatusChanged();
-    #endregion
-		
-		public tbl_information()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenTT", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string TenTT
-		{
-			get
-			{
-				return this._TenTT;
-			}
-			set
-			{
-				if ((this._TenTT != value))
-				{
-					this.OnTenTTChanging(value);
-					this.SendPropertyChanging();
-					this._TenTT = value;
-					this.SendPropertyChanged("TenTT");
-					this.OnTenTTChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiDung", DbType="NVarChar(MAX)")]
-		public string NoiDung
-		{
-			get
-			{
-				return this._NoiDung;
-			}
-			set
-			{
-				if ((this._NoiDung != value))
-				{
-					this.OnNoiDungChanging(value);
-					this.SendPropertyChanging();
-					this._NoiDung = value;
-					this.SendPropertyChanged("NoiDung");
-					this.OnNoiDungChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Bit")]
-		public System.Nullable<bool> Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this.OnStatusChanging(value);
-					this.SendPropertyChanging();
-					this._Status = value;
-					this.SendPropertyChanged("Status");
-					this.OnStatusChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_menu")]
 	public partial class tbl_menu : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2581,6 +2447,164 @@ namespace webanhnguyen.Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_information")]
+	public partial class tbl_information : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _TenTT;
+		
+		private string _NoiDung;
+		
+		private System.Nullable<bool> _Status;
+		
+		private System.Nullable<bool> _GioiThieu;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnTenTTChanging(string value);
+    partial void OnTenTTChanged();
+    partial void OnNoiDungChanging(string value);
+    partial void OnNoiDungChanged();
+    partial void OnStatusChanging(System.Nullable<bool> value);
+    partial void OnStatusChanged();
+    partial void OnGioiThieuChanging(System.Nullable<bool> value);
+    partial void OnGioiThieuChanged();
+    #endregion
+		
+		public tbl_information()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenTT", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string TenTT
+		{
+			get
+			{
+				return this._TenTT;
+			}
+			set
+			{
+				if ((this._TenTT != value))
+				{
+					this.OnTenTTChanging(value);
+					this.SendPropertyChanging();
+					this._TenTT = value;
+					this.SendPropertyChanged("TenTT");
+					this.OnTenTTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiDung", DbType="NVarChar(MAX)")]
+		public string NoiDung
+		{
+			get
+			{
+				return this._NoiDung;
+			}
+			set
+			{
+				if ((this._NoiDung != value))
+				{
+					this.OnNoiDungChanging(value);
+					this.SendPropertyChanging();
+					this._NoiDung = value;
+					this.SendPropertyChanged("NoiDung");
+					this.OnNoiDungChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Bit")]
+		public System.Nullable<bool> Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GioiThieu", DbType="Bit")]
+		public System.Nullable<bool> GioiThieu
+		{
+			get
+			{
+				return this._GioiThieu;
+			}
+			set
+			{
+				if ((this._GioiThieu != value))
+				{
+					this.OnGioiThieuChanging(value);
+					this.SendPropertyChanging();
+					this._GioiThieu = value;
+					this.SendPropertyChanged("GioiThieu");
+					this.OnGioiThieuChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_shop")]
 	public partial class tbl_shop : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2722,7 +2746,7 @@ namespace webanhnguyen.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_thoigianlamviec1", DbType="NVarChar(255)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_thoigianlamviec1", DbType="NVarChar(MAX)")]
 		public string thoigianlamviec1
 		{
 			get
@@ -2782,7 +2806,7 @@ namespace webanhnguyen.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_thoigianlamviec2", DbType="NVarChar(255)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_thoigianlamviec2", DbType="NVarChar(MAX)")]
 		public string thoigianlamviec2
 		{
 			get

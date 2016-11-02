@@ -84,16 +84,38 @@
                         Thời gian làm việc trong tuần
                     </label>
                     <div class="col-sm-6">
-                        <textarea name="thoigianlamviec1" class="form-control" id="detail" style="height:150px;">@Model.thoigianlamviec1</textarea>
-                    </div>
+                        <textarea name="thoigianlamviec1" class="form-control" id="thoigianlamviec1" style="height:150px;">@Model.thoigianlamviec1</textarea>
+                        <script>
+                            CKEDITOR.replace('thoigianlamviec1', {
+                                filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+                                filebrowserImageBrowseUrl: '/ckfinder/ckfinder.html?Type=Images',
+                                filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                                filebrowserImageUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                                filebrowserWindowWidth : '1000',
+                                filebrowserWindowHeight : '700'
+                            });
+                        </script>
+
+                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">
                         Thời gian làm việc cuối tuần
                     </label>
                     <div class="col-sm-6">
-                        <textarea name="thoigianlamviec2" class="form-control" id="detail" style="height:150px;">@Model.thoigianlamviec2</textarea>
-                    </div>
+                        <textarea name="thoigianlamviec2" class="form-control" id="thoigianlamviec2" style="height:150px;">@Model.thoigianlamviec2</textarea>
+                        <script>
+                            CKEDITOR.replace('thoigianlamviec2', {
+                                filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+                                filebrowserImageBrowseUrl: '/ckfinder/ckfinder.html?Type=Images',
+                                filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                                filebrowserImageUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                                filebrowserWindowWidth : '1000',
+                                filebrowserWindowHeight : '700'
+                            });
+                        </script>
+
+                      </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-4 btn-gr">

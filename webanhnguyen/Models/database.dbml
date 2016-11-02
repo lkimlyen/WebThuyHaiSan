@@ -70,14 +70,6 @@
       <Column Name="status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.tbl_information" Member="tbl_informations">
-    <Type Name="tbl_information">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TenTT" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="NoiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.tbl_menu" Member="tbl_menus">
     <Type Name="tbl_menu">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -126,16 +118,25 @@
       <Column Name="CaTuoiMoiNgay" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.tbl_information" Member="tbl_informations">
+    <Type Name="tbl_information">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenTT" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="NoiDung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="GioiThieu" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.tbl_shop" Member="tbl_shops">
     <Type Name="tbl_shop">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="tenshop" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="emailshop" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Column Name="phoneshop1" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="thoigianlamviec1" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="thoigianlamviec1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="masodoanhnghiep" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="addressshop" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="thoigianlamviec2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="thoigianlamviec2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="phoneshop2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="longtitude" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="lattitude" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />

@@ -214,7 +214,7 @@ namespace webanhnguyen.Controllers.Admin
             else
                 tic.KhuyenMai = 0;
             tic.MoTaCT = detail;
-            tic.MoTaCT = detail_short;
+            tic.MoTa = detail_short;
             if (form["chkClearImg"] != null)
             {
                 tic.UrlHinh = "";

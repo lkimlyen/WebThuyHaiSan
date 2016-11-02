@@ -16,8 +16,8 @@
 
     @*<script src="//cdn.tinymce.com/4/tinymce.js"></script>*@
     @*<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>*@
-    <script src="~/tinymce/tinymce.min.js"></script>
-    <script src="~/tinymce/tinymce.js"></script>
+    @*<script src="~/tinymce/tinymce.min.js"></script>
+    <script src="~/tinymce/tinymce.js"></script>*@
     @*<script>
         tinymce.init({
           selector: 'textarea',
@@ -34,7 +34,7 @@
           toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
           content_css: '//www.tinymce.com/css/codepen.min.css'
         });</script>*@
-        <script>
+        @*<script>
         tinymce.init({
           selector: 'textarea',
           height: 500,
@@ -65,7 +65,7 @@
 
           //toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
           //content_css: '//www.tinymce.com/css/codepen.min.css'
-        });</script>
+        });</script>*@
 @*<script>
     tinymce.init({
     selector: "textarea",width: 680,height: 300,
@@ -84,6 +84,9 @@
     external_plugins: { "filemanager" : "/filemanager/plugin.min.js"}
     });
     </script>*@
+
+    <script src="~/ckfinder/ckfinder.js"></script>
+    <script src="~/ckeditor/ckeditor.js"></script>
 </head>
 <body>
 

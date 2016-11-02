@@ -138,13 +138,17 @@
                         Tóm tắt
                     </label>
                     <div class="col-sm-6">
-                        <textarea name="detail_short" class="form-control" id="detail_short" style="height:350px;">@Model.Item1.MoTa</textarea>
-                        <script src="~/ckfinder/ckfinder.js"></script>
-                        <script src="~/ckeditor/ckeditor.js"></script>
+                        <textarea name="detail_short" class="form-control" id="detail_short" style="height:150px;">@Model.Item1.MoTa</textarea>
                         <script>
-                            var editor = CKEDITOR.replace( 'detail_short' );
-                            CKFinder.setupCKEditor( editor );
-                        </script>
+                            CKEDITOR.replace( 'detail_short', {
+                                filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+                                filebrowserImageBrowseUrl: '/ckfinder/ckfinder.html?Type=Images',
+                                filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                                filebrowserImageUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                                filebrowserWindowWidth : '1000',
+                                filebrowserWindowHeight : '700'
+                            });
+                        </script>  
                     </div>
                 </div>
                 <div class="form-group">
@@ -153,7 +157,6 @@
                     </label>
                     <div class="col-sm-6">
                         <textarea name="detail" class="form-control" id="detail" style="height:350px;">@Model.Item1.MoTaCT</textarea>
-                   
                         <script>
                             CKEDITOR.replace( 'detail', {
     filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
