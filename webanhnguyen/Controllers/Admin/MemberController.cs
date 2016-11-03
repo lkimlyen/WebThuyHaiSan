@@ -71,7 +71,7 @@ namespace webanhnguyen.Controllers.Admin
             return View(URLHelper.URL_ADMIN_MEMBER, listMember.ToPagedList(pageNum,pageSize));
         }
         [HttpPost]
-        public ActionResult MemberView(FormCollection form, String btnDel)
+        public ActionResult MemberView(FormCollection form, String btnDel, int ? page)
         {
             if (btnDel != null)
             {
@@ -95,10 +95,11 @@ namespace webanhnguyen.Controllers.Admin
                     }
                 }
             }
-
+            int pageNum = (page ?? 1);
+            int pageSize = 20;
             var keyword = form["keyword"];
             var listMember = getMember(10, keyword);
-            return View(URLHelper.URL_ADMIN_MEMBER, listMember);
+            return View(URLHelper.URL_ADMIN_MEMBER, listMember.ToPagedList(pageNum, pageSize));
         }
 
 
@@ -126,7 +127,7 @@ namespace webanhnguyen.Controllers.Admin
             var id = form["id"];
             if (id == null)
             {
-                return MemberView(form, null);
+                return MemberView(form, null,1);
             }
             else
             {

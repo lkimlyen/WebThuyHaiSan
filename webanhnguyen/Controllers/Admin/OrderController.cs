@@ -171,7 +171,7 @@ namespace webanhnguyen.Controllers.Admin
             return View(URLHelper.URL_ADMIN_ORDER, listOrder.ToPagedList(pageNum, pageSize));
         }
         [HttpPost]
-        public ActionResult OrderView(FormCollection form, String btnDel)
+        public ActionResult OrderView(FormCollection form, String btnDel, int ? page)
         {
             if (btnDel != null)
             {
@@ -195,10 +195,11 @@ namespace webanhnguyen.Controllers.Admin
                     }
                 }
             }
-
+            int pageNum = (page ?? 1);
+            int pageSize = 20;
             var keyword = form["keyword"];
             var listOrder = getOrder(10, keyword);
-            return View(URLHelper.URL_ADMIN_ORDER, listOrder);
+            return View(URLHelper.URL_ADMIN_ORDER, listOrder.ToPagedList(pageNum, pageSize));
         }
 
         /*

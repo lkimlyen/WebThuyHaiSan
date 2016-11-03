@@ -81,10 +81,11 @@ namespace webanhnguyen.Controllers.Admin
             return View(URLHelper.URL_ADMIN_ITEM_CATEGORY, listItemCategory.ToPagedList(pageNum,pageSize));
         }
         [HttpPost]
-        public ActionResult itemCategoryView(FormCollection form, String btnDel)
+        public ActionResult itemCategoryView(FormCollection form, String btnDel, int? page)
         {
             if (btnDel != null)
             {
+
                 //Delete checked items
                 string checkedList = form["chk[]"];
                 if (!String.IsNullOrEmpty(checkedList))
@@ -106,10 +107,11 @@ namespace webanhnguyen.Controllers.Admin
                 }
             }
 
-
+            int pageNum = (page ?? 1);
+            int pageSize = 20;
             var keyword = form["keyword"];
             var listItemCategory = getItemCategory(10, keyword);
-            return View(URLHelper.URL_ADMIN_ITEM_CATEGORY, listItemCategory);
+            return View(URLHelper.URL_ADMIN_ITEM_CATEGORY, listItemCategory.ToPagedList(pageNum, pageSize));
         }
         /*
          * 

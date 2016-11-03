@@ -81,7 +81,7 @@ namespace webanhnguyen.Controllers.Admin
             return View(URLHelper.URL_ADMIN_NEWS, listNews.ToPagedList(pageNum,pageSize));
         }
         [HttpPost]
-        public ActionResult newsView(FormCollection form, String btnDel)
+        public ActionResult newsView(FormCollection form, String btnDel, int ? page)
         {
             if (btnDel != null)
             {
@@ -105,11 +105,12 @@ namespace webanhnguyen.Controllers.Admin
                     }
                 }
             }
-
+            int pageNum = (page ?? 1);
+            int pageSize = 20;
 
             var keyword = form["keyword"];
             var listNews = getNews(10, keyword);
-            return View(URLHelper.URL_ADMIN_NEWS, listNews);
+            return View(URLHelper.URL_ADMIN_NEWS, listNews.ToPagedList(pageNum,pageSize));
         }
         /*
          * 
