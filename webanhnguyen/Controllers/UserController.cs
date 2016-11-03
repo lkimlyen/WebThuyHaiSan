@@ -210,10 +210,12 @@ namespace webanhnguyen.Controllers
                 //Thực hiện thêm mới
                 db.Customers.InsertOnSubmit(kh);
                 db.SubmitChanges();
-
+		kh = db.Customers.SingleOrDefault(n => n.email == _Email && n.password == _Password);
                 //Lưu thông tin khách hàng vừa đăng ký vào Session để tự động đăng nhập
-                Session.Add("ID", kh.id);
-                Session.Add("Email", _Email);
+                Session["ID"] = kh.id;
+                        //Lưu các thông tin vào Session
+                        Session["Email"] = kh;
+                        Session["emailstring"] = kh.email;
                 return RedirectToAction("SuccessRegister");
             }
             catch
