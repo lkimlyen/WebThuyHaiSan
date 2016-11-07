@@ -163,6 +163,9 @@ namespace webanhnguyen.Controllers.Admin
                     fileUpload.SaveAs(path);
                 }
                 tic.UrlHinh = fileName;
+            }else
+            {
+                tic.UrlHinh = "";
             }
             if (err == false)
             {
@@ -239,6 +242,7 @@ namespace webanhnguyen.Controllers.Admin
                     }
                     tic.UrlHinh = fileName;
                 }
+                else { tic.UrlHinh = ""; }
                 if (err == false)
                 {
                     UpdateModel(tic);
