@@ -129,6 +129,16 @@ namespace webanhnguyen.Controllers.Admin
             var name = form["name"];
             var detail = form["detail"];
             var detail_short = form["detail_short"];
+
+
+            var title = form["title"];
+            var description = form["description"];
+            var keyword = form["keyword"];
+            tic.title = title;
+            tic.description = description;
+
+
+            tic.keyword = keyword;
             bool err = false;
             if (String.IsNullOrEmpty(name))
             {
@@ -190,6 +200,16 @@ namespace webanhnguyen.Controllers.Admin
                 var name = form["name"];
                 var detail = form["detail"];
                 var detail_short = form["detail_short"];
+
+
+                var title = form["title"];
+                var description = form["description"];
+                var keyword = form["keyword"];
+                tic.title = title;
+                tic.description = description;
+
+
+                tic.keyword = keyword;
                 bool err = false;
                 if (String.IsNullOrEmpty(name))
                 {

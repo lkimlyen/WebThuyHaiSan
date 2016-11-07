@@ -54,6 +54,14 @@ namespace webanhnguyen.Controllers.Admin
             var longtitude = form["longtitude"];
             var lattitude = form["lattitude"];
 
+
+            var title = form["title"];
+            var description = form["description"];
+            var keyword = form["keyword"];
+            tic.title = title;
+            tic.description = description;
+            tic.keyword = keyword;
+
             tic.tenshop = tenshop;
             tic.emailshop = emailshop;
             tic.phoneshop1 = phoneshop1;

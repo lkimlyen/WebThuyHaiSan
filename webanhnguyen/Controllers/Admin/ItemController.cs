@@ -165,9 +165,6 @@ namespace webanhnguyen.Controllers.Admin
             tbl_Product tic = new tbl_Product();
             var name = form["name"];
             var sort = form["sort"];
-            var title = form["title"];
-            var description = form["description"];
-            var keyword = form["keyword"];
             var price = form["price"];
             var price2 = form["price2"];
             var online_payment = form["online_payment"];
@@ -176,6 +173,15 @@ namespace webanhnguyen.Controllers.Admin
             var sold_amount = form["soldamount"];
             var current_amount = form["currentamount"];
 
+            
+            var title = form["title"];
+            var description = form["description"];
+            var keyword = form["keyword"];
+            tic.title = title;
+            tic.description = description;
+
+
+            tic.keyword = keyword;
             bool err = false;
             if (String.IsNullOrEmpty(name))
             {
@@ -265,9 +271,6 @@ namespace webanhnguyen.Controllers.Admin
                 tbl_Product tic = getOneItem(Int32.Parse(id));
                 var name = form["name"];
                 var sort = form["sort"];
-                var title = form["title"];
-                var description = form["description"];
-                var keyword = form["keyword"];
                 var price = form["price"];
                 var price2 = form["price2"];
                 var online_payment = form["online_payment"];
@@ -275,7 +278,16 @@ namespace webanhnguyen.Controllers.Admin
                 var detail_short = form["detail_short"];
                 var sold_amount = form["soldamount"];
                 var current_amount = form["currentamount"];
+                
 
+                var title = form["title"];
+                var description = form["description"];
+                var keyword = form["keyword"];
+                tic.title = title;
+                tic.description = description;
+
+
+                tic.keyword = keyword;
                 bool err = false;
                 if (String.IsNullOrEmpty(name))
                 {
