@@ -179,6 +179,7 @@ namespace webanhnguyen.Controllers.Admin
             var keyword = form["keyword"];
             tic.title = title;
             tic.description = description;
+            tic.alias = DataHelper.GeneralHelper.getInstance().getAliasFromProductName(data, name);
 
 
             tic.keyword = keyword;
@@ -285,7 +286,7 @@ namespace webanhnguyen.Controllers.Admin
                 var keyword = form["keyword"];
                 tic.title = title;
                 tic.description = description;
-
+                tic.alias = DataHelper.GeneralHelper.getInstance().getAliasFromProductName(data, name);
 
                 tic.keyword = keyword;
                 bool err = false;

@@ -27,6 +27,109 @@ namespace webanhnguyen.Controllers
                 }
                 return instance;
             }
+            public string RemoveUnicode(string text)
+            {
+                string[] arr1 = new string[] { "á", "à", "ả", "ã", "ạ", "â", "ấ", "ầ", "ẩ", "ẫ", "ậ", "ă", "ắ", "ằ", "ẳ", "ẵ", "ặ",
+    "đ",
+    "é","è","ẻ","ẽ","ẹ","ê","ế","ề","ể","ễ","ệ",
+    "í","ì","ỉ","ĩ","ị",
+    "ó","ò","ỏ","õ","ọ","ô","ố","ồ","ổ","ỗ","ộ","ơ","ớ","ờ","ở","ỡ","ợ",
+    "ú","ù","ủ","ũ","ụ","ư","ứ","ừ","ử","ữ","ự",
+    "ý","ỳ","ỷ","ỹ","ỵ",};
+                string[] arr2 = new string[] { "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+    "d",
+    "e","e","e","e","e","e","e","e","e","e","e",
+    "i","i","i","i","i",
+    "o","o","o","o","o","o","o","o","o","o","o","o","o","o","o","o","o",
+    "u","u","u","u","u","u","u","u","u","u","u",
+    "y","y","y","y","y",};
+                for (int i = 0; i < arr1.Length; i++)
+                {
+                    text = text.Replace(arr1[i], arr2[i]);
+                    text = text.Replace(arr1[i].ToUpper(), arr2[i].ToUpper());
+                }
+                text = text.Replace(" ", "-");
+                return text;
+            }
+
+            public string getAliasFromProductTypeName(Models.databaseDataContext data, String name)
+            {
+                if (String.IsNullOrEmpty(name))
+                    return "";
+                String alias = RemoveUnicode(name);
+                var record = from ic in data.tbl_product_types
+                             where ic.alias.Equals(alias)
+                             select ic;
+                if (record != null)
+                {
+                    int count = record.Count();
+                    if (count > 0)
+                    {
+                        alias += "-" + count;
+                    }
+                }
+
+                return alias;
+            }
+
+            public string getAliasFromProductName(Models.databaseDataContext data, String name)
+            {
+                if (String.IsNullOrEmpty(name))
+                    return "";
+                String alias = RemoveUnicode(name);
+                var record = from ic in data.tbl_Products
+                             where ic.alias.Equals(alias)
+                             select ic;
+                if (record != null)
+                {
+                    int count = record.Count();
+                    if (count > 0)
+                    {
+                        alias += "-" + count;
+                    }
+                }
+
+                return alias;
+            }
+
+            public string getAliasFromInformationName(Models.databaseDataContext data, String name)
+            {
+                if (String.IsNullOrEmpty(name))
+                    return "";
+                String alias = RemoveUnicode(name);
+                var record = from ic in data.tbl_informations
+                             where ic.alias.Equals(alias)
+                             select ic;
+                if (record != null)
+                {
+                    int count = record.Count();
+                    if (count > 0)
+                    {
+                        alias += "-" + count;
+                    }
+                }
+
+                return alias;
+            }
+            public string getAliasFromNewsName(Models.databaseDataContext data, String name)
+            {
+                if (String.IsNullOrEmpty(name))
+                    return "";
+                String alias = RemoveUnicode(name);
+                var record = from ic in data.tbl_news
+                             where ic.alias.Equals(alias)
+                             select ic;
+                if (record != null)
+                {
+                    int count = record.Count();
+                    if (count > 0)
+                    {
+                        alias += "-" + count;
+                    }
+                }
+
+                return alias;
+            }
 
             public void saveCSSFile(string text)
             {
@@ -204,7 +307,7 @@ namespace webanhnguyen.Controllers
                 data.Customers.DeleteAllOnSubmit(data.Customers);
                 data.SubmitChanges();
             }
-            
+
             public void deleteAllAdmins(Models.databaseDataContext data)
             {
                 data.tbl_admins.DeleteAllOnSubmit(data.tbl_admins);

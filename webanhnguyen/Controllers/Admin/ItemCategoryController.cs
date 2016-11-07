@@ -135,6 +135,7 @@ namespace webanhnguyen.Controllers.Admin
                 ViewData["Error"] += "Vui lòng nhập tên danh mục!\n";
             }
             tic.TenLoaiSP = name;
+            tic.alias = DataHelper.GeneralHelper.getInstance().getAliasFromProductTypeName(data, name);
             if (err == false)
             {
                 data.tbl_product_types.InsertOnSubmit(tic);
@@ -175,6 +176,7 @@ namespace webanhnguyen.Controllers.Admin
                     ViewData["Error"] += "Vui lòng nhập tên danh mục!\n";
                 }
                 tic.TenLoaiSP = name;
+                tic.alias = DataHelper.GeneralHelper.getInstance().getAliasFromProductTypeName(data, name);
                 if (err == false)
                 {
                     UpdateModel(tic);
