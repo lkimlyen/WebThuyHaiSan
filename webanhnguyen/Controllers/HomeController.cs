@@ -15,7 +15,7 @@ namespace webanhnguyen.Controllers
         public ActionResult Index()
         {
             tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
-            Session["title"] = hea.tittle;
+            Session["title"] = ViewBag.shoptitle;
             Session["icon"] = hea.shortcuticon;
             return View();
         }
@@ -65,8 +65,6 @@ namespace webanhnguyen.Controllers
         [ChildActionOnly]
         public ActionResult monanmoingay()
         {
-            tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
-            ViewBag.title = hea.tittle;
             ViewBag.tinmoinhat = (from sp in db.tbl_news
                                   where sp.status == true
                                   orderby sp.NgayCapNhat descending
@@ -82,8 +80,8 @@ namespace webanhnguyen.Controllers
         public ActionResult Details(string id)
         {
             tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
-            Session["title"] = hea.tittle;
-            ViewBag.title = hea.tittle;
+            Session["title"] = ViewBag.shoptitle;
+         
             Session["icon"] = hea.shortcuticon;
             var CT_SP = (db.tbl_Products.First(sp => sp.alias == id));
             int loai = int.Parse(CT_SP.IDLoaiSP.ToString());
@@ -111,8 +109,8 @@ namespace webanhnguyen.Controllers
         public ActionResult ProductType(string id, int? page, string sorting)
         {
             tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
-            Session["title"] = hea.tittle;
-            ViewBag.title = hea.tittle;
+            Session["title"] = ViewBag.shoptitle;
+            
             Session["icon"] = hea.shortcuticon;
 
             int pageSize = 20;
@@ -165,8 +163,7 @@ namespace webanhnguyen.Controllers
         public ActionResult hienthi2(string id, int? page, string sorting)
         {
             tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
-            Session["title"] = hea.tittle;
-            ViewBag.title = hea.tittle;
+            Session["title"] = ViewBag.shoptitle;
             Session["icon"] = hea.shortcuticon;
 
             int pageSize = 20;
@@ -217,8 +214,8 @@ namespace webanhnguyen.Controllers
         public ActionResult hienthi3(string id, int? page, string sorting)
         {
             tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
-            Session["title"] = hea.tittle;
-            ViewBag.title = hea.tittle;
+            Session["title"] = ViewBag.shoptitle;
+            
             Session["icon"] = hea.shortcuticon;
 
             int pageSize = 20;
@@ -273,7 +270,7 @@ namespace webanhnguyen.Controllers
         {
             tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
             Session["icon"] = hea.shortcuticon;
-
+            Session["title"] = ViewBag.shoptitle;
             int pageSize = 20;
             int pageNum = (page ?? 1);
             var laysp = from g in db.tbl_Products
@@ -323,6 +320,7 @@ namespace webanhnguyen.Controllers
         {
             tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
             Session["icon"] = hea.shortcuticon;
+            Session["title"] = ViewBag.shoptitle;
             int pageSize = 20;
             int pageNum = (page ?? 1);
 
@@ -480,11 +478,6 @@ namespace webanhnguyen.Controllers
         [ChildActionOnly]//Gọi từ View sang Controll
         public ActionResult header()
         {
-            tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
-            Session["title"] = hea.tittle;
-            ViewBag.Title = hea.tittle;
-            Session["icon"] = hea.shortcuticon;
-
             //Lấy ra danh sách Menu
             var header = (from mn in db.tbl_headers
                           where mn.id == 1
@@ -495,12 +488,7 @@ namespace webanhnguyen.Controllers
         #endregion
         #region tintuc
         public ActionResult tintuc(int? page)
-        {
-            tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
-            Session["title"] = hea.tittle;
-            ViewBag.Title = hea.tittle;
-            Session["icon"] = hea.shortcuticon;
-            int pageNume = (page ?? 1);
+        {  int pageNume = (page ?? 1);
             int pageSize = 20;
             var tintuc = (from tt in db.tbl_news
                           where tt.status == true
@@ -513,11 +501,7 @@ namespace webanhnguyen.Controllers
         #region Chi tiết tin (Reader)
         public ActionResult Reader(string id)
         {
-            tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
-            Session["title"] = hea.tittle;
-            ViewBag.Title = hea.tittle;
-            Session["icon"] = hea.shortcuticon;
-
+            
             //Lấy ra tin tức từ mã tin truyền vào
             var CT_Tin = (db.tbl_news.First(tt => tt.alias == id));
 
@@ -538,11 +522,7 @@ namespace webanhnguyen.Controllers
         #region khuyenmai
         public ActionResult khuyenmai(int? page, string sorting)
         {
-            tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
-            Session["title"] = hea.tittle;
-            ViewBag.Title = hea.tittle;
-            Session["icon"] = hea.shortcuticon;
-
+           
             int pageNume = (page ?? 1);
             int pageSize = 20;
             var km = (from k in db.tbl_Products
@@ -586,11 +566,7 @@ namespace webanhnguyen.Controllers
         }
         public ActionResult khuyenmai1(int? page, string sorting)
         {
-            tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
-            Session["title"] = hea.tittle;
-            ViewBag.Title = hea.tittle;
-            Session["icon"] = hea.shortcuticon;
-
+            
             int pageNume = (page ?? 1);
             int pageSize = 20;
             var km = (from k in db.tbl_Products
@@ -634,11 +610,7 @@ namespace webanhnguyen.Controllers
         }
         public ActionResult khuyenmai2(int? page, string sorting)
         {
-            tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
-            Session["title"] = hea.tittle;
-            ViewBag.Title = hea.tittle;
-            Session["icon"] = hea.shortcuticon;
-
+            
             int pageNume = (page ?? 1);
             int pageSize = 20;
             var km = (from k in db.tbl_Products
@@ -707,11 +679,6 @@ namespace webanhnguyen.Controllers
         #region information
         public ActionResult infomation(string id)
         {
-            tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
-
-            Session["title"] = hea.tittle;
-            ViewBag.Title = hea.tittle;
-            Session["icon"] = hea.shortcuticon;
             tbl_information inf = db.tbl_informations.SingleOrDefault(n => n.alias == id && n.Status == true);
             Session["tenmuinfo"] = inf.TenTT;
             return View(inf);

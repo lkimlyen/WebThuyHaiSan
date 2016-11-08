@@ -1,6 +1,6 @@
 ﻿@using webanhnguyen.Models
 @{
-    ViewBag.Title = "GioHang";
+   
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="tygh-content clearfix">
@@ -61,8 +61,8 @@
                                 </td>
 
                                 <td class="ty-center">
-                                    <a href="@Url.Action("XoaGiohang", new { @iMaSp = item.iMasp })" class="XoaSP" data-id="">
-                                        <img src="~/images/icon_delete.png" />
+                                    <a href="@Url.Action("XoaGiohang", new { @iMaSp = item.iMasp })" class="XoaSP" data-id="" >
+                                        <img src="~/images/icon_delete.png" alt="@ViewBag.shoptitle"/>
                                     </a>
 
                                 </td>

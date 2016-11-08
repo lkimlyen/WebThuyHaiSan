@@ -7,7 +7,7 @@ using webanhnguyen.Models;
 using PagedList;
 namespace webanhnguyen.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         databaseDataContext db = new databaseDataContext();
         // GET: User
@@ -22,11 +22,6 @@ namespace webanhnguyen.Controllers
     
         public ActionResult Login()
         {
-            tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
-            Session["title"] = hea.tittle;
-            ViewBag.title = hea.tittle;
-            Session["icon"] = hea.shortcuticon;
-
             return View();
         }
 
@@ -136,11 +131,7 @@ namespace webanhnguyen.Controllers
         #region Thay đổi thông tin cá nhân (ProfileUpdate)
         public ActionResult ProfileUpdate()
         {
-            tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
-            Session["title"] = hea.tittle;
-            ViewBag.title = hea.tittle;
-            Session["icon"] = hea.shortcuticon;
-
+           
             if (Session["Email"] == null)
                 return RedirectToAction("Index");
             int _MaKH = int.Parse(Session["ID"].ToString());
@@ -184,12 +175,7 @@ namespace webanhnguyen.Controllers
         #region Đăng ký (Register)
         public ActionResult Register()
         {
-            tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
-            Session["title"] = hea.tittle;
-            ViewBag.title = hea.tittle;
-            Session["icon"] = hea.shortcuticon;
-
-            //Đã Đăng Nhập thì không cho vào Form Đăng Ký
+          //Đã Đăng Nhập thì không cho vào Form Đăng Ký
             if (Session["Email"] != null)
                 return RedirectToAction("Index");
             return View();
@@ -262,11 +248,7 @@ namespace webanhnguyen.Controllers
         #region Đơn hàng
         public ActionResult Order(int ? page, string sorting)
         {
-            tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
-            Session["title"] = hea.tittle;
-            ViewBag.title = hea.tittle;
-            Session["icon"] = hea.shortcuticon;
-
+           
             int pageNum = (page ?? 1);
             int pageSize = 20;
             if (Session["Email"] == null)
@@ -288,12 +270,7 @@ namespace webanhnguyen.Controllers
         #region chi tiết đơn hàng
         public ActionResult OrderDetail(int id)
         {
-            tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
-            Session["title"] = hea.tittle;
-            ViewBag.title = hea.tittle;
-            Session["icon"] = hea.shortcuticon;
-
-            if (Session["Email"] == null)
+              if (Session["Email"] == null)
                 return RedirectToAction("Login");
             List<OrderDetail> CT_SP = (from n in db.OrderDetails
                                        from s in db.tbl_Products

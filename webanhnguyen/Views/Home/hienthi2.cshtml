@@ -32,6 +32,7 @@
 
 
                     </h1>
+
                     <div class="ty-mainbox-body">
                         <div id="category_products_74">
                             <script type="text/javascript" src="~/Scripts/exceptions.js"></script>
@@ -86,7 +87,16 @@
                                 @foreach (var item in Model)
                                 {
 
-
+                                    <div itemscope="" itemtype="http://schema.org/Product" style="display: none">
+                                        <meta itemprop="sku" content="COM5CAN">
+                                        <meta itemprop="name" content="@item.TenSP">
+                                        <meta itemprop="description" content="@item.MoTaCT">
+                                        <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                                            <link itemprop="availability" href="http://schema.org/OutOfStock" rel="t">
+                                            <meta itemprop="priceCurrency" content="VNĐ">
+                                            <meta itemprop="price" content="@item.GiaHienTai">
+                                        </div>
+                                    </div>
                                     <div class="ty-product-list clearfix">
 
                                         <div class="ty-product-list__image">

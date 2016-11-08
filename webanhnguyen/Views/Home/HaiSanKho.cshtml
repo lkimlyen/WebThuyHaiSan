@@ -1,6 +1,16 @@
 ﻿@model IEnumerable<webanhnguyen.Models.tbl_Product>
 @foreach (var its in Model)
 {
+    <div itemscope="" itemtype="http://schema.org/Product" style="display: none">
+        <meta itemprop="sku" content="COM5CAN">
+        <meta itemprop="name" content="@its.TenSP">
+        <meta itemprop="description" content="@its.MoTaCT">
+        <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+            <link itemprop="availability" href="http://schema.org/OutOfStock" rel="t">
+            <meta itemprop="priceCurrency" content="VNĐ">
+            <meta itemprop="price" content="@its.GiaHienTai">
+        </div>
+    </div>
     <div class="ty-column4">
           <div class="ty-grid-list__item ty-quick-view-button__wrapper">
                 <div class="ty-grid-list__image">

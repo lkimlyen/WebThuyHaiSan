@@ -16,8 +16,9 @@ namespace webanhnguyen.Controllers
             // Your logic here...
             tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
             tbl_shop shop = db.tbl_shops.SingleOrDefault(n => n.id == 1);
-
-            ViewBag.Title = hea.tittle;
+            Session["icon"] = hea.shortcuticon;
+            Session["title"] = shop.title;
+            ViewBag.Title = shop.title;
             ViewBag.icon = hea.shortcuticon;
             ViewBag.keyword = shop.keyword;
             ViewBag.shoptitle = shop.title;

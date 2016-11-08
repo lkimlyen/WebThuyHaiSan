@@ -1,6 +1,6 @@
 ﻿@model webanhnguyen.Models.tbl_information
 @{
-    ViewBag.Title = Session["tenmuinfo"];
+    ViewBag.Title = Model.TenTT;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="tygh-content clearfix">
@@ -16,7 +16,9 @@
                     <!--breadcrumbs_73-->
                 </div>
             </div>
-        </div><div class="row-fluid ">
+        </div>
+        
+            <div class="row-fluid ">
             <div class="span4 side-grid">
                 <div class="ty-sidebox">
                     <h2 class="ty-sidebox__title ">

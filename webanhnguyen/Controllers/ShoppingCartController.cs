@@ -7,7 +7,7 @@ using webanhnguyen.Models;
 
 namespace webanhnguyen.Controllers
 {
-    public class ShoppingCartController : Controller
+    public class ShoppingCartController : BaseController
     {
         databaseDataContext db = new databaseDataContext();
         // GET: ShoppingCart
@@ -50,11 +50,7 @@ namespace webanhnguyen.Controllers
         //Xay dung trang Gio hang
         public ActionResult GioHang()
         {
-            tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
-            Session["title"] = hea.tittle;
-            ViewBag.title = hea.tittle;
-            Session["icon"] = hea.shortcuticon;;
-            List<ShoppingCart> lstGiohang = Laygiohang();
+             List<ShoppingCart> lstGiohang = Laygiohang();
             if (lstGiohang.Count == 0)
             {
                 return RedirectToAction("Index", "Home");
@@ -136,12 +132,7 @@ namespace webanhnguyen.Controllers
         //Hien thi View DatHang de cap nhat cac thong tin cho Don hang
         [HttpGet]
         public ActionResult DatHang()
-        {
-            tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
-            Session["title"] = hea.tittle;
-            ViewBag.title = hea.tittle;
-            Session["icon"] = hea.shortcuticon;
-            //Kiem tra dang nhap
+        {  //Kiem tra dang nhap
             if (Session["Email"] == null || Session["Email"].ToString() == "")
             {
                 return RedirectToAction("Login", "User");
@@ -201,11 +192,7 @@ namespace webanhnguyen.Controllers
         }
         public ActionResult Xacnhandonhang()
         {
-            tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
-            Session["title"] = hea.tittle;
-            ViewBag.title = hea.tittle;
-            Session["icon"] = hea.shortcuticon;
-            return View();
+           return View();
         }
 
 
