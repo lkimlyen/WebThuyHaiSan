@@ -8,7 +8,7 @@
                 {
                     if (item.GioiThieu.Value)
                     {
-                        <li class="ty-footer-menu__item"><a href="@Url.Action("infomation","Home",new {id = item.id })">@item.TenTT</a></li>
+                        <li class="ty-footer-menu__item"><a href="@Url.Action("infomation","Home",new {id = item.alias })">@item.TenTT</a></li>
                     }
                 }
             </ul>
@@ -23,7 +23,7 @@
                 {
                     if (item.GioiThieu == false)
                     {
-                        <li class="ty-footer-menu__item"><a href="@Url.Action("infomation","Home",new {id = item.id })">@item.TenTT</a></li>
+                        <li class="ty-footer-menu__item"><a href="@Url.Action("infomation","Home",new {id = item.alias })">@item.TenTT</a></li>
                     }
                 }
             </ul>

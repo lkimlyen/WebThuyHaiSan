@@ -175,9 +175,10 @@ namespace webanhnguyen.Controllers.Admin
                     err = true;
                     ViewData["Error"] += "Vui lòng nhập tên danh mục!\n";
                 }
-                tic.TenLoaiSP = name;
                 if (!tic.TenLoaiSP.Equals(name))
                       tic.alias = DataHelper.GeneralHelper.getInstance().getAliasFromProductTypeName(data, name);
+
+                tic.TenLoaiSP = name;
                 if (err == false)
                 {
                     UpdateModel(tic);

@@ -5,7 +5,7 @@
         <ul id="vmenu_95" class="ty-menu__items cm-responsive-menu">
             @foreach (var item in Model)
             {
-            <li class="ty-menu__item cm-menu-item-responsive menu-level-"><div class="ty-menu__submenu-item-header"><a href="@Url.Action("infomation", "Home", new { id = item.id })" class="ty-menu__item-link">@item.TenTT</a></div></li>
+            <li class="ty-menu__item cm-menu-item-responsive menu-level-"><div class="ty-menu__submenu-item-header"><a href="@Url.Action("infomation", "Home", new { id = item.alias })" class="ty-menu__item-link">@item.TenTT</a></div></li>
             }
           
         </ul>

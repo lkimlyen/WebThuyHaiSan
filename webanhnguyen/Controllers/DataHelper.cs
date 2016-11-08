@@ -48,6 +48,13 @@ namespace webanhnguyen.Controllers
                     text = text.Replace(arr1[i], arr2[i]);
                     text = text.Replace(arr1[i].ToUpper(), arr2[i].ToUpper());
                 }
+
+                string chuoikytudacbiet = "~!@#$%^&*()Ơ}|:\"?><\\/-_+=[]';`.,";
+                char[] mangkytudacbiet = chuoikytudacbiet.ToCharArray();
+                for(int i = 0; i < mangkytudacbiet.Length; i++)
+                {
+                    text = text.Replace(mangkytudacbiet[i],'-');
+                }
                 text = text.Replace(" ", "-");
                 return text;
             }

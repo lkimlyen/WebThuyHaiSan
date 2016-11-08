@@ -193,10 +193,10 @@ namespace webanhnguyen.Controllers.Admin
                     err = true;
                     ViewData["Error"] += "Vui lòng nhập thông tin!\n";
                 }
-                tic.TenTT = TenTT;
                 tic.NoiDung = NoiDung;
                 if (!tic.TenTT.Equals(TenTT))
                     tic.alias = DataHelper.GeneralHelper.getInstance().getAliasFromInformationName(data, TenTT);
+                tic.TenTT = TenTT;
                 if (err == false)
                 {
                     UpdateModel(tic);
