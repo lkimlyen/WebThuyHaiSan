@@ -176,7 +176,8 @@ namespace webanhnguyen.Controllers.Admin
                     ViewData["Error"] += "Vui lòng nhập tên danh mục!\n";
                 }
                 tic.TenLoaiSP = name;
-                tic.alias = DataHelper.GeneralHelper.getInstance().getAliasFromProductTypeName(data, name);
+                if (!tic.TenLoaiSP.Equals(name))
+                      tic.alias = DataHelper.GeneralHelper.getInstance().getAliasFromProductTypeName(data, name);
                 if (err == false)
                 {
                     UpdateModel(tic);

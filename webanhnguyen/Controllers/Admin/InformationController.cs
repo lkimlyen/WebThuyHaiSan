@@ -195,7 +195,8 @@ namespace webanhnguyen.Controllers.Admin
                 }
                 tic.TenTT = TenTT;
                 tic.NoiDung = NoiDung;
-                tic.alias = DataHelper.GeneralHelper.getInstance().getAliasFromInformationName(data, TenTT);
+                if (!tic.TenTT.Equals(TenTT))
+                    tic.alias = DataHelper.GeneralHelper.getInstance().getAliasFromInformationName(data, TenTT);
                 if (err == false)
                 {
                     UpdateModel(tic);

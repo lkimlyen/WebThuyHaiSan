@@ -211,7 +211,8 @@ namespace webanhnguyen.Controllers.Admin
                 var keyword = form["keyword"];
                 tic.title = title;
                 tic.description = description;
-                tic.alias = DataHelper.GeneralHelper.getInstance().getAliasFromNewsName(data, name);
+                if (!tic.TieuDe.Equals(name))
+                      tic.alias = DataHelper.GeneralHelper.getInstance().getAliasFromNewsName(data, name);
 
 
                 tic.keyword = keyword;
