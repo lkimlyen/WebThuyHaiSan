@@ -1,7 +1,6 @@
 ﻿@using PagedList.Mvc
 @model PagedList.IPagedList<webanhnguyen.Models.tbl_Product>
 @{
-    ViewBag.Title = "Khuyến mãi";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="tygh-content clearfix">
@@ -11,7 +10,7 @@
                 <div id="breadcrumbs_73">
 
                     <div class="ty-breadcrumbs clearfix">
-                        <a href="Home/Index" class="ty-breadcrumbs__a">Trang chủ</a><span class="ty-breadcrumbs__slash">/</span><span class="ty-breadcrumbs__current">
+                        <a href="@Url.Action("Index","Home")" class="ty-breadcrumbs__a">Trang chủ</a><span class="ty-breadcrumbs__slash">/</span><span class="ty-breadcrumbs__current">
                             Khuyến mãi                    </span>
                     </div>
 
@@ -104,16 +103,11 @@
 
 
                                     <div class="ty-product-list clearfix">
-
-                                        <form action="http://thuyhaisancamau.com/" method="post" name="product_form_414" enctype="multipart/form-data" class="cm-disable-empty-files  cm-ajax cm-ajax-full-render cm-ajax-status-middle ">
-                                            <input type="hidden" name="result_ids" value="cart_status*,wish_list*,checkout*,account_info*" />
-                                            <input type="hidden" name="redirect_url" value="index.php?%2Fhai-san-tuoi-song_html=&amp;dispatch=categories.view&amp;category_id=259" />
-                                            <input type="hidden" name="product_data[414][product_id]" value="414" />
-                                            <div class="ty-product-list__image">
+    <div class="ty-product-list__image">
                                                 <span class="cm-reload-414 image-reload" id="list_image_update_414 image-wrapper">
 
-                                                    <a href="@Url.Action("Details","Home",new { id=item.ID})">
-                                                        <input type="hidden" name="image[list_image_update_414][link]" value="@Url.Action("Details","Home",new { id=item.ID})" />
+                                                    <a href="@Url.Action("Details","Home",new { id=item.alias})">
+                                                        <input type="hidden" name="image[list_image_update_414][link]" value="@Url.Action("Details","Home",new { id=item.alias})" />
                                                         @if (item.KhuyenMai > 0)
                                                         {
                                                             <ul class="ty-discount-label cm-reload-414" id="discount_label_update_414">
@@ -124,30 +118,19 @@
 
 
                                                         <input type="hidden" name="image[list_image_update_414][data]" value="414,315,315,product" />
-                                                        <img class="ty-pict   " id="det_img_414" src="~/@item.UrlHinh" style="height: 315px; width: 315px" alt="" title="" />
+                                                        <img class="ty-pict   " id="det_img_414" src="~/@item.UrlHinh" style="height: 315px; width: 315px" alt="@item.TenSP" title="" />
 
                                                     </a>
                                                     <!--list_image_update_414-->
                                                 </span>
                                                 <div class="ty-product-list__rating">
-
-
-
-
-
-
-
                                                 </div>
                                             </div>
                                             <div class="ty-product-list__content">
-
-
-
-
                                                 <div class="ty-product-list__info">
                                                     <div class="ty-product-list__item-name">
 
-                                                        <a href="@Url.Action("Details","Home",new { id=item.ID})" class="product-title">@item.TenSP</a>
+                                                        <h2><a href="@Url.Action("Details","Home",new { id=item.alias})" class="product-title">@item.TenSP</a></h2>
 
 
                                                     </div>
@@ -226,8 +209,7 @@
 
 
 
-                                        </form>
-
+                                       
                                     </div>
                                     <hr />
                                 }

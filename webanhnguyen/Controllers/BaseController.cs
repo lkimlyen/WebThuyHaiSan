@@ -15,8 +15,13 @@ namespace webanhnguyen.Controllers
         {
             // Your logic here...
             tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
-            ViewBag.title = hea.tittle;
+            tbl_shop shop = db.tbl_shops.SingleOrDefault(n => n.id == 1);
+
+            ViewBag.Title = hea.tittle;
             ViewBag.icon = hea.shortcuticon;
+            ViewBag.keyword = shop.keyword;
+            ViewBag.shoptitle = shop.title;
+            ViewBag.description = shop.description;
             base.OnActionExecuting(filterContext);
         }
     }

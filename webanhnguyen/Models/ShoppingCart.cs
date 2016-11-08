@@ -15,6 +15,7 @@ namespace webanhnguyen.Models
         public int iKhuyenmai { set; get; }
         public Double dDongia { set; get; }
         public int iSoluong { set; get; }
+        public string salias { set; get; }
         public Double dThanhtien
         {
             get { return iSoluong * dDongia; }
@@ -31,7 +32,7 @@ namespace webanhnguyen.Models
             iKhuyenmai = int.Parse(sp.KhuyenMai.ToString());
             dDongia = double.Parse(sp.GiaHienTai.ToString());
             iSoluong = 1;
-
+            salias = sp.alias;
         }
     }
 }

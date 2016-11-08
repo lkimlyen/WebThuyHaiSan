@@ -11,7 +11,7 @@
                 <div id="breadcrumbs_73">
 
                     <div class="ty-breadcrumbs clearfix">
-                        <a href="http://thuyhaisancamau.com/" class="ty-breadcrumbs__a">Trang chủ</a><span class="ty-breadcrumbs__slash">/</span><a href="@Url.Action("Order","User")" class="ty-breadcrumbs__a">Đơn hàng</a><span class="ty-breadcrumbs__slash">/</span><span class="ty-breadcrumbs__current">Thông tin đơn hàng</span>
+                        <a href="@Url.Action("Index","Home")" class="ty-breadcrumbs__a">Trang chủ</a><span class="ty-breadcrumbs__slash">/</span><a href="@Url.Action("Order","User")" class="ty-breadcrumbs__a">Đơn hàng</a><span class="ty-breadcrumbs__slash">/</span><span class="ty-breadcrumbs__current">Thông tin đơn hàng</span>
                     </div>
 
                     <!--breadcrumbs_73-->
@@ -124,10 +124,11 @@
                                                         <tr class="ty-valign-top">
                                                            
                                                             <td>
-                                                                
-                                                               <a href="@Url.Action("Details","Home", new {id = item.id })">
-                                                                   Tên sản phẩm: @item.name
-                                                               </a>
+                                                                <h2>
+                                                                    <a href="@Url.Action("Details","Home", new {id = item.alias })">
+                                                                        Tên sản phẩm: @item.name
+                                                                    </a>
+                                                                </h2>
                                                                 
                                                             </td>
                                                             
@@ -173,8 +174,7 @@
 
                                                             <div class="">
                                                                 <div class="" id="content_payments_tab3">
-                                                                    <form name="payments_form_tab3" action="http://thuyhaisancamau.com/" method="post" class="payments-form">
-                                                                        <div class="ty-checkout-buttons">
+                                                                                <div class="ty-checkout-buttons">
                                                                             <div class="ty-repay-button">
 
 
@@ -186,8 +186,7 @@
 
 
                                                                         <div class="processor-buttons hidden"></div>
-                                                                    </form>
-
+                                                                 
 
                                                                     <!--content_payments_tab3-->
                                                                 </div>

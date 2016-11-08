@@ -1,7 +1,6 @@
 ﻿@model webanhnguyen.Models.tbl_new
 @{
-    ViewBag.Title = Model.TieuDe;
-    Layout = "~/Views/Shared/_Layout.cshtml";
+   Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="tygh-content clearfix">
     <div class="container-fluid  content-grid">
@@ -10,7 +9,7 @@
                 <div id="breadcrumbs_73">
 
                     <div class="ty-breadcrumbs clearfix">
-                        <a href="/Home/Index" class="ty-breadcrumbs__a">Trang chủ</a><span class="ty-breadcrumbs__slash">/</span><a href="/Home/tintuc" class="ty-breadcrumbs__a">Tin tức</a><span class="ty-breadcrumbs__slash">/</span><span class="ty-breadcrumbs__current">@Model.TieuDe</span>
+                        <a href="@Url.Action("Index","Home")" class="ty-breadcrumbs__a">Trang chủ</a><span class="ty-breadcrumbs__slash">/</span><a href="/Home/tintuc" class="ty-breadcrumbs__a">Tin tức</a><span class="ty-breadcrumbs__slash">/</span><span class="ty-breadcrumbs__current">@Model.TieuDe</span>
                     </div>
 
                     <!--breadcrumbs_73-->

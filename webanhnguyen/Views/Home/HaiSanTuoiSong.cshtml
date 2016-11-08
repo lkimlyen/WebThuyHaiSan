@@ -2,115 +2,45 @@
 @foreach (var it in Model)
 {
     <div class="ty-column4">
-        <div class="hidden" id="content_call_request_122000404" title="Đặt mua ngay">
-            <div class="call_requests">
-                <form name="call_requests_form" id="form_call_request_122000404" action="index.html" method="post" class="cm-processed-form">
-                    <input type="hidden" name="call_data[product_id]" value="404">
-                    <div class="ty-cr-product-info-container">
-                        <div class="ty-cr-product-info-image">
-                            <img class="ty-pict   " src="~/@it.UrlHinh" alt="" title="">
-                        </div>
-                        <div class="ty-cr-product-info-header">
-                            <h1 class="ty-product-block-title">@it.TenSP</h1>
-
-
-                            &nbsp;&nbsp;
-                            <span class="ty-price" id="line_discounted_price_122000404"><span id="sec_discounted_price_122000404" class="ty-price-num">@string.Format("{0:#,##0}",it.GiaHienTai)</span><span class="ty-price-num"> đ</span></span>
-                        </div>
-                        <p style="color: #F00; margin-bottom: 10px;">
-                            Vui lòng nhập thông tin. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.
-                        </p>
-                    </div>
-
-                    <div class="ty-control-group">
-                        <label class="ty-control-group__title cm-required" for="call_data_call_request_122000404_name">Tên của bạn</label>
-                        <input id="call_data_call_request_122000404_name" size="50" class="ty-input-text-full" type="text" name="call_data[name]" value="">
-                    </div>
-                    <div class="ty-control-group">
-                        <label for="call_data_call_request_122000404_phone" class="ty-control-group__title cm-required">SĐT</label>
-                        <input id="call_data_call_request_122000404_phone" class="ty-input-text-full" size="50" type="text" name="call_data[phone]" value="">
-                    </div>
-
-
-                    <div class="ty-control-group">
-                        <label for="call_data_call_request_122000404_email" class="ty-control-group__title cm-required cm-email">Email</label>
-                        <input id="call_data_call_request_122000404_email" class="ty-input-text-full" size="50" type="text" name="call_data[email]" value="">
-                    </div>
-                    <div class="ty-control-group">
-                        <label for="call_data_call_request_122000404_address" class="ty-control-group__title cm-required">Địa chỉ</label>
-                        <input id="call_data_call_request_122000404_address" class="ty-input-text-full" size="50" type="text" name="call_data[address]" value="">
-                    </div>
-                    <div class="ty-control-group">
-                        <label for="call_data_call_request_122000404_quantity" class="ty-control-group__title">Số lượng</label>
-                        <select id="call_data_call_request_122000404_quantity" name="call_data[quantity]">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                        </select>
-                    </div>
-                    <div class="cr-popup-error-box">
-                        <div class="hidden cm-cr-error-box help-inline">
-                            <p>Vui lòng nhập thông tin. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.</p>
-                        </div>
-                    </div>
-
-                    <div class="buttons-container">
-
-
-                        <button class="ty-btn__primary ty-btn__big cm-form-dialog-closer ty-btn ty-btn" type="submit" name="dispatch[call_requests.request]">Gửi thông tin</button>
-
-                    </div>
-                </form>
-            </div>
-        </div>
-
         <div class="ty-grid-list__item ty-quick-view-button__wrapper">
-            <form action="/Home/Index" method="post" name="product_form_122000404" enctype="multipart/form-data" class="cm-disable-empty-files  cm-ajax cm-ajax-full-render cm-ajax-status-middle  cm-processed-form">
-                <input type="hidden" name="result_ids" value="cart_status*,wish_list*,checkout*,account_info*">
-                <input type="hidden" name="redirect_url" value="index.php">
-                <input type="hidden" name="product_data[404][product_id]" value="404">
-                <div class="ty-grid-list__image">
-                    <a href="@Url.Action("Details","Home",new { id=it.ID})">
-                        <img class="ty-pict" src="~/@it.UrlHinh" style="height: 292px; width: 292px" alt="" title="">
-                    </a>
+            <div class="ty-grid-list__image">
+                <a href="@Url.Action("Details","Home",new { id=it.alias})">
+                    <img class="ty-pict" src="~/@it.UrlHinh" style="height: 292px; width: 292px" alt="@it.TenSP" title="">
+                </a>
+                @if (@it.KhuyenMai > 0)
+                {
+                    <ul class="ty-discount-label cm-reload-103000392" id="discount_label_update_103000392">
+                        <li class="ty-discount-label__item" id="line_prc_discount_value_103000392"><span class="ty-discount-label__value" id="prc_discount_value_label_103000392">Giảm @it.KhuyenMai %</span></li>
+                        <!--discount_label_update_103000392-->
+                    </ul>
+                }
+                <div class="product-hover">
+                    <div class="product-shipping-free">
+                        <i class="fa fa-truck"></i> Miễn phí
+                    </div>
+                    <a href="@Url.Action("Details","Home",new { id=it.alias})" class="product-view">Mua&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="ty-grid-list__item-name">
+                <a href="@Url.Action("Details","Home",new { id=it.alias})" class="product-title" title="@it.TenSP">@it.TenSP</a>
+            </div><div class="ty-grid-list__price ">
+                <span class="cm-reload-122000404" id="old_price_update_122000404">
+
                     @if (@it.KhuyenMai > 0)
                     {
-                        <ul class="ty-discount-label cm-reload-103000392" id="discount_label_update_103000392">
-                            <li class="ty-discount-label__item" id="line_prc_discount_value_103000392"><span class="ty-discount-label__value" id="prc_discount_value_label_103000392">Giảm @it.KhuyenMai %</span></li>
-                            <!--discount_label_update_103000392-->
-                        </ul>
+                        <span class="ty-list-price ty-nowrap" id="line_list_price_103000392"><span class="ty-strike"><span id="sec_list_price_103000392" class="ty-list-price ty-nowrap">@string.Format("{0:#,##0}", it.GiaCu) đ</span></span></span>
                     }
-                    <div class="product-hover"><div class="product-shipping-free"><i class="fa fa-truck"></i> Miễn phí</div><a href="http://hasasa.vn/cua-huynh-de-hang-song.html" class="product-view">Mua&nbsp;&nbsp;<i class="fa fa-arrow-circle-right"></i></a></div>
-                </div><div class="ty-grid-list__item-name">
-                    <a href="@Url.Action("Details","Home",new { id=it.ID})" class="product-title" title="@it.TenSP">@it.TenSP</a>
-                </div><div class="ty-grid-list__price ">
-                    <span class="cm-reload-122000404" id="old_price_update_122000404">
-
-                        @if (@it.KhuyenMai > 0)
-                        {
-                            <span class="ty-list-price ty-nowrap" id="line_list_price_103000392"><span class="ty-strike"><span id="sec_list_price_103000392" class="ty-list-price ty-nowrap">@string.Format("{0:#,##0}",it.GiaCu) đ</span></span></span>
-                        }
 
 
 
-                        <!--old_price_update_122000404-->
-                    </span>
-                    <span class="cm-reload-122000404 ty-price-update" id="price_update_122000404">
-                        <input type="hidden" name="appearance[show_price_values]" value="1">
-                        <input type="hidden" name="appearance[show_price]" value="1">
+                    <!--old_price_update_122000404-->
+                </span>
+                <span class="cm-reload-122000404 ty-price-update" id="price_update_122000404">
+                    <span class="ty-price" id="line_discounted_price_122000404"><span id="sec_discounted_price_122000404" class="ty-price-num">@string.Format("{0:#,##0}", it.GiaHienTai) đ</span></span>
 
-                        <span class="ty-price" id="line_discounted_price_122000404"><span id="sec_discounted_price_122000404" class="ty-price-num">@string.Format("{0:#,##0}",it.GiaHienTai) đ</span></span>
-
-                        <!--price_update_122000404-->
-                    </span>
-                </div><div class="ty-grid-list__control"></div>
-            </form>
+                    <!--price_update_122000404-->
+                </span>
+            </div><div class="ty-grid-list__control"></div>
         </div>
     </div>
 }

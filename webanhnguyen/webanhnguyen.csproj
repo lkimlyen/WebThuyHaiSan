@@ -2952,7 +2952,6 @@
     <Content Include="Views\Home\tintuc.cshtml" />
     <Content Include="Views\Home\Reader.cshtml" />
     <Content Include="Views\Home\monanmoingay.cshtml" />
-    <Content Include="Views\Home\khuyemai.cshtml" />
     <Content Include="Views\Home\hienthi2.cshtml" />
     <Content Include="Views\Home\hienthi3.cshtml" />
     <Content Include="Views\Home\khuyenmai.cshtml" />
@@ -2990,7 +2989,6 @@
     <Content Include="Views\Home\menuinfo.cshtml" />
     <Content Include="Views\Home\infomation.cshtml" />
     <Content Include="Views\Home\MenuBottom.cshtml" />
-    <Content Include="Views\Home\Sodoweb.cshtml" />
     <Content Include="tinymce\langs\readme.md" />
     <Content Include="tinymce\skins\lightgray\AbsoluteLayout.less" />
     <Content Include="tinymce\skins\lightgray\Animations.less" />

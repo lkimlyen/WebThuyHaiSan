@@ -73,13 +73,13 @@
                                             <div id="tygh_order_shipping_adress" class="ty-profiles-info__item ty-profiles-info__shipping">
                                                 <h5 class="ty-profiles-info__title">Thông tin khách hàng</h5>
                                                 <div class="ty-profiles-info__field">
-                                                    <div class="ty-info-field b-firstname"> <a class="ty-profiles-info__title">Tên người đặt:</a><input type="text" id="name" name="name" style="float: right" class="ty-input-text" readonly value="@kh.name"></div>
+                                                    <div class="ty-info-field b-firstname"> <a class="ty-profiles-info__title">Tên người đặt:</a><input type="text" style="float: right" class="ty-input-text" readonly value="@kh.name"></div>
 
-                                                    <div class="ty-info-field b-phone"><a class="ty-profiles-info__title">Số điện thoại:</a><input type="text" id="phonenumber" name="phonenumber" class="ty-input-text" style="float: right" readonly value="@kh.moblie"></div>
+                                                    <div class="ty-info-field b-phone"><a class="ty-profiles-info__title">Số điện thoại:</a><input type="text"  class="ty-input-text" style="float: right" readonly value="@kh.moblie"></div>
 
-                                                    <div class="ty-info-field b-address"><a class="ty-profiles-info__title">Địa chỉ:</a><input type="text" id="address" name="address" class="ty-input-text" style="float: right" readonly value="@kh.address"></div>
+                                                    <div class="ty-info-field b-address"><a class="ty-profiles-info__title">Địa chỉ:</a><input type="text" class="ty-input-text" style="float: right" readonly value="@kh.address"></div>
 
-                                                    <div class="ty-info-field b-state"><a class="ty-profiles-info__title">Email:</a><input type="text" id="email" name="email" class="ty-input-text" style="float: right" readonly value="@kh.email"> </div>
+                                                    <div class="ty-info-field b-state"><a class="ty-profiles-info__title">Email:</a><input type="text" class="ty-input-text" style="float: right" readonly value="@kh.email"> </div>
                                                     
                                                 </div>
                                             </div>
@@ -88,7 +88,7 @@
                                     </div>
 
 
-
+                                    
                                     <div class="ty-orders-detail__products orders-product">
                                         <div>
                                             <div class="ty-subheaders-group">
@@ -110,12 +110,15 @@
 
                                                     @foreach (var item in Model)
                                                     {
+                                                        
                                                         <tr class="ty-valign-top">
                                                             <td>
-                                                                <a href="@Url.Action("Details","Home",new { id = item.iMasp})">
-                                                                    @item.sTensp
-                                                            </a>
-                                                            
+                                                                <h2>
+                                                                    <a href="@Url.Action("Details","Home",new { id = item.salias})">
+                                                                        @item.sTensp
+
+                                                                    </a>
+                                                                </h2>
                                                         </td>
                                                         <td class="ty-right">
                                                             <span>@item.dDongia</span>&nbsp;đ

@@ -1,7 +1,6 @@
 ﻿@using PagedList.Mvc
 @model PagedList.IPagedList<webanhnguyen.Models.tbl_Product>
 @{
-    ViewBag.Title = "Khuyến mãi";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="tygh-content clearfix">
@@ -11,7 +10,7 @@
                 <div id="breadcrumbs_73">
 
                     <div class="ty-breadcrumbs clearfix">
-                        <a href="Home/Index" class="ty-breadcrumbs__a">Trang chủ</a><span class="ty-breadcrumbs__slash">/</span><span class="ty-breadcrumbs__current">
+                        <a href="@Url.Action("Index","Home")" class="ty-breadcrumbs__a">Trang chủ</a><span class="ty-breadcrumbs__slash">/</span><span class="ty-breadcrumbs__current">
                            Khuyến mãi
                         </span>
                     </div>
@@ -83,8 +82,8 @@
                                             <div class="ty-compact-list__content">
 
                                                 <div class="ty-compact-list__image">
-                                                    <a href="@Url.Action("Details", "Home", new { id = item.ID })">
-                                                        <img class="ty-pict   " id="det_img_298" src="~/@item.UrlHinh" style="height: 80px; width: 80px" alt="" title="" />
+                                                    <a href="@Url.Action("Details", "Home", new { id = item.alias })">
+                                                        <img class="ty-pict   " id="det_img_298" src="~/@item.UrlHinh" style="height: 80px; width: 80px" alt="@item.TenSP" title="" />
                                                     </a>
                                                     @if (item.KhuyenMai > 0)
                                                     {
@@ -97,7 +96,7 @@
 
                                                 <div class="ty-compact-list__title">
 
-                                                    <a href="@Url.Action("Details", "Home", new { id = item.ID })" class="product-title">@item.TenSP</a>
+                                                    <h2><a href="@Url.Action("Details", "Home", new { id = item.alias })" class="product-title">@item.TenSP</a></h2>
 
 
 

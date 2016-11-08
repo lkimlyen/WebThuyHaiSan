@@ -10,7 +10,7 @@ namespace webanhnguyen.Controllers
         //Model class
         public class ShoppingCardItemModel
         {
-            public String name, image;
+            public String name, image, alias;
             public int id, quantity, orderid, modelid;
             public decimal price, total;
         }

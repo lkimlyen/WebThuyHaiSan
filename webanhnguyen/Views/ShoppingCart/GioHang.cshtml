@@ -15,6 +15,7 @@
                 </div>
             </div>
         </div>
+        <h1 class="hidden">Thủy hải sản cà mau</h1>
         <div class="col-sm-9 padding-right">
             <div class="features_items">
                 <!--features_items-->
@@ -33,11 +34,12 @@
             {
                         <tr class="ty-valign-top">
                             <td>
-                                <a href="@Url.Action("Details", "Home", new { id = item.iMasp})">
-                                    <img src="~/@item.sAnhbia" style="width: 120px;vertical-align:middle; float:left; margin-right: 10px" />
+                                <h2>
+                                <a href="@Url.Action("Details", "Home", new { id = item.salias})">
+                                    <img src="~/@item.sAnhbia" style="width: 120px;vertical-align:middle; float:left; margin-right: 10px" alt="@item.sTensp" />
                                     @item.sTensp
                                 </a>
-                                
+                                    </h2>
                             </td>
 
 

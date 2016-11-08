@@ -23,7 +23,7 @@
         @foreach (var item in Model)
         {
             <li class="ty-menu__item-http-hasasavn-hai-san-tuoi-songhtml ty-menu__item  ty-menu__item-nodrop ">
-                <a href="@Url.Action("ProductType","Home",new {id = item.ID })" class="ty-menu__item-link">
+                <a href="@Url.Action("ProductType","Home",new {id = item.alias })" class="ty-menu__item-link">
                     @item.TenLoaiSP
                 </a>
             </li>

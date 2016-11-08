@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>@ViewBag.Title - @Session["title"]</title>
-
+    <title>@ViewBag.Title</title>
     <base href=".">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta name="description" content="Thưởng thức hải sản sạch, ngọn, tươi sống từ Vũng Tàu, Nha Trang, Phan Thiết… ngay tại Tp.HCM với giá rẻ không đâu bằng, Giao hàng toàn quốc, Giao trong 1h tại TPHCM.">
-    <meta name="keywords" content="">
-    <meta name="google-site-verification" content="aI9teTesBKFz2v7NJ2MCPgoTCP8_7iMd2-jZanuXesc">
+    <meta name="description" content="@ViewBag.description">
+    <meta name="keywords" content="@ViewBag.keyword">
+    <meta name="google-site-verification" content="v2qBAnXauPk5hEgLsTnpUkYKUvTr_6HlR1t-hReLi8Q" />
     <link href="~/@Session["icon"]" rel="shortcut icon">
     <link type="text/css" rel="stylesheet" href="~/Content/standalone.4e1f1fad754ebc0bdb148ced149d7f731458555519.css">
     <script type="text/javascript" src="~/Scripts/jquery.min.js"></script>
@@ -31,6 +30,16 @@
     <script type="text/javascript" src="~/Scripts/func(1).js"></script>
     <script type="text/javascript" src="~/Scripts/func(2).js"></script>
     <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-87002037-1', 'auto');
+  ga('send', 'pageview');
+
+    </script>
     <script type="text/javascript">
         (function (_, $) {
 
@@ -632,7 +641,7 @@
 
         $(function () {
 
-            $('body').append('<img src="/images/hw_top.png" id="scroll_to_top" alt="" style="margin:0px 10px 10px 0px;cursor:pointer; position:fixed; ' + _position[3] + '">');
+            $('body').append('<img src="/images/hw_top.png" id="scroll_to_top" alt="@Session["title"]" style="margin:0px 10px 10px 0px;cursor:pointer; position:fixed; ' + _position[3] + '">');
             _scroll = $('#scroll_to_top');
             _scroll.fadeOut().click(function (event) {
                 event.preventDefault();
