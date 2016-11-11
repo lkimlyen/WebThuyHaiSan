@@ -35,7 +35,7 @@ namespace webanhnguyen.Controllers
         public ActionResult HaiSanTuoiSong()
         {
             var TuoiSong = (from sp in db.tbl_Products
-                            where sp.Status == true && sp.IDLoaiSP == 1
+                            where sp.Status == true && sp.IDLoaiSP == 6
                             select sp).Skip(0).Take(12).ToList();
 
             return PartialView(TuoiSong);
@@ -46,7 +46,7 @@ namespace webanhnguyen.Controllers
         public ActionResult HaiSanDongLanh()
         {
             var dong = (from sp in db.tbl_Products
-                        where sp.Status == true && sp.IDLoaiSP == 2
+                        where sp.Status == true && sp.IDLoaiSP == 7
                         select sp).Skip(0).Take(12).ToList();
             return PartialView(dong);
         }
@@ -83,11 +83,11 @@ namespace webanhnguyen.Controllers
             Session["title"] = ViewBag.shoptitle;
          
             Session["icon"] = hea.shortcuticon;
-            var CT_SP = (db.tbl_Products.First(sp => sp.alias == id));
+            var CT_SP = (db.tbl_Products.First(sp => sp.alias.Equals(id)));
             int loai = int.Parse(CT_SP.IDLoaiSP.ToString());
             ViewBag.TenLoai = (from s in db.tbl_Products
                                from l in db.tbl_product_types
-                               where s.alias == id && s.IDLoaiSP == l.ID && s.Status == true
+                               where s.alias.Equals(id) && s.IDLoaiSP == l.ID && s.Status == true
                                select l);
             ViewBag.SP_cungloai = (from s in db.tbl_Products
                                    where s.alias != id && s.IDLoaiSP == loai && s.Status == true
@@ -118,13 +118,13 @@ namespace webanhnguyen.Controllers
 
             var laysp = from g in db.tbl_Products
                         from h in db.tbl_product_types
-                        where h.alias == id && g.IDLoaiSP == h.ID && g.Status == true && h.Status == true
+                        where h.alias.Equals(id) && g.IDLoaiSP == h.ID && g.Status == true && h.Status == true
                         select g;
             Session["loai"] = id;
-            tbl_product_type loai = db.tbl_product_types.SingleOrDefault(n => n.alias == id);
+            tbl_product_type loai = db.tbl_product_types.SingleOrDefault(n => n.alias.Equals(id));
             Session["tenloai"] = loai.TenLoaiSP;
             ViewBag.TenLoai = (from l in db.tbl_product_types
-                               where l.alias == id
+                               where l.alias.Equals(id)
                                select l);
             ViewBag.TenSapXep = "Sắp xếp: A đến Z";
             ViewBag.NameSortParm = "Name_desc";
@@ -170,10 +170,10 @@ namespace webanhnguyen.Controllers
             int pageNum = (page ?? 1);
             var laysp = from g in db.tbl_Products
                         from h in db.tbl_product_types
-                        where h.alias == id && g.IDLoaiSP == h.ID && g.Status == true && h.Status == true
+                        where h.alias.Equals(id) && g.IDLoaiSP == h.ID && g.Status == true && h.Status == true
                         select g;
             ViewBag.TenLoai = (from l in db.tbl_product_types
-                               where l.alias == id
+                               where l.alias.Equals(id)
                                select l);
             Session["loai"] = id;
             ViewBag.TenSapXep = "Sắp xếp: A đến Z";
@@ -222,10 +222,10 @@ namespace webanhnguyen.Controllers
             int pageNum = (page ?? 1);
             var laysp = from g in db.tbl_Products
                         from h in db.tbl_product_types
-                        where h.alias == id && g.IDLoaiSP == h.ID && g.Status == true && h.Status == true
+                        where h.alias.Equals(id) && g.IDLoaiSP == h.ID && g.Status == true && h.Status == true
                         select g;
             ViewBag.TenLoai = (from l in db.tbl_product_types
-                               where l.alias == id
+                               where l.alias.Equals(id)
                                select l);
             Session["loai"] = id;
             ViewBag.TenSapXep = "Sắp xếp: A đến Z";
@@ -501,16 +501,15 @@ namespace webanhnguyen.Controllers
         #region Chi tiết tin (Reader)
         public ActionResult Reader(string id)
         {
-            
-            //Lấy ra tin tức từ mã tin truyền vào
-            var CT_Tin = (db.tbl_news.First(tt => tt.alias == id));
-
+                      //Lấy ra tin tức từ mã tin truyền vào
+            var CT_Tin = (db.tbl_news.First(tt => tt.alias.Equals(id)));
+  
             //Lấy ra 10 tin khác (10 tin trong đó không có tin đang đọc)
 
             //Bộ đếm lượt xem cho Tin tức
-            CT_Tin.LuotXem += 1;
-            UpdateModel(CT_Tin);
-            db.SubmitChanges();
+            //CT_Tin.LuotXem += 1;
+            //UpdateModel(CT_Tin);
+            //db.SubmitChanges();
             ViewBag.Title = CT_Tin.title;
             ViewBag.keyword = CT_Tin.keyword;
             ViewBag.description = CT_Tin.description;
@@ -679,7 +678,7 @@ namespace webanhnguyen.Controllers
         #region information
         public ActionResult infomation(string id)
         {
-            tbl_information inf = db.tbl_informations.SingleOrDefault(n => n.alias == id && n.Status == true);
+            tbl_information inf = db.tbl_informations.SingleOrDefault(n => n.alias.Equals(id) && n.Status == true);
             Session["tenmuinfo"] = inf.TenTT;
             return View(inf);
         }
