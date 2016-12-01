@@ -18,6 +18,7 @@ namespace webanhnguyen.Controllers
             tbl_shop shop = db.tbl_shops.SingleOrDefault(n => n.id == 1);
             Session["icon"] = hea.shortcuticon;
             Session["title"] = shop.title;
+            Session.Timeout = 40;
             ViewBag.Title = shop.title;
             ViewBag.icon = hea.shortcuticon;
             ViewBag.keyword = shop.keyword;

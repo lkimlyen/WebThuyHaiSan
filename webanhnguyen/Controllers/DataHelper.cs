@@ -14,6 +14,11 @@ namespace webanhnguyen.Controllers
             public int id, quantity, orderid, modelid;
             public decimal price, total;
         }
+        public class ItemModel
+        {
+            public Models.tbl_Product product;
+            public String categoryName;
+        }
 
         //Helper classes
         public class GeneralHelper
