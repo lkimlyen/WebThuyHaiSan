@@ -106,15 +106,27 @@ namespace webanhnguyen.Controllers.Admin
          * 
          */
         [HttpGet]
-        public ActionResult itemView(int ? page)
+        public ActionResult itemView(int? page)
         {
             int pageNum = (page ?? 1);
             int pageSize = 20;
-            var listItem = getItem(50);
-            return View(URLHelper.URL_ADMIN_ITEM, listItem.ToPagedList(pageNum,pageSize));
+            List<tbl_Product> listItem = getAllItem();
+
+            List<DataHelper.ItemModel> listItemModel = new List<DataHelper.ItemModel>();
+            foreach (tbl_Product item in listItem)
+            {
+                DataHelper.ItemModel model = new DataHelper.ItemModel();
+                model.product = item;
+                if (item.IDLoaiSP.HasValue)
+                    model.categoryName = DataHelper.ProductHelper.getInstance().getProductCategoryById(data, item.IDLoaiSP.Value).TenLoaiSP;
+                else
+                    model.categoryName = "";
+                listItemModel.Add(model);
+            }
+            return View(URLHelper.URL_ADMIN_ITEM, listItemModel.ToPagedList(pageNum, pageSize));
         }
         [HttpPost]
-        public ActionResult itemView(FormCollection form, String btnDel, int ? page)
+        public ActionResult itemView(FormCollection form, String btnDel, int? page)
         {
             if (btnDel != null)
             {
@@ -143,8 +155,19 @@ namespace webanhnguyen.Controllers.Admin
 
 
             var keyword = form["keyword"];
-            var listItem = getItem(10, keyword);
-            return View(URLHelper.URL_ADMIN_ITEM, listItem.ToPagedList(pageNum,pageSize));
+            var listItem = getItem(-1, keyword);
+            List<DataHelper.ItemModel> listItemModel = new List<DataHelper.ItemModel>();
+            foreach (tbl_Product item in listItem)
+            {
+                DataHelper.ItemModel model = new DataHelper.ItemModel();
+                model.product = item;
+                if (item.IDLoaiSP.HasValue)
+                    model.categoryName = DataHelper.ProductHelper.getInstance().getProductCategoryById(data, item.IDLoaiSP.Value).TenLoaiSP;
+                else
+                    model.categoryName = "";
+                listItemModel.Add(model);
+            }
+            return View(URLHelper.URL_ADMIN_ITEM, listItemModel.ToPagedList(pageNum, pageSize));
         }
         /*
          * 
@@ -173,7 +196,7 @@ namespace webanhnguyen.Controllers.Admin
             var sold_amount = form["soldamount"];
             var current_amount = form["currentamount"];
 
-            
+
             var title = form["title"];
             var description = form["description"];
             var keyword = form["keyword"];
@@ -279,14 +302,14 @@ namespace webanhnguyen.Controllers.Admin
                 var detail_short = form["detail_short"];
                 var sold_amount = form["soldamount"];
                 var current_amount = form["currentamount"];
-                
+
 
                 var title = form["title"];
                 var description = form["description"];
                 var keyword = form["keyword"];
                 tic.title = title;
                 tic.description = description;
-                if(!tic.TenSP.Equals(name))
+                if (!tic.TenSP.Equals(name))
                     tic.alias = DataHelper.GeneralHelper.getInstance().getAliasFromProductName(data, name);
 
                 tic.keyword = keyword;
