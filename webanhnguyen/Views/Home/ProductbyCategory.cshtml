@@ -1,17 +1,16 @@
 ﻿
 @model List<webanhnguyen.Models.tbl_product_type>
 
-@foreach (var it in Model)
+@foreach (var item in Model)
 {
-
 <div class="ty-mainbox-simple-container clearfix homepage-fresh-seafoods">
     <h2 class="ty-mainbox-simple-title">
-    @it.TenLoaiSP
+    @item.TenLoaiSP
     </h2>
-    <div class="ty-mainbox-simple-body">
+    @*<div class="ty-mainbox-simple-body">
         <div class="grid-list">
-
-            @*@foreach (var it in Model)
+           
+            @foreach (var it in Model)
             {
                 <div itemscope="" itemtype="http://schema.org/Product" style="display: none">
                     <meta itemprop="sku" content="COM5CAN">
@@ -65,9 +64,10 @@
                         </div><div class="ty-grid-list__control"></div>
                     </div>
                 </div>
-            }*@
+            }
         </div>
-    </div>
+    </div>*@
 </div>
 }
+
     

@@ -32,11 +32,12 @@ namespace webanhnguyen.Controllers
         {
             var listcategoryItem = (from mn in db.tbl_product_types
                                     join s in db.tbl_Products on mn.ID equals s.IDLoaiSP
-                                    where mn.Status == true && mn.ID == s.IDLoaiSP && mn.TrangChu == true
+                                    where mn.Status == true && mn.ID == s.IDLoaiSP 
                                     select mn).Distinct();
 
+           // ViewBag.Product = db.tbl_Products.Where(n => n.Status == true).ToList();
 
-            return PartialView(listcategoryItem.ToList());
+            return PartialView(listcategoryItem);
         }
         #endregion
         #region món ăn mỗi ngày

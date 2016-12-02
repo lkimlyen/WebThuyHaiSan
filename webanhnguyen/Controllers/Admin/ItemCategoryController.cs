@@ -11,7 +11,7 @@ namespace webanhnguyen.Controllers.Admin
 {
     public class ItemCategoryController : BaseAdminController
     {
-           // GET: ItemCategory
+        // GET: ItemCategory
         private List<tbl_product_type> getItemCategory(int count)
         {
             return getItemCategory(count, "");
@@ -48,7 +48,7 @@ namespace webanhnguyen.Controllers.Admin
             }
             return itemCategory.Single();
         }
-        
+
         public ActionResult ItemCategorySetStatusEnable(int id)
         {
             tbl_product_type tic = getOneItemCategory(id);
@@ -81,12 +81,12 @@ namespace webanhnguyen.Controllers.Admin
          * 
          */
         [HttpGet]
-        public ActionResult itemCategoryView(int ? page)
+        public ActionResult itemCategoryView(int? page)
         {
             int pageNum = (page ?? 1);
             int pageSize = 20;
             var listItemCategory = getItemCategory(10);
-            return View(URLHelper.URL_ADMIN_ITEM_CATEGORY, listItemCategory.ToPagedList(pageNum,pageSize));
+            return View(URLHelper.URL_ADMIN_ITEM_CATEGORY, listItemCategory.ToPagedList(pageNum, pageSize));
         }
         [HttpPost]
         public ActionResult itemCategoryView(FormCollection form, String btnDel, int? page)
@@ -144,6 +144,7 @@ namespace webanhnguyen.Controllers.Admin
             }
             tic.TenLoaiSP = name;
             tic.TrangChu = true;
+            tic.Status = true;
             tic.alias = DataHelper.GeneralHelper.getInstance().getAliasFromProductTypeName(data, name);
             if (err == false)
             {
@@ -185,7 +186,7 @@ namespace webanhnguyen.Controllers.Admin
                     ViewData["Error"] += "Vui lòng nhập tên danh mục!\n";
                 }
                 if (!tic.TenLoaiSP.Equals(name))
-                      tic.alias = DataHelper.GeneralHelper.getInstance().getAliasFromProductTypeName(data, name);
+                    tic.alias = DataHelper.GeneralHelper.getInstance().getAliasFromProductTypeName(data, name);
 
                 tic.TenLoaiSP = name;
                 if (err == false)
