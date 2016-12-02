@@ -89,6 +89,14 @@ namespace webanhnguyen.Controllers.Admin
             data.SubmitChanges();
             return RedirectToAction("itemView");
         }
+        public ActionResult ItemSetTrangChuEnable(int id)
+        {
+            tbl_Product tic = getOneItem(id);
+            tic.TrangChu = !tic.TrangChu;
+            UpdateModel(tic);
+            data.SubmitChanges();
+            return RedirectToAction("itemView");
+        }
 
 
         public ActionResult ItemSetCaTuoiMoiNgayEnable(int id)
@@ -223,6 +231,7 @@ namespace webanhnguyen.Controllers.Admin
             }
             tic.TenSP = name;
             tic.Status = true;
+            tic.TrangChu = true;
             tic.CaTuoiMoiNgay = true;
             tic.NgayCapNhat = DateTime.Now;
             if (!String.IsNullOrEmpty(price))

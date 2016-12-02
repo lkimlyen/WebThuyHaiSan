@@ -6,18 +6,6 @@
     <div class="container-fluid  content-grid">
         <div class="row-fluid ">
             <div class="span16 ">
-                <div class="ty-mainbox-simple-container clearfix homepage-on-sale">
-                    <h2 class="ty-mainbox-simple-title">
-                        Sản phẩm bán chạy
-                    </h2>
-                    <div class="ty-mainbox-simple-body">
-                        <script type="text/javascript" src="~/Scripts/exceptions.js"></script>
-                        <script type="text/javascript" src="~/Scripts/product_image_gallery.js"></script>
-                        <div class="grid-list">
-                            @{ Html.RenderAction("Hot_Product", "Home");}
-                        </div>
-                    </div>
-                </div>
                 @{Html.RenderAction("ProductbyCategory", "Home"); }
 
                 <div class="ty-mainbox-container clearfix">

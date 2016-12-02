@@ -16,25 +16,15 @@ namespace webanhnguyen.Controllers
         {
             return View();
         }
-        #region sản phẩm hot
-        [ChildActionOnly]
-        public ActionResult Hot_Product()
-        {
-            var SP_hot = (from sp in db.tbl_Products
-                          where sp.Status == true
-                          orderby sp.SLDaBan descending
-                          select sp).Skip(0).Take(8).ToList();
-            return PartialView(SP_hot);
-        }
-        #endregion
+        
         #region loại snar phẩm ngoài trang chủ
         public ActionResult ProductbyCategory()
         {
             ViewBag.Categories = ((from mn in db.tbl_product_types
                                    join s in db.tbl_Products on mn.ID equals s.IDLoaiSP
-                                   where mn.Status == true && mn.ID == s.IDLoaiSP && mn.TrangChu == true
+                                   where mn.Status == true && mn.ID == s.IDLoaiSP && mn.TrangChu == true && s.Status == true
                                    select mn).Distinct()).ToList();
-            var listItem = (from mn in db.tbl_Products where mn.Status == true select mn).ToList();
+            var listItem = (from mn in db.tbl_Products where mn.Status == true && mn.TrangChu == true orderby mn.NgayCapNhat descending select mn).ToList();
                                     
            // ViewBag.Product = db.tbl_Products.Where(n => n.Status == true).ToList();
 
@@ -450,7 +440,7 @@ namespace webanhnguyen.Controllers
             //Lấy ra danh sách Menu
             var MenuTop = (from mn in db.tbl_product_types
                            join s in db.tbl_Products on mn.ID equals s.IDLoaiSP
-                           where mn.Status == true && mn.ID == s.IDLoaiSP
+                           where mn.Status == true && mn.ID == s.IDLoaiSP && s.Status == true
                            select mn).Distinct();
 
 
