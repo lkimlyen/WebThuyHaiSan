@@ -14,9 +14,6 @@ namespace webanhnguyen.Controllers
     {
         public ActionResult Index()
         {
-            tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
-            Session["title"] = ViewBag.shoptitle;
-            Session["icon"] = hea.shortcuticon;
             return View();
         }
         #region sản phẩm hot
@@ -30,35 +27,16 @@ namespace webanhnguyen.Controllers
             return PartialView(SP_hot);
         }
         #endregion
-        #region sản phẩm tươi sống
-        [ChildActionOnly]
-        public ActionResult HaiSanTuoiSong()
+        #region loại snar phẩm ngoài trang chủ
+        public ActionResult ProductbyCategory()
         {
-            var TuoiSong = (from sp in db.tbl_Products
-                            where sp.Status == true && sp.IDLoaiSP == 6
-                            select sp).Skip(0).Take(12).ToList();
+            var listcategoryItem = (from mn in db.tbl_product_types
+                                    join s in db.tbl_Products on mn.ID equals s.IDLoaiSP
+                                    where mn.Status == true && mn.ID == s.IDLoaiSP && mn.TrangChu == true
+                                    select mn).Distinct();
 
-            return PartialView(TuoiSong);
-        }
-        #endregion
-        #region sản phẩm đông lạnh
-        [ChildActionOnly]
-        public ActionResult HaiSanDongLanh()
-        {
-            var dong = (from sp in db.tbl_Products
-                        where sp.Status == true && sp.IDLoaiSP == 7
-                        select sp).Skip(0).Take(12).ToList();
-            return PartialView(dong);
-        }
-        #endregion
-        #region sản phẩm khô
-        [ChildActionOnly]
-        public ActionResult HaiSanKho()
-        {
-            var Kho = (from sp in db.tbl_Products
-                       where sp.Status == true && sp.IDLoaiSP == 3
-                       select sp).Skip(0).Take(12).ToList();
-            return PartialView(Kho);
+
+            return PartialView(listcategoryItem.ToList());
         }
         #endregion
         #region món ăn mỗi ngày
@@ -81,7 +59,7 @@ namespace webanhnguyen.Controllers
         {
             tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
             Session["title"] = ViewBag.shoptitle;
-         
+
             Session["icon"] = hea.shortcuticon;
             var CT_SP = (db.tbl_Products.First(sp => sp.alias.Equals(id)));
             int loai = int.Parse(CT_SP.IDLoaiSP.ToString());
@@ -110,7 +88,7 @@ namespace webanhnguyen.Controllers
         {
             tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
             Session["title"] = ViewBag.shoptitle;
-            
+
             Session["icon"] = hea.shortcuticon;
 
             int pageSize = 20;
@@ -215,7 +193,7 @@ namespace webanhnguyen.Controllers
         {
             tbl_header hea = db.tbl_headers.SingleOrDefault(n => n.id == 1);
             Session["title"] = ViewBag.shoptitle;
-            
+
             Session["icon"] = hea.shortcuticon;
 
             int pageSize = 20;
@@ -469,9 +447,12 @@ namespace webanhnguyen.Controllers
         {
             //Lấy ra danh sách Menu
             var MenuTop = (from mn in db.tbl_product_types
-                           where mn.Status == true
-                           select mn).ToList();
-            return PartialView(MenuTop);
+                           join s in db.tbl_Products on mn.ID equals s.IDLoaiSP
+                           where mn.Status == true && mn.ID == s.IDLoaiSP
+                           select mn).Distinct();
+
+
+            return PartialView(MenuTop.ToList());
         }
         #endregion
         #region header
@@ -488,7 +469,8 @@ namespace webanhnguyen.Controllers
         #endregion
         #region tintuc
         public ActionResult tintuc(int? page)
-        {  int pageNume = (page ?? 1);
+        {
+            int pageNume = (page ?? 1);
             int pageSize = 20;
             var tintuc = (from tt in db.tbl_news
                           where tt.status == true
@@ -501,9 +483,9 @@ namespace webanhnguyen.Controllers
         #region Chi tiết tin (Reader)
         public ActionResult Reader(string id)
         {
-                      //Lấy ra tin tức từ mã tin truyền vào
+            //Lấy ra tin tức từ mã tin truyền vào
             var CT_Tin = (db.tbl_news.First(tt => tt.alias.Equals(id)));
-  
+
             //Lấy ra 10 tin khác (10 tin trong đó không có tin đang đọc)
 
             //Bộ đếm lượt xem cho Tin tức
@@ -521,7 +503,7 @@ namespace webanhnguyen.Controllers
         #region khuyenmai
         public ActionResult khuyenmai(int? page, string sorting)
         {
-           
+
             int pageNume = (page ?? 1);
             int pageSize = 20;
             var km = (from k in db.tbl_Products
@@ -565,7 +547,7 @@ namespace webanhnguyen.Controllers
         }
         public ActionResult khuyenmai1(int? page, string sorting)
         {
-            
+
             int pageNume = (page ?? 1);
             int pageSize = 20;
             var km = (from k in db.tbl_Products
@@ -609,7 +591,7 @@ namespace webanhnguyen.Controllers
         }
         public ActionResult khuyenmai2(int? page, string sorting)
         {
-            
+
             int pageNume = (page ?? 1);
             int pageSize = 20;
             var km = (from k in db.tbl_Products

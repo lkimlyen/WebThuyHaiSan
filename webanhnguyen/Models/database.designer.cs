@@ -51,9 +51,6 @@ namespace webanhnguyen.Models
     partial void InsertCustomer(Customer instance);
     partial void UpdateCustomer(Customer instance);
     partial void DeleteCustomer(Customer instance);
-    partial void Inserttbl_product_type(tbl_product_type instance);
-    partial void Updatetbl_product_type(tbl_product_type instance);
-    partial void Deletetbl_product_type(tbl_product_type instance);
     partial void Inserttbl_information(tbl_information instance);
     partial void Updatetbl_information(tbl_information instance);
     partial void Deletetbl_information(tbl_information instance);
@@ -66,6 +63,9 @@ namespace webanhnguyen.Models
     partial void Inserttbl_shop(tbl_shop instance);
     partial void Updatetbl_shop(tbl_shop instance);
     partial void Deletetbl_shop(tbl_shop instance);
+    partial void Inserttbl_product_type(tbl_product_type instance);
+    partial void Updatetbl_product_type(tbl_product_type instance);
+    partial void Deletetbl_product_type(tbl_product_type instance);
     #endregion
 		
 		public databaseDataContext() : 
@@ -154,14 +154,6 @@ namespace webanhnguyen.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<tbl_product_type> tbl_product_types
-		{
-			get
-			{
-				return this.GetTable<tbl_product_type>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tbl_information> tbl_informations
 		{
 			get
@@ -191,6 +183,14 @@ namespace webanhnguyen.Models
 			get
 			{
 				return this.GetTable<tbl_shop>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbl_product_type> tbl_product_types
+		{
+			get
+			{
+				return this.GetTable<tbl_product_type>();
 			}
 		}
 	}
@@ -1709,140 +1709,6 @@ namespace webanhnguyen.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_product_types")]
-	public partial class tbl_product_type : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private string _TenLoaiSP;
-		
-		private bool _Status;
-		
-		private string _alias;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnTenLoaiSPChanging(string value);
-    partial void OnTenLoaiSPChanged();
-    partial void OnStatusChanging(bool value);
-    partial void OnStatusChanged();
-    partial void OnaliasChanging(string value);
-    partial void OnaliasChanged();
-    #endregion
-		
-		public tbl_product_type()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenLoaiSP", DbType="NVarChar(50)")]
-		public string TenLoaiSP
-		{
-			get
-			{
-				return this._TenLoaiSP;
-			}
-			set
-			{
-				if ((this._TenLoaiSP != value))
-				{
-					this.OnTenLoaiSPChanging(value);
-					this.SendPropertyChanging();
-					this._TenLoaiSP = value;
-					this.SendPropertyChanged("TenLoaiSP");
-					this.OnTenLoaiSPChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Bit NOT NULL")]
-		public bool Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this.OnStatusChanging(value);
-					this.SendPropertyChanging();
-					this._Status = value;
-					this.SendPropertyChanged("Status");
-					this.OnStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_alias", DbType="VarChar(255)")]
-		public string alias
-		{
-			get
-			{
-				return this._alias;
-			}
-			set
-			{
-				if ((this._alias != value))
-				{
-					this.OnaliasChanging(value);
-					this.SendPropertyChanging();
-					this._alias = value;
-					this.SendPropertyChanged("alias");
-					this.OnaliasChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_information")]
 	public partial class tbl_information : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -3194,6 +3060,164 @@ namespace webanhnguyen.Models
 					this._keyword = value;
 					this.SendPropertyChanged("keyword");
 					this.OnkeywordChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_product_types")]
+	public partial class tbl_product_type : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _TenLoaiSP;
+		
+		private bool _Status;
+		
+		private string _alias;
+		
+		private System.Nullable<bool> _TrangChu;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnTenLoaiSPChanging(string value);
+    partial void OnTenLoaiSPChanged();
+    partial void OnStatusChanging(bool value);
+    partial void OnStatusChanged();
+    partial void OnaliasChanging(string value);
+    partial void OnaliasChanged();
+    partial void OnTrangChuChanging(System.Nullable<bool> value);
+    partial void OnTrangChuChanged();
+    #endregion
+		
+		public tbl_product_type()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenLoaiSP", DbType="NVarChar(50)")]
+		public string TenLoaiSP
+		{
+			get
+			{
+				return this._TenLoaiSP;
+			}
+			set
+			{
+				if ((this._TenLoaiSP != value))
+				{
+					this.OnTenLoaiSPChanging(value);
+					this.SendPropertyChanging();
+					this._TenLoaiSP = value;
+					this.SendPropertyChanged("TenLoaiSP");
+					this.OnTenLoaiSPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Bit NOT NULL")]
+		public bool Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_alias", DbType="VarChar(255)")]
+		public string alias
+		{
+			get
+			{
+				return this._alias;
+			}
+			set
+			{
+				if ((this._alias != value))
+				{
+					this.OnaliasChanging(value);
+					this.SendPropertyChanging();
+					this._alias = value;
+					this.SendPropertyChanged("alias");
+					this.OnaliasChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrangChu", DbType="Bit")]
+		public System.Nullable<bool> TrangChu
+		{
+			get
+			{
+				return this._TrangChu;
+			}
+			set
+			{
+				if ((this._TrangChu != value))
+				{
+					this.OnTrangChuChanging(value);
+					this.SendPropertyChanging();
+					this._TrangChu = value;
+					this.SendPropertyChanged("TrangChu");
+					this.OnTrangChuChanged();
 				}
 			}
 		}

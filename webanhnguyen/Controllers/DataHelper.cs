@@ -18,6 +18,7 @@ namespace webanhnguyen.Controllers
         {
             public Models.tbl_Product product;
             public String categoryName;
+            
         }
 
         //Helper classes

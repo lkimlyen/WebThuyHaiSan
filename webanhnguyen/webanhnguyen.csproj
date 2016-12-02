@@ -3057,6 +3057,7 @@
     <Content Include="tinymce\skins\lightgray\Variables.less" />
     <Content Include="tinymce\skins\lightgray\Window.less" />
     <Content Include="Views\Admin\Css\Css_m.cshtml" />
+    <Content Include="Views\Home\ProductbyCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

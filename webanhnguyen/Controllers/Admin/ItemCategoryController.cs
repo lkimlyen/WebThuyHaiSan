@@ -57,6 +57,14 @@ namespace webanhnguyen.Controllers.Admin
             data.SubmitChanges();
             return RedirectToAction("itemCategoryView");
         }
+        public ActionResult ItemCategorySetTrangChuEnable(int id)
+        {
+            tbl_product_type tic = getOneItemCategory(id);
+            tic.TrangChu = !tic.TrangChu;
+            UpdateModel(tic);
+            data.SubmitChanges();
+            return RedirectToAction("itemCategoryView");
+        }
 
         /*
          * 
@@ -135,6 +143,7 @@ namespace webanhnguyen.Controllers.Admin
                 ViewData["Error"] += "Vui lòng nhập tên danh mục!\n";
             }
             tic.TenLoaiSP = name;
+            tic.TrangChu = true;
             tic.alias = DataHelper.GeneralHelper.getInstance().getAliasFromProductTypeName(data, name);
             if (err == false)
             {
