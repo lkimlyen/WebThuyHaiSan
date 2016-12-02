@@ -30,14 +30,15 @@ namespace webanhnguyen.Controllers
         #region loại snar phẩm ngoài trang chủ
         public ActionResult ProductbyCategory()
         {
-            var listcategoryItem = (from mn in db.tbl_product_types
-                                    join s in db.tbl_Products on mn.ID equals s.IDLoaiSP
-                                    where mn.Status == true && mn.ID == s.IDLoaiSP 
-                                    select mn).Distinct();
-
+            ViewBag.Categories = ((from mn in db.tbl_product_types
+                                   join s in db.tbl_Products on mn.ID equals s.IDLoaiSP
+                                   where mn.Status == true && mn.ID == s.IDLoaiSP && mn.TrangChu == true
+                                   select mn).Distinct()).ToList();
+            var listItem = (from mn in db.tbl_Products where mn.Status == true select mn).ToList();
+                                    
            // ViewBag.Product = db.tbl_Products.Where(n => n.Status == true).ToList();
 
-            return PartialView(listcategoryItem);
+            return PartialView(listItem);
         }
         #endregion
         #region món ăn mỗi ngày
